@@ -1,0 +1,23 @@
+# A more complicated topology
+Link(1, 3, 10, 2)
+Link(2, 3, 10, 2)
+Link(3, 4, 10, 2)
+Link(3, 6, 10, 2)
+Link(4, 5, 10, 2)
+Link(5, 7, 10, 2)
+Link(6, 7, 10, 2)
+Link(7, 8, 10, 2)
+Link(7, 9, 10, 2)
+Link(10, 4, 10, 2)
+
+# Flow descriptions
+CbrSender(1, 8, 50, 500, 45, 45, 30)
+CbrSender(2, 9, 50, 500, 45, 45, 30)
+#CbrSender(10, 9, 50, 500, 45, 40, 30)
+CbrReceiver(8)
+CbrReceiver(9)
+FIFONode(3, 40)
+FIFONode(4, 40)
+FIFONode(5, 40)
+FIFONode(6, 40)
+FIFONode(7, 40)

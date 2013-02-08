@@ -1,0 +1,136 @@
+TARGET=libnetsim.a
+OBJECTS=Node.o FIFONode.o Scheduler.o PacketScheduler.o Timer.o Topology.o lex.yy.o parser.o Config.o Packet.o
+SOURCES=Node.cpp FIFONode.cpp Scheduler.cpp PacketScheduler.cpp Timer.cpp Topology.cpp Packet.cpp
+CCFLAGS=-g
+
+all: $(TARGET)
+
+$(TARGET): $(OBJECTS)
+	ar cru $(TARGET) $(OBJECTS)
+
+%.o: %.cpp %.h
+	g++ -c $(CCFLAGS) $*.cpp
+
+%.o: %.cpp 
+	g++ -c $(CCFLAGS) $*.cpp
+
+%.o: %.c
+	gcc -c $(CCFLAGS) $*.c
+
+depend: $(SOURCES)
+	makedepend $(SOURCES)
+
+parser.cpp: parser.y
+	yacc -d parser.y -o parser.cpp
+
+lex.yy.c: lexer.l
+	flex lexer.l
+
+clean:
+	rm *.o libnetsim.a
+
+# DO NOT DELETE
+
+Node.o: common.h /usr/include/sys/types.h /usr/include/sys/appleapiopts.h
+Node.o: /usr/include/sys/cdefs.h /usr/include/machine/types.h
+Node.o: /usr/include/i386/types.h /usr/include/i386/_types.h
+Node.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Node.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+Node.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+Node.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/sys/_structs.h
+Node.o: /usr/include/stdlib.h /usr/include/Availability.h
+Node.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Node.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+Node.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+Node.o: /usr/include/i386/_structs.h /usr/include/sys/resource.h
+Node.o: /usr/include/alloca.h Timer.h Packet.h PacketScheduler.h Scheduler.h
+Node.o: Topology.h Node.h
+FIFONode.o: common.h /usr/include/sys/types.h /usr/include/sys/appleapiopts.h
+FIFONode.o: /usr/include/sys/cdefs.h /usr/include/machine/types.h
+FIFONode.o: /usr/include/i386/types.h /usr/include/i386/_types.h
+FIFONode.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+FIFONode.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+FIFONode.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+FIFONode.o: /usr/include/libkern/i386/_OSByteOrder.h
+FIFONode.o: /usr/include/sys/_structs.h /usr/include/stdlib.h
+FIFONode.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+FIFONode.o: /usr/include/_types.h /usr/include/sys/wait.h
+FIFONode.o: /usr/include/sys/signal.h /usr/include/machine/signal.h
+FIFONode.o: /usr/include/i386/signal.h /usr/include/i386/_structs.h
+FIFONode.o: /usr/include/sys/resource.h /usr/include/alloca.h Timer.h
+FIFONode.o: Packet.h PacketScheduler.h Scheduler.h Topology.h Node.h
+FIFONode.o: FIFONode.h
+Scheduler.o: common.h /usr/include/sys/types.h
+Scheduler.o: /usr/include/sys/appleapiopts.h /usr/include/sys/cdefs.h
+Scheduler.o: /usr/include/machine/types.h /usr/include/i386/types.h
+Scheduler.o: /usr/include/i386/_types.h /usr/include/sys/_types.h
+Scheduler.o: /usr/include/machine/_types.h /usr/include/machine/endian.h
+Scheduler.o: /usr/include/i386/endian.h /usr/include/sys/_endian.h
+Scheduler.o: /usr/include/libkern/_OSByteOrder.h
+Scheduler.o: /usr/include/libkern/i386/_OSByteOrder.h
+Scheduler.o: /usr/include/sys/_structs.h /usr/include/stdlib.h
+Scheduler.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+Scheduler.o: /usr/include/_types.h /usr/include/sys/wait.h
+Scheduler.o: /usr/include/sys/signal.h /usr/include/machine/signal.h
+Scheduler.o: /usr/include/i386/signal.h /usr/include/i386/_structs.h
+Scheduler.o: /usr/include/sys/resource.h /usr/include/alloca.h Node.h
+Scheduler.o: PacketScheduler.h Timer.h Scheduler.h
+PacketScheduler.o: common.h /usr/include/sys/types.h
+PacketScheduler.o: /usr/include/sys/appleapiopts.h /usr/include/sys/cdefs.h
+PacketScheduler.o: /usr/include/machine/types.h /usr/include/i386/types.h
+PacketScheduler.o: /usr/include/i386/_types.h /usr/include/sys/_types.h
+PacketScheduler.o: /usr/include/machine/_types.h
+PacketScheduler.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+PacketScheduler.o: /usr/include/sys/_endian.h
+PacketScheduler.o: /usr/include/libkern/_OSByteOrder.h
+PacketScheduler.o: /usr/include/libkern/i386/_OSByteOrder.h
+PacketScheduler.o: /usr/include/sys/_structs.h /usr/include/stdlib.h
+PacketScheduler.o: /usr/include/Availability.h
+PacketScheduler.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+PacketScheduler.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+PacketScheduler.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+PacketScheduler.o: /usr/include/i386/_structs.h /usr/include/sys/resource.h
+PacketScheduler.o: /usr/include/alloca.h Node.h Packet.h PacketScheduler.h
+PacketScheduler.o: Timer.h Topology.h Scheduler.h
+Timer.o: common.h /usr/include/sys/types.h /usr/include/sys/appleapiopts.h
+Timer.o: /usr/include/sys/cdefs.h /usr/include/machine/types.h
+Timer.o: /usr/include/i386/types.h /usr/include/i386/_types.h
+Timer.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Timer.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+Timer.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+Timer.o: /usr/include/libkern/i386/_OSByteOrder.h /usr/include/sys/_structs.h
+Timer.o: /usr/include/stdlib.h /usr/include/Availability.h
+Timer.o: /usr/include/AvailabilityInternal.h /usr/include/_types.h
+Timer.o: /usr/include/sys/wait.h /usr/include/sys/signal.h
+Timer.o: /usr/include/machine/signal.h /usr/include/i386/signal.h
+Timer.o: /usr/include/i386/_structs.h /usr/include/sys/resource.h
+Timer.o: /usr/include/alloca.h Timer.h Node.h PacketScheduler.h Topology.h
+Timer.o: Scheduler.h
+Topology.o: common.h /usr/include/sys/types.h /usr/include/sys/appleapiopts.h
+Topology.o: /usr/include/sys/cdefs.h /usr/include/machine/types.h
+Topology.o: /usr/include/i386/types.h /usr/include/i386/_types.h
+Topology.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Topology.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+Topology.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+Topology.o: /usr/include/libkern/i386/_OSByteOrder.h
+Topology.o: /usr/include/sys/_structs.h /usr/include/stdlib.h
+Topology.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+Topology.o: /usr/include/_types.h /usr/include/sys/wait.h
+Topology.o: /usr/include/sys/signal.h /usr/include/machine/signal.h
+Topology.o: /usr/include/i386/signal.h /usr/include/i386/_structs.h
+Topology.o: /usr/include/sys/resource.h /usr/include/alloca.h Packet.h Node.h
+Topology.o: PacketScheduler.h Timer.h Scheduler.h Topology.h
+Packet.o: common.h /usr/include/sys/types.h /usr/include/sys/appleapiopts.h
+Packet.o: /usr/include/sys/cdefs.h /usr/include/machine/types.h
+Packet.o: /usr/include/i386/types.h /usr/include/i386/_types.h
+Packet.o: /usr/include/sys/_types.h /usr/include/machine/_types.h
+Packet.o: /usr/include/machine/endian.h /usr/include/i386/endian.h
+Packet.o: /usr/include/sys/_endian.h /usr/include/libkern/_OSByteOrder.h
+Packet.o: /usr/include/libkern/i386/_OSByteOrder.h
+Packet.o: /usr/include/sys/_structs.h /usr/include/stdlib.h
+Packet.o: /usr/include/Availability.h /usr/include/AvailabilityInternal.h
+Packet.o: /usr/include/_types.h /usr/include/sys/wait.h
+Packet.o: /usr/include/sys/signal.h /usr/include/machine/signal.h
+Packet.o: /usr/include/i386/signal.h /usr/include/i386/_structs.h
+Packet.o: /usr/include/sys/resource.h /usr/include/alloca.h Timer.h Packet.h
+Packet.o: PacketScheduler.h Scheduler.h Topology.h Node.h

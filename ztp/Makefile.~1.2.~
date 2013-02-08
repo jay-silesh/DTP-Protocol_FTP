@@ -1,0 +1,63 @@
+TARGET=netsim_app
+OBJECTS=main.o CbrSender.o CbrReceiver.o app_config.o 
+LIBRARY=../netsim/libnetsim.a
+SOURCES=main.cpp CbrSender.cpp CbrReceiver.cpp app_config.cpp
+CCFLAGS=-g
+
+all: netsim $(TARGET)
+
+netsim:
+	(cd ../netsim; make)
+
+$(TARGET): $(OBJECTS) $(LIBRARY)
+	g++ $(CCFLAGS) -o $(TARGET) $(OBJECTS) $(LIBRARY)
+
+%.o: %.cpp
+	g++ -c $(CCFLAGS) $*.cpp
+
+%.o: %.c
+	gcc -c $(CCFLAGS) $*.c
+
+depend: $(SOURCES)
+	(cd ../netsim; make depend)
+	makedepend $(SOURCES)
+
+clean:
+	(cd ../netsim; make clean)
+	rm *.o
+
+# DO NOT DELETE
+
+main.o: ../netsim/common.h /usr/include/sys/types.h /usr/include/_ansi.h
+main.o: /usr/include/newlib.h /usr/include/sys/config.h
+main.o: /usr/include/machine/ieeefp.h /usr/include/sys/_types.h
+main.o: /usr/include/sys/lock.h
+main.o: /usr/lib/gcc-lib/i686-pc-cygwin/3.3.3/include/stddef.h
+main.o: /usr/include/machine/types.h ../netsim/Config.h ../netsim/Packet.h
+main.o: ../netsim/Timer.h ../netsim/PacketScheduler.h ../netsim/Scheduler.h
+main.o: ../netsim/Topology.h /usr/include/unistd.h /usr/include/sys/unistd.h
+main.o: /usr/include/sys/features.h
+CbrSender.o: ../netsim/common.h /usr/include/sys/types.h /usr/include/_ansi.h
+CbrSender.o: /usr/include/newlib.h /usr/include/sys/config.h
+CbrSender.o: /usr/include/machine/ieeefp.h /usr/include/sys/_types.h
+CbrSender.o: /usr/include/sys/lock.h
+CbrSender.o: /usr/lib/gcc-lib/i686-pc-cygwin/3.3.3/include/stddef.h
+CbrSender.o: /usr/include/machine/types.h ../netsim/Node.h
+CbrSender.o: ../netsim/FIFONode.h ../netsim/Packet.h ../netsim/Timer.h
+CbrSender.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h CbrSender.h
+CbrReceiver.o: ../netsim/common.h /usr/include/sys/types.h
+CbrReceiver.o: /usr/include/_ansi.h /usr/include/newlib.h
+CbrReceiver.o: /usr/include/sys/config.h /usr/include/machine/ieeefp.h
+CbrReceiver.o: /usr/include/sys/_types.h /usr/include/sys/lock.h
+CbrReceiver.o: /usr/lib/gcc-lib/i686-pc-cygwin/3.3.3/include/stddef.h
+CbrReceiver.o: /usr/include/machine/types.h ../netsim/Node.h
+CbrReceiver.o: ../netsim/Packet.h ../netsim/PacketScheduler.h
+CbrReceiver.o: ../netsim/Timer.h ../netsim/Scheduler.h CbrReceiver.h
+app_config.o: ../netsim/common.h /usr/include/sys/types.h
+app_config.o: /usr/include/_ansi.h /usr/include/newlib.h
+app_config.o: /usr/include/sys/config.h /usr/include/machine/ieeefp.h
+app_config.o: /usr/include/sys/_types.h /usr/include/sys/lock.h
+app_config.o: /usr/lib/gcc-lib/i686-pc-cygwin/3.3.3/include/stddef.h
+app_config.o: /usr/include/machine/types.h ../netsim/Config.h
+app_config.o: ../netsim/Node.h ../netsim/FIFONode.h ../netsim/Packet.h
+app_config.o: CbrSender.h CbrReceiver.h
