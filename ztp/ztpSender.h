@@ -1,13 +1,12 @@
 class FIFONode;
 
-class CbrSender : public FIFONode {
+class ztpSender : public FIFONode {
  public:
-    CbrSender(Address a,		// Unique node address
+    ztpSender(Address a,		// Unique node address
               Address d,		// Target
               Time s,			// Start time of node
-              Time ip,			// Inter-packet time
-              int npk);			// Number of packets to send
-    ~CbrSender();
+              char * file_name);			// Number of packets to send
+    ~ztpSender();
 
     // Handle a timer
     void handle_timer(void* cookie);

@@ -1,9 +1,6 @@
-# Chain topology: 1 - 2 - 3
-Link(1, 2, 10, 1)
-Link(2, 3, 10, 1)
-
-# Node 1 is Sender, node 3 is the receiver, node 2 is a drop tail router
-CbrSender(1, 3, 50, 250, 5)
-CbrReceiver(3)
-FIFONode(2, 40)
-Router(99, 41)
+Host(1)
+Host(3)
+Router(2,41)
+Link(1,2)
+Link(2,3)
+FDTPFlow(1,3, 50, "charf")

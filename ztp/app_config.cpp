@@ -6,6 +6,7 @@
 #include "../netsim/Packet.h"
 #include "ztpHost.h"
 #include "ztpRouter.h"
+#include "ztpSender.h"
 
 void
 Config::process_app_command(char* id)
@@ -25,14 +26,13 @@ Config::process_app_command(char* id)
         }
         
         ztpRouter* zRouter = new ztpRouter((Address) config_args[0].numval,config_args[1].numval);
-      
+        
     }
     else if (strcmp(id, "FDTPFlow") == 0) {
         if (config_argnum != 4) {
             FATAL("Incorrect number of args for: %s", id);
         }
-        ztpSend* zSend = new ztpSend((Address) config_args[0].numval(Address) config_args[1].numval,(Time) config_args[2].numval,(char) config_args[3]);
-        zSend->start_connection();
+        ztpSender* zSend = new ztpSender( (Address) config_args[0].numval,(Address) config_args[1].numval,(Time) config_args[2].numval, config_args[3]);
     }
     config_argnum = 0;
     return;

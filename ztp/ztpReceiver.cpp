@@ -8,15 +8,20 @@
 #include "../netsim/Scheduler.h"
 #include "ztpReceiver.h"
 
-ztpRouter::ztpRouter(Address a,int q_size):FIFONode(a,
-													q_size) //sending this as a queue size for the router...
+ztpReceiver::ztpReceiver(Address a) : FIFONode(a, 
+                                               0)	// Null queue size
 {
-
+    // Empty
 }
 
-
-ztpRouter::~ztpRouter()
+ztpReceiver::~ztpReceiver()
 {
-	//Empty
+    // Empty
+}
 
+void
+ztpReceiver::receive(Packet* pkt)
+{
+    ((ztpPacket*) pkt)->print();
+    delete pkt;
 }

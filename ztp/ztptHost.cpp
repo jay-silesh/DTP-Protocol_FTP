@@ -2,12 +2,11 @@
 #include "../netsim/Node.h"
 #include "../netsim/FIFONode.h"
 #include "../netsim/Packet.h"
-#include "CbrPacket.h"
+#include "ztpPacket.h"
 #include "../netsim/Timer.h"
 #include "../netsim/PacketScheduler.h"
 #include "../netsim/Scheduler.h"
-#include "CbrSender.h"
-
+#include "ztpSender.h"
 ztpHost::ztpHost{Address a}:FIFONode(a,0)
 {
 }

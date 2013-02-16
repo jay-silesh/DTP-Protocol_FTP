@@ -1,12 +1,10 @@
 class FIFONode;
 
-class ztpHost : public FIFONode {
+class ztpReceiver : public FIFONode {
  public:
-    ztpHost(Address a);
-    ~ztpHost();
+    ztpReceiver(Address a);
+    ~ztpReceiver();
 
     // Receive packet and prints its length
     void receive(Packet* pkt);		// Incoming packet
-    
 };
-

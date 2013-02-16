@@ -6,42 +6,35 @@
 #include "../netsim/Timer.h"
 #include "../netsim/PacketScheduler.h"
 #include "../netsim/Scheduler.h"
-#include "CbrSender.h"
+#include "ztpSender.h"
 
-CbrSender::CbrSender(Address a,
+ztpSender::ztpSender(Address a,
                      Address d,
                      Time s,
-                     Time ip,
-                     int npk) : FIFONode(a,40)
+                     char *file_name) : FIFONode(a,40)
 {
     start = s;
     destination = d;
-    inter_packet_time = ip;
-    packets_to_send = npk;
-    sent_so_far = 0;
-
+    sent_so_far=0;
     set_timer(s, NULL);
     TRACE(TRL3, "Created a new CBR sender address %d, target %d\n", a, d);
 }
 
-CbrSender::~CbrSender()
+ztpSender::~ztpSender()
 {
     // Empty
 }
 
 void
-CbrSender::handle_timer(void* cookie)
+ztpSender::handle_timer(void* cookie)
 {
-    CbrPacket*	pkt = new CbrPacket;
-    unsigned char* d = &(pkt->data[0]);
-
+    ztpPacket*	pkt = new ztpPacket;
     pkt->source = address();
     pkt->destination = destination;
     pkt->length = sizeof(Packet) + PAYLOAD_SIZE;
     pkt->id = sent_so_far;
-    for (int i = 0; i < PAYLOAD_SIZE; i++) {
-        *(d+i) = (unsigned char) i;	// Write stuff to the payload
-    }
+    pkt->syn=1;
+
 
     if (send(pkt)) {
         TRACE(TRL3, "Sent packet from CBR sender at %d, id %d, length %d\n", 
@@ -49,8 +42,10 @@ CbrSender::handle_timer(void* cookie)
     }
 
     sent_so_far++;
-    if (sent_so_far < packets_to_send) {
+/*    if (sent_so_far < packets_to_send) {
         set_timer(scheduler->time() + inter_packet_time, NULL);
-    }
+    }*/
+
+        
     return;
 }
