@@ -5,7 +5,7 @@ class ztpSender : public FIFONode {
     ztpSender(Address a,		// Unique node address
               Address d,		// Target
               Time s,			// Start time of node
-              char * file_name);			// Number of packets to send
+              void* file_name);			// Number of packets to send
     ~ztpSender();
 
     // Handle a timer

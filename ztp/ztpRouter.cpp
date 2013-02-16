@@ -7,9 +7,12 @@
 #include "../netsim/Timer.h"
 #include "../netsim/Scheduler.h"
 #include "ztpReceiver.h"
+#include "ztpRouter.h"
+#include "ztpHost.h"
 
-ztpRouter::ztpRouter(Address a,int q_size):FIFONode(a,
-													q_size) //sending this as a queue size for the router...
+
+ztpRouter::ztpRouter(Address a,int q_size):FIFONode(a,q_size) 
+											//sending this as a queue size for the router...
 {
 
 }

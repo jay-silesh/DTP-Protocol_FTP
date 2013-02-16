@@ -45,7 +45,18 @@ ztpPacket.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 ztpPacket.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 ztpPacket.o: ../netsim/Packet.h ztpPacket.h ../netsim/Timer.h
 ztpPacket.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h
+ztpRouter.o: ../netsim/common.h /usr/include/stdlib.h
+ztpRouter.o: /usr/include/features.h /usr/include/alloca.h ../netsim/Node.h
+ztpRouter.o: ../netsim/FIFONode.h ../netsim/Packet.h ztpPacket.h
+ztpRouter.o: ../netsim/PacketScheduler.h ../netsim/Timer.h
+ztpRouter.o: ../netsim/Scheduler.h ztpReceiver.h
+ztpHost.o: ../netsim/common.h /usr/include/stdlib.h
+ztpHost.o: /usr/include/features.h /usr/include/alloca.h ../netsim/Node.h
+ztpHost.o: ../netsim/FIFONode.h ../netsim/Packet.h ztpPacket.h
+ztpHost.o: ../netsim/PacketScheduler.h ../netsim/Timer.h
+ztpHost.o: ../netsim/Scheduler.h ztpReceiver.h
 app_config.o: /usr/include/string.h /usr/include/features.h
 app_config.o: /usr/include/xlocale.h ../netsim/common.h /usr/include/stdlib.h
 app_config.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Node.h
 app_config.o: ../netsim/FIFONode.h ../netsim/Packet.h ztpHost.h ztpRouter.h
+app_config.o: ztpSender.h ztpReceiver.h

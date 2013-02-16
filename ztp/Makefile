@@ -49,4 +49,4 @@ app_config.o: /usr/include/string.h /usr/include/features.h
 app_config.o: /usr/include/xlocale.h ../netsim/common.h /usr/include/stdlib.h
 app_config.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Node.h
 app_config.o: ../netsim/FIFONode.h ../netsim/Packet.h ztpHost.h ztpRouter.h
-app_config.o: ztpSender.h
+app_config.o: ztpSender.h ztpReceiver.h

@@ -13,38 +13,16 @@ class ztpPacket : public Packet {
     bool ack;
     bool fin;
     int ack_number;
-    unsigned char data[PAYLOAD_SIZE];
+    char *data;
+  	
+  	//  unsigned char data[PAYLOAD_SIZE];
+  
+    /*	These fields already exists
+
+    Address s,d;
+    int id,length;
     
-    bool check_syn();
-    bool check_fin();
-    bool check_ack();
-    bool check_packet();
+
+    */ 
+   
 };
-
-
-bool ztpPacket::check_syn()
-{
-    if(syn==true && ack==false)
-        return true;
-    return false;
-}
-bool ztpPacket::check_ack()
-{
-    if(ack==true && syn==false)
-        return true;
-    return false;
-}
-
-bool ztpPacket::check_packet()
-{
-    if(syn==false && ack==false && fin==false)
-        return true;
-    return false;
-}
-
-bool ztpPacket::check_fin()
-{
-    if(fin==true)
-        return true;
-    return false;
-}

@@ -9,13 +9,10 @@
 #include "ztpSender.h"
 #include "ztpHost.h"
 
-
-ztpHost::ztpHost(Address a):FIFONode(a,0)
+ztpHost::ztpHost()
 {
+
+
 
 }
 
-ztpHost::~ztpHost()
-{
-
-}
