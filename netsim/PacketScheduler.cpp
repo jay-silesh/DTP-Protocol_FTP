@@ -25,7 +25,7 @@ PacketData::~PacketData()
 PacketScheduler::PacketScheduler()
 {
     // Empty
-}
+}   
 
 PacketScheduler::~PacketScheduler()
 {
