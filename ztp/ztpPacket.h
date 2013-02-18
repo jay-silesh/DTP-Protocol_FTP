@@ -18,11 +18,8 @@ class ztpPacket : public Packet {
   	//  unsigned char data[PAYLOAD_SIZE];
   
     /*	These fields already exists
-
     Address s,d;
     int id,length;
-    
-
     */ 
    
 };

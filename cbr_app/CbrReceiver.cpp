@@ -23,5 +23,9 @@ void
 CbrReceiver::receive(Packet* pkt)
 {
     ((CbrPacket*) pkt)->print();
+	TRACE(TRL1,"\n\n\n-------------------------\nCurrently in am in the node %d\n",address())
+    ((CbrPacket*) pkt)->print();
+     TRACE(TRL1, "\n\n-------------------------------------\n\n");
+
     delete pkt;
 }

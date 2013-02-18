@@ -335,6 +335,7 @@ EOB_ACT_CONTINUE_SCAN	netsim/lex.yy.c	159;"	d	file:
 EOB_ACT_END_OF_FILE	netsim/lex.yy.c	160;"	d	file:
 EOB_ACT_LAST_MATCH	netsim/lex.yy.c	161;"	d	file:
 FATAL	netsim/common.h	50;"	d
+FDTP	ztp/ztpHost.cpp	/^void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)$/;"	f	class:ztpHost
 FIFONode	netsim/FIFONode.cpp	/^FIFONode::FIFONode(Address a,$/;"	f	class:FIFONode
 FIFONode	netsim/FIFONode.h	/^class FIFONode : public Node {$/;"	c
 FLEXINT_H	netsim/lex.yy.c	29;"	d	file:
@@ -373,7 +374,7 @@ NodeMapIterator	netsim/PacketScheduler.h	/^typedef map<Address, Node*, ltAddress
 NodeMapPair	netsim/PacketScheduler.h	/^typedef pair<Address, Node*> NodeMapPair;$/;"	t
 OBJECTS	cbr_app/Makefile	/^OBJECTS=main.o CbrSender.o CbrReceiver.o CbrPacket.o app_config.o $/;"	m
 OBJECTS	netsim/Makefile	/^OBJECTS=Node.o FIFONode.o Scheduler.o PacketScheduler.o Timer.o Topology.o lex.yy.o parser.o Config.o Packet.o$/;"	m
-OBJECTS	ztp/Makefile	/^OBJECTS=main.o ztpSender.o ztpReceiver.o ztpPacket.o app_config.o $/;"	m
+OBJECTS	ztp/Makefile	/^OBJECTS=main.o ztpHost.o ztpPacket.o app_config.o $/;"	m
 OBJS	sha1/Makefile	/^OBJS	= sha1.o$/;"	m
 PAYLOAD_SIZE	cbr_app/CbrPacket.h	3;"	d
 PAYLOAD_SIZE	ztp/ztpPacket.h	3;"	d
@@ -403,7 +404,7 @@ SHA1_NO_COMPARE	sha1/shacmp.cpp	32;"	d	file:
 SHA1_USAGE_ERROR	sha1/shacmp.cpp	33;"	d	file:
 SOURCES	cbr_app/Makefile	/^SOURCES=main.cpp CbrSender.cpp CbrReceiver.cpp CbrPacket.cpp app_config.cpp$/;"	m
 SOURCES	netsim/Makefile	/^SOURCES=Node.cpp FIFONode.cpp Scheduler.cpp PacketScheduler.cpp Timer.cpp Topology.cpp Packet.cpp$/;"	m
-SOURCES	ztp/Makefile	/^SOURCES=main.cpp ztpSender.cpp ztpReceiver.cpp ztpPacket.cpp app_config.cpp$/;"	m
+SOURCES	ztp/Makefile	/^SOURCES=main.cpp ztpHost.cpp ztpPacket.cpp app_config.cpp$/;"	m
 STL_SEQUENCE_CONCEPTS_H	docs/STL_doc/sequence_concepts.h	15;"	d
 Scheduler	netsim/Scheduler.cpp	/^Scheduler::Scheduler()$/;"	f	class:Scheduler
 Scheduler	netsim/Scheduler.h	/^class Scheduler : public Timer, public PacketScheduler {$/;"	c
@@ -2470,7 +2471,7 @@ deque	docs/STL_doc/stl_deque.h	/^  explicit deque(size_type __n) : _Base(allocat
 deque	docs/STL_doc/stl_deque.h	/^class deque : protected _Deque_base<_Tp, _Alloc> {$/;"	c
 destination	cbr_app/CbrSender.h	/^    Address	destination;		\/\/ Target address$/;"	m	class:CbrSender
 destination	netsim/Packet.h	/^    Address		destination;	\/\/ Destination node address$/;"	m	class:Packet
-destination	ztp/ztpSender.h	/^    Address	destination;		\/\/ Target address$/;"	m	class:ztpSender
+destination	ztp/ztpHost.h	/^    Address	destination;	\/\/ Target address$/;"	m	class:ztpHost
 destroy	docs/STL_doc/stl_alloc.h	/^  void destroy(pointer __p) { __p->~_Tp(); }$/;"	f
 destroy	docs/STL_doc/stl_alloc.h	/^  void destroy(pointer __p) { __p->~_Tp(); }$/;"	f	class:allocator
 destroy	docs/STL_doc/stl_construct.h	/^inline void destroy(_ForwardIterator __first, _ForwardIterator __last) {$/;"	f
@@ -2677,6 +2678,7 @@ erase_link	netsim/Topology.cpp	/^Topology::erase_link(Address s,$/;"	f	class:Top
 explicit	docs/STL_doc/stl_config.h	449;"	d
 failed	docs/STL_doc/stl_iterator.h	/^  bool failed() const { return !_M_ok; }$/;"	f	class:ostreambuf_iterator
 false	docs/STL_doc/stl_config.h	429;"	d
+file_holder	ztp/ztpHost.h	/^    char * file_holder;			\/\/contains the file location from the sender's side..$/;"	m	class:ztpHost
 fill	docs/STL_doc/stl_algobase.h	/^inline void fill(char* __first, char* __last, const char& __c) {$/;"	f
 fill	docs/STL_doc/stl_algobase.h	/^inline void fill(signed char* __first, signed char* __last,$/;"	f
 fill	docs/STL_doc/stl_algobase.h	/^inline void fill(unsigned char* __first, unsigned char* __last,$/;"	f
@@ -2800,7 +2802,7 @@ greater_equal	docs/STL_doc/stl_function.h	/^struct greater_equal : public binary
 handle_timer	cbr_app/CbrSender.cpp	/^CbrSender::handle_timer(void* cookie)$/;"	f	class:CbrSender
 handle_timer	netsim/FIFONode.cpp	/^FIFONode::handle_timer(void* cookie)$/;"	f	class:FIFONode
 handle_timer	netsim/Node.cpp	/^Node::handle_timer(void* cookie)$/;"	f	class:Node
-handle_timer	ztp/ztpSender.cpp	/^ztpSender::handle_timer(void* cookie)$/;"	f	class:ztpSender
+handle_timer	ztp/ztpHost.cpp	/^ztpHost::handle_timer(void* cookie)$/;"	f	class:ztpHost
 has_trivial_assignment_operator	docs/STL_doc/type_traits.h	/^   typedef __false_type    has_trivial_assignment_operator;$/;"	t	struct:__type_traits
 has_trivial_assignment_operator	docs/STL_doc/type_traits.h	/^   typedef __true_type    has_trivial_assignment_operator;$/;"	t	struct:__type_traits
 has_trivial_copy_constructor	docs/STL_doc/type_traits.h	/^   typedef __false_type    has_trivial_copy_constructor;$/;"	t	struct:__type_traits
@@ -3037,7 +3039,7 @@ int_type	docs/STL_doc/char_traits.h	/^  typedef _IntT int_type;$/;"	t	class:__ch
 int_type	docs/STL_doc/stl_iterator.h	/^  typedef typename _Traits::int_type       int_type;$/;"	t	class:istreambuf_iterator
 int_type	docs/STL_doc/stl_iterator.h	/^  typedef typename _Traits::int_type       int_type;$/;"	t	class:ostreambuf_iterator
 inter_packet_time	cbr_app/CbrSender.h	/^    Time	inter_packet_time;	\/\/ Inter-packet time$/;"	m	class:CbrSender
-inter_packet_time	ztp/ztpSender.h	/^    Time	inter_packet_time;	\/\/ Inter-packet time$/;"	m	class:ztpSender
+inter_packet_time	ztp/ztpHost.h	/^    Time	inter_packet_time;	\/\/ Inter-packet time$/;"	m	class:ztpHost
 iota	docs/STL_doc/stl_numeric.h	/^iota(_ForwardIter __first, _ForwardIter __last, _Tp __value)$/;"	f
 is_POD_type	docs/STL_doc/type_traits.h	/^   typedef __false_type    is_POD_type;$/;"	t	struct:__type_traits
 is_POD_type	docs/STL_doc/type_traits.h	/^   typedef __true_type    is_POD_type;$/;"	t	struct:__type_traits
@@ -3804,7 +3806,7 @@ packet	netsim/PacketScheduler.h	/^    Packet*	packet;$/;"	m	class:PacketData
 packet_map	netsim/PacketScheduler.h	/^    PacketMap	packet_map;	\/\/ sorted map of packet events$/;"	m	class:PacketScheduler
 packet_queue	netsim/FIFONode.h	/^    queue<Packet*>	packet_queue;	\/\/ Queue of packets$/;"	m	class:PacketQueue
 packets_to_send	cbr_app/CbrSender.h	/^    int		packets_to_send;	\/\/ number of packets$/;"	m	class:CbrSender
-packets_to_send	ztp/ztpSender.h	/^    int		packets_to_send;	\/\/ number of packets$/;"	m	class:ztpSender
+packets_to_send	ztp/ztpHost.h	/^    int		packets_to_send;	\/\/ number of packets$/;"	m	class:ztpHost
 pair	docs/STL_doc/stl_pair.h	/^  pair() : first(_T1()), second(_T2()) {}$/;"	f	struct:pair
 pair	docs/STL_doc/stl_pair.h	/^  pair(const _T1& __a, const _T2& __b) : first(__a), second(__b) {}$/;"	f	struct:pair
 pair	docs/STL_doc/stl_pair.h	/^  pair(const pair<_U1, _U2>& __p) : first(__p.first), second(__p.second) {}$/;"	f	struct:pair
@@ -3990,7 +3992,7 @@ rebind	docs/STL_doc/stl_alloc.h	/^  template <class _Tp1> struct rebind {$/;"	s	
 receive	cbr_app/CbrReceiver.cpp	/^CbrReceiver::receive(Packet* pkt)$/;"	f	class:CbrReceiver
 receive	netsim/FIFONode.cpp	/^FIFONode::receive(Packet* pkt)$/;"	f	class:FIFONode
 receive	netsim/Node.cpp	/^Node::receive(Packet* packet)$/;"	f	class:Node
-receive	ztp/ztpReceiver.cpp	/^ztpReceiver::receive(Packet* pkt)$/;"	f	class:ztpReceiver
+receive	ztp/ztpHost.cpp	/^ztpHost::receive(Packet* pkt)$/;"	f	class:ztpHost
 reference	docs/STL_doc/concept_checks.h	/^  typedef typename __STD::iterator_traits<_Iter>::reference reference;$/;"	t	struct:__reference_type_definition_requirement_violation
 reference	docs/STL_doc/concept_checks.h	/^__STL_TYPEDEF_REQUIREMENT(reference);$/;"	v
 reference	docs/STL_doc/defalloc.h	/^    typedef T& reference;$/;"	t	class:allocator
@@ -4192,7 +4194,7 @@ send_done	netsim/Node.cpp	/^Node::send_done(Address nhop)$/;"	f	class:Node
 send_it	netsim/FIFONode.cpp	/^FIFONode::send_it(Address nhop)$/;"	f	class:FIFONode
 send_packet	netsim/PacketScheduler.cpp	/^PacketScheduler::send_packet(Packet* packet,$/;"	f	class:PacketScheduler
 sent_so_far	cbr_app/CbrSender.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:CbrSender
-sent_so_far	ztp/ztpSender.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:ztpSender
+sent_so_far	ztp/ztpHost.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:ztpHost
 sequence_buffer	docs/STL_doc/stl_rope.h	/^        sequence_buffer() : _M_prefix(0), _M_buf_count(0) {}$/;"	f	class:sequence_buffer
 sequence_buffer	docs/STL_doc/stl_rope.h	/^        sequence_buffer(_Sequence& __s) : _M_prefix(&__s), _M_buf_count(0) {}$/;"	f	class:sequence_buffer
 sequence_buffer	docs/STL_doc/stl_rope.h	/^        sequence_buffer(const sequence_buffer& __x) {$/;"	f	class:sequence_buffer
@@ -4301,7 +4303,7 @@ stack	docs/STL_doc/stl_stack.h	/^  explicit stack(const _Sequence& __s) : c(__s)
 stack	docs/STL_doc/stl_stack.h	/^  stack() : c() {}$/;"	f	class:stack
 stack	docs/STL_doc/stl_stack.h	/^class stack {$/;"	c
 start	cbr_app/CbrSender.h	/^    Time	start;			\/\/ Start sending at$/;"	m	class:CbrSender
-start	ztp/ztpSender.h	/^    Time	start;			\/\/ Start sending at$/;"	m	class:ztpSender
+start	ztp/ztpHost.h	/^    Time	start;			\/\/ Start sending at$/;"	m	class:ztpHost
 state_type	docs/STL_doc/char_traits.h	/^  typedef mbstate_t state_type;$/;"	t	class:__char_traits_base
 streambuf_type	docs/STL_doc/stl_iterator.h	/^  typedef basic_streambuf<_CharT, _Traits> streambuf_type;$/;"	t	class:istreambuf_iterator
 streambuf_type	docs/STL_doc/stl_iterator.h	/^  typedef basic_streambuf<_CharT, _Traits> streambuf_type;$/;"	t	class:ostreambuf_iterator
@@ -4647,16 +4649,11 @@ yytype_uint8	netsim/parser.cpp	/^typedef unsigned char yytype_uint8;$/;"	t	file:
 yyunput	netsim/lex.yy.c	/^    static void yyunput (int c, register char * yy_bp )$/;"	f	file:
 yyvs	netsim/parser.cpp	/^  YYSTYPE yyvs;$/;"	m	union:yyalloc	file:
 yywrap	netsim/lex.yy.c	/^int yywrap ()$/;"	f
-ztpHost	ztp/ztpHost.cpp	/^ztpHost::ztpHost()$/;"	f	class:ztpHost
+ztpHost	ztp/ztpHost.cpp	/^ztpHost::ztpHost(Address a) : FIFONode(a,10)$/;"	f	class:ztpHost
 ztpHost	ztp/ztpHost.h	/^class ztpHost : public FIFONode {$/;"	c
-ztpHost	ztp/ztptHost.cpp	/^ztpHost::ztpHost(Address a):FIFONode(a,0)$/;"	f	class:ztpHost
 ztpPacket	ztp/ztpPacket.h	/^class ztpPacket : public Packet {$/;"	c
-ztpReceiver	ztp/ztpReceiver.cpp	/^ztpReceiver::ztpReceiver(Address a) : FIFONode(a, $/;"	f	class:ztpReceiver
-ztpReceiver	ztp/ztpReceiver.h	/^class ztpReceiver : public FIFONode {$/;"	c
-ztpRouter	ztp/ztpRouter.cpp	/^ztpRouter::ztpRouter(Address a,int q_size):FIFONode(a,$/;"	f	class:ztpRouter
+ztpRouter	ztp/ztpRouter.cpp	/^ztpRouter::ztpRouter(u_short a,int q_size) : FIFONode(a,q_size)$/;"	f	class:ztpRouter
 ztpRouter	ztp/ztpRouter.h	/^class ztpRouter : public FIFONode {$/;"	c
-ztpSender	ztp/ztpSender.cpp	/^ztpSender::ztpSender(Address a,$/;"	f	class:ztpSender
-ztpSender	ztp/ztpSender.h	/^class ztpSender : public FIFONode {$/;"	c
 ~CbrReceiver	cbr_app/CbrReceiver.cpp	/^CbrReceiver::~CbrReceiver()$/;"	f	class:CbrReceiver
 ~CbrSender	cbr_app/CbrSender.cpp	/^CbrSender::~CbrSender()$/;"	f	class:CbrSender
 ~Config	netsim/Config.cpp	/^Config::~Config()$/;"	f	class:Config
@@ -4705,7 +4702,5 @@ ztpSender	ztp/ztpSender.h	/^class ztpSender : public FIFONode {$/;"	c
 ~slist	docs/STL_doc/stl_slist.h	/^  ~slist() {}$/;"	f	class:slist
 ~temporary_buffer	docs/STL_doc/stl_tempbuf.h	/^  ~temporary_buffer() {}$/;"	f	struct:temporary_buffer
 ~vector	docs/STL_doc/stl_vector.h	/^  ~vector() { destroy(_M_start, _M_finish); }$/;"	f	class:vector
-~ztpHost	ztp/ztptHost.cpp	/^ztpHost::~ztpHost()$/;"	f	class:ztpHost
-~ztpReceiver	ztp/ztpReceiver.cpp	/^ztpReceiver::~ztpReceiver()$/;"	f	class:ztpReceiver
+~ztpHost	ztp/ztpHost.cpp	/^ztpHost::~ztpHost()$/;"	f	class:ztpHost
 ~ztpRouter	ztp/ztpRouter.cpp	/^ztpRouter::~ztpRouter()$/;"	f	class:ztpRouter
-~ztpSender	ztp/ztpSender.cpp	/^ztpSender::~ztpSender()$/;"	f	class:ztpSender

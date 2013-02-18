@@ -4672,8 +4672,8 @@ TESTB	sha1/shatest.cpp	30;"	d	file:
 main	sha1/shatest.cpp	/^int main()$/;"	f
 CCFLAGS	ztp/Makefile	/^CCFLAGS=-g$/;"	m
 LIBRARY	ztp/Makefile	/^LIBRARY=..\/netsim\/libnetsim.a$/;"	m
-OBJECTS	ztp/Makefile	/^OBJECTS=main.o ztpSender.o ztpReceiver.o ztpPacket.o app_config.o $/;"	m
-SOURCES	ztp/Makefile	/^SOURCES=main.cpp ztpSender.cpp ztpReceiver.cpp ztpPacket.cpp app_config.cpp$/;"	m
+OBJECTS	ztp/Makefile	/^OBJECTS=main.o ztpHost.o ztpPacket.o app_config.o $/;"	m
+SOURCES	ztp/Makefile	/^SOURCES=main.cpp ztpHost.cpp ztpPacket.cpp app_config.cpp$/;"	m
 TARGET	ztp/Makefile	/^TARGET=netsim_app$/;"	m
 process_app_command	ztp/app_config.cpp	/^Config::process_app_command(char* id)$/;"	f	class:Config
 config_file	ztp/main.cpp	/^char* config_file = ".\/netsim_config";$/;"	v
@@ -4681,7 +4681,17 @@ main	ztp/main.cpp	/^main(int argc,$/;"	f
 options	ztp/main.cpp	/^const char* options = "hf:t:";$/;"	v
 trace	ztp/main.cpp	/^unsigned int trace = 0;$/;"	v
 usage	ztp/main.cpp	/^usage()$/;"	f
-ztpHost	ztp/ztpHost.cpp	/^ztpHost::ztpHost()$/;"	f	class:ztpHost
+FDTP	ztp/ztpHost.cpp	/^void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)$/;"	f	class:ztpHost
+handle_timer	ztp/ztpHost.cpp	/^ztpHost::handle_timer(void* cookie)$/;"	f	class:ztpHost
+receive	ztp/ztpHost.cpp	/^ztpHost::receive(Packet* pkt)$/;"	f	class:ztpHost
+ztpHost	ztp/ztpHost.cpp	/^ztpHost::ztpHost(Address a) : FIFONode(a,10)$/;"	f	class:ztpHost
+~ztpHost	ztp/ztpHost.cpp	/^ztpHost::~ztpHost()$/;"	f	class:ztpHost
+destination	ztp/ztpHost.h	/^    Address	destination;	\/\/ Target address$/;"	m	class:ztpHost
+file_holder	ztp/ztpHost.h	/^    char * file_holder;			\/\/contains the file location from the sender's side..$/;"	m	class:ztpHost
+inter_packet_time	ztp/ztpHost.h	/^    Time	inter_packet_time;	\/\/ Inter-packet time$/;"	m	class:ztpHost
+packets_to_send	ztp/ztpHost.h	/^    int		packets_to_send;	\/\/ number of packets$/;"	m	class:ztpHost
+sent_so_far	ztp/ztpHost.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:ztpHost
+start	ztp/ztpHost.h	/^    Time	start;			\/\/ Start sending at$/;"	m	class:ztpHost
 ztpHost	ztp/ztpHost.h	/^class ztpHost : public FIFONode {$/;"	c
 print	ztp/ztpPacket.cpp	/^ztpPacket::print()$/;"	f	class:ztpPacket
 PAYLOAD_SIZE	ztp/ztpPacket.h	3;"	d
@@ -4691,21 +4701,6 @@ data	ztp/ztpPacket.h	/^    char *data;$/;"	m	class:ztpPacket
 fin	ztp/ztpPacket.h	/^    bool fin;$/;"	m	class:ztpPacket
 syn	ztp/ztpPacket.h	/^    bool syn;$/;"	m	class:ztpPacket
 ztpPacket	ztp/ztpPacket.h	/^class ztpPacket : public Packet {$/;"	c
-receive	ztp/ztpReceiver.cpp	/^ztpReceiver::receive(Packet* pkt)$/;"	f	class:ztpReceiver
-ztpReceiver	ztp/ztpReceiver.cpp	/^ztpReceiver::ztpReceiver(Address a) : FIFONode(a, $/;"	f	class:ztpReceiver
-~ztpReceiver	ztp/ztpReceiver.cpp	/^ztpReceiver::~ztpReceiver()$/;"	f	class:ztpReceiver
-ztpReceiver	ztp/ztpReceiver.h	/^class ztpReceiver : public FIFONode {$/;"	c
-ztpRouter	ztp/ztpRouter.cpp	/^ztpRouter::ztpRouter(Address a,int q_size):FIFONode(a,$/;"	f	class:ztpRouter
+ztpRouter	ztp/ztpRouter.cpp	/^ztpRouter::ztpRouter(u_short a,int q_size) : FIFONode(a,q_size)$/;"	f	class:ztpRouter
 ~ztpRouter	ztp/ztpRouter.cpp	/^ztpRouter::~ztpRouter()$/;"	f	class:ztpRouter
 ztpRouter	ztp/ztpRouter.h	/^class ztpRouter : public FIFONode {$/;"	c
-handle_timer	ztp/ztpSender.cpp	/^ztpSender::handle_timer(void* cookie)$/;"	f	class:ztpSender
-ztpSender	ztp/ztpSender.cpp	/^ztpSender::ztpSender(Address a,$/;"	f	class:ztpSender
-~ztpSender	ztp/ztpSender.cpp	/^ztpSender::~ztpSender()$/;"	f	class:ztpSender
-destination	ztp/ztpSender.h	/^    Address	destination;		\/\/ Target address$/;"	m	class:ztpSender
-inter_packet_time	ztp/ztpSender.h	/^    Time	inter_packet_time;	\/\/ Inter-packet time$/;"	m	class:ztpSender
-packets_to_send	ztp/ztpSender.h	/^    int		packets_to_send;	\/\/ number of packets$/;"	m	class:ztpSender
-sent_so_far	ztp/ztpSender.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:ztpSender
-start	ztp/ztpSender.h	/^    Time	start;			\/\/ Start sending at$/;"	m	class:ztpSender
-ztpSender	ztp/ztpSender.h	/^class ztpSender : public FIFONode {$/;"	c
-ztpHost	ztp/ztptHost.cpp	/^ztpHost::ztpHost(Address a):FIFONode(a,0)$/;"	f	class:ztpHost
-~ztpHost	ztp/ztptHost.cpp	/^ztpHost::~ztpHost()$/;"	f	class:ztpHost

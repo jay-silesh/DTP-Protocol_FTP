@@ -1,0 +1,5 @@
+Link(1, 99, 10, 1)
+Link(99, 2, 10, 1)
+CbrSender(1, 2, 50, 250,1)
+CbrReceiver(2)
+FIFONode(99, 40)
