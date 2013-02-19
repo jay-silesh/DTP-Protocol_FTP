@@ -11,7 +11,7 @@ class ztpPacket : public Packet {
     void print();
     bool syn;
     bool ack;
-    bool fin;
+    int fin;
     int ack_number;
     char *data;
   	

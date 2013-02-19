@@ -24,23 +24,20 @@ ztpHost::receive(Packet* pkt)
     TRACE(TRL1, "\n\n--------------------------------Received the packet %d--------------------------------\n\n",((ztpPacket*) pkt)->id);
 
     //Sending the ACK for connection EST...
-    if(((ztpPacket*) pkt)->syn==0 && syn_recieved==true)
+    if(((ztpPacket*) pkt)->syn==0 && syn_recieved==true &&  !(((ztpPacket*) pkt)->fin))
     {
       TRACE(TRL1,"Normal Packet receive..\n");
       TRACE(TRL1,"\n\n\n--------------------------------\nCurrently in am in the node %d\n--------------------------------\n\n\n",address());
-      normal_packet=true;
-
-    
+      normal_packet=true;    
     }
-    else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->id==0)
+    else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->id==0 && !(((ztpPacket*) pkt)->fin))
     {
       TRACE(TRL1,"\n\n\n--------------------------------\nCurrently in am in the node %d\n--------------------------------\n\n\n",address());
       TRACE(TRL1,"Phase 2:three way handshake\n");     
       normal_packet=true;
-       set_timer(scheduler->time() +0, NULL);
-
+      set_timer(scheduler->time() +0, NULL);
     }
-    else if(((ztpPacket*) pkt)->syn==true && ((ztpPacket*) pkt)->ack==false && ((ztpPacket*) pkt)->fin==0 && ((ztpPacket*) pkt)->id==0)
+    else if(((ztpPacket*) pkt)->syn==true && ((ztpPacket*) pkt)->ack==false && (((ztpPacket*) pkt)->fin)!=99 && ((ztpPacket*) pkt)->id==0)
     { 
       TRACE(TRL1, "Changing the packet to have only ACK in it! and i am in the node %d\n",address()); 
       destination=((ztpPacket*) pkt)->source;
@@ -49,7 +46,15 @@ ztpHost::receive(Packet* pkt)
       TRACE(TRL1,"\n\n\n--------------------------------\nCurrently in am in the node %d\n--------------------------------\n\n\n",address());
       set_timer(scheduler->time() +0, NULL);
     }
-    
+    else if(((ztpPacket*) pkt)->fin==99)
+    {
+      TRACE(TRL1,"FIN packet received ....\n");
+      TRACE(TRL1,"\n\n\n--------------------------------\nCurrently in am in the node %d\n--------------------------------\n\n\n",address());
+      normal_packet=false;    
+      finish_packet=true;
+      set_timer(scheduler->time(), NULL);
+    }
+  
 
     delete pkt;
 }
@@ -69,17 +74,17 @@ ztpHost::handle_timer(void* cookie)
     pkt->length = sizeof(Packet) + PAYLOAD_SIZE;
     pkt->id = sent_so_far;
     
-    //if( ((pkt->id==0) && (pkt->syn) && (pkt->ack)) || ((pkt->id!=0) && !(pkt->syn) && !(pkt->ack)))
     if(normal_packet==true)
     {
       TRACE(TRL1, "Entering the loop in NORMAL in the host function\n"); 
       pkt->syn=0;
       pkt->ack=1;
       pkt->fin=0;
-      pkt->id=sent_so_far;
+      pkt->id=sent_so_far+1;
       pkt->data=NULL;  
     }
-    else if(syn_recieved==true && normal_packet==false && pkt->id==0)
+    //else if(syn_recieved==true && normal_packet==false && pkt->id==0)
+    else if(syn_recieved==true && normal_packet==false && sent_so_far==0 && !(finish_packet) )
     {
       TRACE(TRL1, "Entering the loop in ACK in the host function\n"); 
       pkt->syn=0; 
@@ -89,7 +94,7 @@ ztpHost::handle_timer(void* cookie)
       pkt->data=NULL;
 
     }
-    else if( (pkt->id==0) && !(pkt->syn) && !(pkt->ack))
+    else if(sent_so_far==0 )//&& !(pkt->syn) && !(pkt->ack))
     {
       TRACE(TRL1, "Entering the loop in SYN in the host function\n"); 
       pkt->syn=1;
@@ -98,30 +103,43 @@ ztpHost::handle_timer(void* cookie)
       pkt->id=0;
       pkt->data=NULL;  
     }
+    else if(finish_packet=true && syn_recieved==false)
+    {
+      TRACE(TRL1, "Sending the FIN-ACK back\n"); 
+      pkt->syn=0;
+      pkt->ack=0;
+      pkt->fin=99;
+      pkt->id=0;
+      pkt->data=NULL;
+    }
+
      
     if (send(pkt)) {
         TRACE(TRL3, "Sent packet from %d, id %d, length %d\n", 
               address(), sent_so_far, (int) PAYLOAD_SIZE);
     }
 
-
-  
-  if(normal_packet && (sent_so_far < packets_to_send))
+  if(normal_packet)
   {
     sent_so_far++;  
-    set_timer(scheduler->time(), NULL);
+    if( (sent_so_far < packets_to_send))
+    {
+      set_timer(scheduler->time(), NULL);
+    }
+    else
+    {
+      finish_packet=true;
+      normal_packet=false; 
+      syn_recieved==false;
+      set_timer(scheduler->time(), NULL);
+    }
   }
-   /* sent_so_far++;
-    if (sent_so_far < packets_to_send) {
-        //set_timer(scheduler->time() + inter_packet_time, NULL);
-   
-    }*/
-    return;
+  
+  return;
 }
 
 void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
 {
-       //  ztpHost *zsender=get_node(s);
          start = start_time;
          destination = (d);
          sent_so_far = 0;
