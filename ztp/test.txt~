@@ -1,0 +1,12 @@
+./netsim_app -h -f <filename> -d
+
+	-h: print this message
+	-f <filename>: use the specified config file
+	-t x: bitmap of trace levels
+		greater than or equal to x
+./netsim_app -h -f <filename> -d
+
+	-h: print this message
+	-f <filename>: use the specified config file
+	-t x: bitmap of trace levels
+		greater than or equal to x

@@ -11,8 +11,7 @@ class ztpPacket : public Packet {
     void print();
     bool syn;
     bool ack;
-    int fin;
-    int ack_number;
+    bool fin;
     char *data;
   	
   	//  unsigned char data[PAYLOAD_SIZE];
