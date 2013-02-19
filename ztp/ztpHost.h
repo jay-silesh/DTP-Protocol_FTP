@@ -17,6 +17,6 @@ class ztpHost : public FIFONode {
     int		packets_to_send;	// number of packets
     int		sent_so_far;		// number sent
     char    *file_holder;			//contains the file location from the sender's side..
-    bool    have_to_send_ack;
+    bool    syn_recieved;
     bool normal_packet;
 };
