@@ -10,7 +10,7 @@
 
 
 
-ztpHost::ztpHost(Address a) : FIFONode(a,10)
+ztpHost::ztpHost(Address a) : FIFONode(a,1100)
 {
     TRACE(TRL3, "Created a new Host with address %d\n", a);
 
@@ -187,6 +187,6 @@ void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
          destination = (d);
          sent_so_far = 0;
          file_holder=(p);
-         packets_to_send=2;         
+         packets_to_send=10;         
          set_timer(start_time, NULL);
 }
