@@ -105,6 +105,7 @@ ztpHost::handle_timer(void* cookie)
     }
     else if(syn_recieved==false && normal_packet==true && finish_packet==true)
     {
+      
       TRACE(TRL1, "Entering the loop in ACK in the Server\n"); 
       pkt->syn=1; 
       pkt->ack=1;
