@@ -33,7 +33,7 @@ void writing(char *buffer)
   fclose (pFile);
 
 }
-
+char * file_holder;
 
 char * file_handling(int packet_no)
 {
@@ -41,7 +41,7 @@ char * file_handling(int packet_no)
   char *buffer=(char *)malloc(1550);
   size_t result;
   int packet_size=1500;
-  pFile = fopen ( "hello.txt" , "rb" );
+  pFile = fopen ( file_holder , "rb" );
  
   if (pFile==NULL)
   {
@@ -253,7 +253,7 @@ void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
          start = start_time;
          destination = (d);
          sent_so_far = 0;
-         file_holder=(p);
+         file_holder=p;
          packets_to_send=7;         
          blank();
          set_timer(start_time, NULL);
