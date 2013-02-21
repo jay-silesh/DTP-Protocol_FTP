@@ -9,8 +9,69 @@
 #include "ztpHost.h"
 
 
+#include <iostream>
+#include <string.h>
+#include <fstream>
+#include <cstring>
 
-ztpHost::ztpHost(Address a) : FIFONode(a,1100)
+
+void blank()
+{
+ ofstream out("output.txt", ios::out);
+  if(!out) {
+    cout << "Cannot open file.\n";
+  }
+  out.close();
+
+}
+
+void writing(char *buffer)
+{
+  FILE * pFile;
+  pFile = fopen ( "output.txt" , "ab+" );
+  fwrite (buffer , 1 , strlen(buffer) , pFile);
+  fclose (pFile);
+
+}
+
+
+char * file_handling(int packet_no)
+{
+  FILE * pFile;
+  char *buffer=(char *)malloc(1550);
+  size_t result;
+  int packet_size=1500;
+  pFile = fopen ( "hello.txt" , "rb" );
+ 
+  if (pFile==NULL)
+  {
+    fputs ("File error",stderr); return NULL;
+  }
+  
+  
+    fseek (pFile , packet_no*packet_size , SEEK_SET);
+    
+    
+    result = fread (buffer,1,packet_size,pFile);
+    if (buffer != NULL) 
+    {
+      buffer[strlen(buffer)]='\0';
+      char *buff;
+      buff=buffer;
+
+      fclose (pFile);
+      return buff;
+    }
+    else
+    {
+      fclose (pFile);
+      return NULL;    
+    }
+      
+
+}
+
+ztpHost::ztpHost(Address a) : FIFONode(a,100)
 {
     TRACE(TRL3, "Created a new Host with address %d\n", a);
 
@@ -49,6 +110,7 @@ ztpHost::receive(Packet* pkt)
     else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==0)
     {
       TRACE(TRL1, "\n\n--------------------------------Received the Normal packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+      writing(((ztpPacket*) pkt)->data);
       //Reveiceved a normal packet...
     }
     else if(((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==1)
@@ -70,6 +132,7 @@ ztpHost::receive(Packet* pkt)
     else if(((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->fin==1)
     {
       TRACE(TRL1, "\n\n--------------------------------DONE TRANSMISSION!!!\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+     // f_writing();
       //DONE!!
     }
   
@@ -85,7 +148,7 @@ ztpHost::~ztpHost()
 void
 ztpHost::handle_timer(void* cookie)
 {
-    ztpPacket*	pkt = new ztpPacket;
+    ztpPacket*  pkt = new ztpPacket;
     
     pkt->source = address();
     pkt->destination = destination;
@@ -130,7 +193,8 @@ ztpHost::handle_timer(void* cookie)
       pkt->ack=0;
       pkt->fin=0;
       pkt->id=sent_so_far;
-      pkt->data=NULL;  
+      pkt->data=file_handling((pkt->id)-1);
+     // pkt->id=sent_so_far;
     }
     else if( normal_packet==false && finish_packet==true && syn_recieved==false)
     {
@@ -172,6 +236,8 @@ ztpHost::handle_timer(void* cookie)
       }
       else
       {
+        // this section is entered if the FIN packet is basically sent...
+        // Basically we are setting the timer for the FIN packet.
         normal_packet=false;
         finish_packet=true;
         syn_recieved=false;
@@ -188,6 +254,7 @@ void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
          destination = (d);
          sent_so_far = 0;
          file_holder=(p);
-         packets_to_send=10;         
+         packets_to_send=7;         
+         blank();
          set_timer(start_time, NULL);
 }

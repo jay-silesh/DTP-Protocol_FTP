@@ -36,6 +36,7 @@ ztpHost.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 ztpHost.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 ztpHost.o: ../netsim/Packet.h ztpPacket.h ../netsim/Timer.h
 ztpHost.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h ztpHost.h
+ztpHost.o: /usr/include/string.h /usr/include/xlocale.h
 ztpRouter.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 ztpRouter.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 ztpRouter.o: ../netsim/Packet.h ztpPacket.h ../netsim/Timer.h

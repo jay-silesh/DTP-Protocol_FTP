@@ -3,50 +3,59 @@
 #include <fstream>
 #include <cstring>
 
-using namespace std;
 
-
-int main()
+void blank()
 {
-	int i=10;
-	
-	ifstream mystream("hello.txt", ios::in | ios::binary);
-	if(!mystream) {
-		cout << "Cannot open file.\n";
-	}
-	ofstream out("everything.txt", ios::out | ios::binary);
-	if(!out) {
-		cout << "Cannot open file.\n";
-	}
+ ofstream out("output.txt", ios::out);
+  if(!out) {
+    cout << "Cannot open file.\n";
+  }
+  out.close();
 
-	int packet_size=1500;
-	int packet_number=1;
-	char p[1500],p1[1500],ch;
-	char *pp;
-	int qq;
-	
-		cout<<"\nEnter the packet number:";
-		cin>>packet_number;
-		mystream.seekg (packet_number*packet_size,ios_base::beg);
-		mystream.read(p, packet_size);
-		
-		if(!strlen(p))
-		{
+}
 
-			cout<<"\nNOTHING IS THERE";
-		}	
-		else
-		{
-			
-			p[strlen(p)-2]='\0';
-			cout<<"\nthe sie is "<<strlen(p)<<endl;
-			pp=strdup(p);
-			//strcpy(p1,p);
-			cout<<p;
-		}
+void writing(char *buffer)
+{
+  FILE * pFile;
+  pFile = fopen ( "output.txt" , "ab+" );
+  fwrite (buffer , 1 , strlen(buffer) , pFile);
+  fclose (pFile);
 
-	cout<<endl;
-	out.close();
-	mystream.close();
-	return 0;
+}
+
+
+char * file_handling(int packet_no)
+{
+  FILE * pFile;
+  char *buffer=(char *)malloc(1550);
+  size_t result;
+  int packet_size=1500;
+  pFile = fopen ( "hello.txt" , "rb" );
+ 
+  if (pFile==NULL)
+  {
+    fputs ("File error",stderr); return NULL;
+  }
+  
+  
+    fseek (pFile , packet_no*packet_size , SEEK_SET);
+    
+    
+    result = fread (buffer,1,packet_size,pFile);
+    if (buffer != NULL) 
+    {
+      buffer[strlen(buffer)]='\0';
+      char *buff;
+      buff=buffer;
+
+      fclose (pFile);
+      return buff;
+    }
+    else
+    {
+      fclose (pFile);
+      return NULL;    
+    }
+      
+
 }
