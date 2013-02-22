@@ -8,6 +8,26 @@
 #include "../netsim/Scheduler.h"
 #include "CbrSender.h"
 
+
+#include <iostream>
+#include <string.h>
+#include <fstream>
+#include <cstring>
+
+
+
+
+void blank()
+{
+ ofstream out("output.txt", ios::out);
+  if(!out) {
+    cout << "Cannot open file.\n";
+  }
+  out.close();
+ 
+}
+
+
 CbrSender::CbrSender(Address a,
                      Address d,
                      Time s,
@@ -20,6 +40,7 @@ CbrSender::CbrSender(Address a,
     packets_to_send = npk;
     sent_so_far = 0;
 
+    blank();
     set_timer(s, NULL);
     TRACE(TRL3, "Created a new CBR sender address %d, target %d\n", a, d);
 }
@@ -42,6 +63,7 @@ CbrSender::handle_timer(void* cookie)
     for (int i = 0; i < PAYLOAD_SIZE; i++) {
         *(d+i) = (unsigned char) i;	// Write stuff to the payload
     }
+
 
     if (send(pkt)) {
         TRACE(TRL3, "Sent packet from CBR sender at %d, id %d, length %d\n", 

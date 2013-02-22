@@ -19,4 +19,7 @@ class ztpHost : public FIFONode {
     bool    syn_recieved;
     bool    normal_packet;
     bool    finish_packet;
+    char * file_holder;
+
 };
+

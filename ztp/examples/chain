@@ -1,7 +1,16 @@
-# Chain topology: 1 - 99 - 2
 Host(1)
-Router(99,1)
+Router(99,40)
 Host(2)
+
+Host(3)
+Host(4)
+
+
 Link(1,99, 10, 1)
 Link(99, 2, 10, 1)
+
+Link(3,99, 10, 1)
+Link(99, 4, 10, 1)
+
+FDTPFlow(3,4,50,"hello2.txt")
 FDTPFlow(1,2,50,"hello.txt")

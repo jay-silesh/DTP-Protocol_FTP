@@ -15,6 +15,7 @@
 #include <cstring>
 
 
+
 void blank()
 {
  ofstream out("output.txt", ios::out);
@@ -22,6 +23,12 @@ void blank()
     cout << "Cannot open file.\n";
   }
   out.close();
+  
+  ofstream out1("output1.txt", ios::out);
+  if(!out1) {
+    cout << "Cannot open file.\n";
+  }
+  out1.close();
 
 }
 
@@ -33,15 +40,25 @@ void writing(char *buffer)
   fclose (pFile);
 
 }
-char * file_holder;
 
-char * file_handling(int packet_no)
+
+void writing2(char *buffer)
+{
+  FILE * pFile;
+  pFile = fopen ( "output1.txt" , "ab+" );
+  fwrite (buffer , 1 , strlen(buffer) , pFile);
+  fclose (pFile);
+
+}
+
+char * file_handling(int packet_no,char *file_holder_host)
 {
   FILE * pFile;
   char *buffer=(char *)malloc(1550);
   size_t result;
-  int packet_size=1500;
-  pFile = fopen ( file_holder , "rb" );
+ // int packet_size=1500;
+  int packet_size=PAYLOAD_SIZE;
+  pFile = fopen ( file_holder_host , "rb" );
  
   if (pFile==NULL)
   {
@@ -107,10 +124,19 @@ ztpHost::receive(Packet* pkt)
       TRACE(TRL1, "id of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
       //set_timer(scheduler->time() +0, NULL);
     }
-    else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==0)
+    else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==0 && ((ztpPacket*) pkt)->id!=0)
     {
       TRACE(TRL1, "\n\n--------------------------------Received the Normal packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
-      writing(((ztpPacket*) pkt)->data);
+      if(address()==2)
+        {
+          writing(((ztpPacket*) pkt)->data);
+          TRACE(TRL1,"\n\n\n\nWRITING IN 2\n\n");
+        }
+      else
+        {
+          writing2(((ztpPacket*) pkt)->data);
+          TRACE(TRL1,"\n\n\n\nWRITING IN 4\n\n");
+        }
       //Reveiceved a normal packet...
     }
     else if(((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==1)
@@ -165,6 +191,9 @@ ztpHost::handle_timer(void* cookie)
       pkt->fin=0;
       pkt->id=0;
       pkt->data=NULL;  
+      //pkt->data=file_handling(0);
+
+
     }
     else if(syn_recieved==false && normal_packet==true && finish_packet==true)
     {
@@ -178,6 +207,8 @@ ztpHost::handle_timer(void* cookie)
     }
     else if(syn_recieved==true && normal_packet==false && finish_packet==false )
     {
+
+      //TRACE(TRL1, "Entering the loop in SYN-ACK in the Server\n");
       pkt->syn=0; 
       pkt->ack=1;
       pkt->fin=0;
@@ -189,15 +220,17 @@ ztpHost::handle_timer(void* cookie)
     }   
     else if(syn_recieved==true && normal_packet==true && finish_packet==false)
     {
+      //TRACE(TRL1, "Entering the loop in NORMAL in the Server\n");
       pkt->syn=0;
       pkt->ack=0;
       pkt->fin=0;
       pkt->id=sent_so_far;
-      pkt->data=file_handling((pkt->id)-1);
+      pkt->data=file_handling((pkt->id)-1,file_holder);
      // pkt->id=sent_so_far;
     }
     else if( normal_packet==false && finish_packet==true && syn_recieved==false)
     {
+      //TRACE(TRL1, "Entering the loop in FIN in the Server\n");
       pkt->syn=1;
       pkt->ack=0;
       pkt->fin=1;
@@ -206,6 +239,7 @@ ztpHost::handle_timer(void* cookie)
     }
     else if(normal_packet==false && finish_packet==true && syn_recieved==true)
     {
+      //TRACE(TRL1, "Entering the loop in FACK in the Server\n");
       pkt->syn=0;
       pkt->ack=1;
       pkt->fin=1;
@@ -214,12 +248,21 @@ ztpHost::handle_timer(void* cookie)
     }
     else if(normal_packet==true && finish_packet==true && syn_recieved==true)
     {
+      //TRACE(TRL1, "Entering the loop in FIN-ACK in the Server\n");
       pkt->syn=1;
       pkt->ack=1;
       pkt->fin=1;
       pkt->id=101;
       pkt->data=NULL;
     }
+
+   if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==0 && ((ztpPacket*) pkt)->id==0)
+   {
+      TRACE(TRL1, "\n\n\n\n\n\n\nERROR IN THE PACKET!!!!!!!!!\n\n\n\n\n\n");
+      TRACE(TRL3, "\n\n\n\n\n\n\nERROR IN THE PACKET!!!!!!!!!\n\n\n\n\n\n");
+      exit(0);
+   }
+  
 
      
     if (send(pkt)) {
@@ -254,7 +297,7 @@ void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
          destination = (d);
          sent_so_far = 0;
          file_holder=p;
-         packets_to_send=7;         
+         packets_to_send=2;         
          blank();
          set_timer(start_time, NULL);
 }

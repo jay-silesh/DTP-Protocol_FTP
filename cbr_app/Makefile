@@ -36,6 +36,7 @@ CbrSender.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 CbrSender.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 CbrSender.o: ../netsim/Packet.h CbrPacket.h ../netsim/Timer.h
 CbrSender.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h CbrSender.h
+CbrSender.o: /usr/include/string.h /usr/include/xlocale.h
 CbrReceiver.o: ../netsim/common.h /usr/include/stdlib.h
 CbrReceiver.o: /usr/include/features.h /usr/include/alloca.h ../netsim/Node.h
 CbrReceiver.o: ../netsim/FIFONode.h ../netsim/Packet.h CbrPacket.h

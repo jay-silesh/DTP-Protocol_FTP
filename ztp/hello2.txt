@@ -1,0 +1,455 @@
+Added link between 1 and 99, prop. latency 10, bit time 1
+ <0, void Topology::add_link(Address, Address, Time, Time)>
+Added link between 99 and 2, prop. latency 10, bit time 1
+ <0, void Topology::add_link(Address, Address, Time, Time)>
+Setting a timer for time 50 at node 1
+ <0, void Timer::set_timer(Time, void*, Node*)>
+Completed parsing config file: examples/chain <0, void Config::parse(char*)>
+Updated the simulator clock to 50
+ <50, void Scheduler::set_clock(Time)>
+Calling timer at 1
+ <50, void Timer::process_timer()>
+Entering the loop in SYN in the host function
+ <50, virtual void ztpHost::handle_timer(void*)>
+Nexthop from 1 towards 2 is 99
+ <50, Address Topology::nexthop(Address, Address)>
+Queue size at (1, 99) is 1
+ <50, int PacketQueue::enq(Packet*)>
+Enqueued at 1 packet (src 1, dst 2, id 0)
+ <50, int FIFONode::send(Packet*)>
+Queue size at (1, 99) is 0
+ <50, Packet* PacketQueue::deq()>
+Forwarding at 1 to nexthop 99 packet (src 1, dst 2, id 0)
+ <50, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 1 time 12060 for packet id 0 from 1 to 2, nexthop 99
+ <50, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 1 time 12050 for packet id 0 from 1 to 2, nexthop 99
+ <50, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Updated the simulator clock to 12050
+ <12050, void Scheduler::set_clock(Time)>
+Ongoing transmission at 1 to nexthop 99 completed
+ <12050, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 0 from 1 to 2 to node 99
+ <12050, void PacketScheduler::process_packet()>
+Updated the simulator clock to 12060
+ <12060, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 2 is 2
+ <12060, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 2) is 1
+ <12060, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 2 packet (src 1, dst 2, id 0)
+ <12060, virtual void FIFONode::receive(Packet*)>
+Queue size at (99, 2) is 0
+ <12060, Packet* PacketQ`ueue::deq()>
+Forwarding at 99 to nexthop 2 packet (src 1, dst 2, id 0)
+ <12060, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 24070 for packet id 0 from 1 to 2, nexthop 2
+ <12060, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 24060 for packet id 0 from 1 to 2, nexthop 2
+ <12060, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Delivered packet id 0 from 1 to 2 to node 99
+ <12060, void PacketScheduler::process_packet()>
+Updated the simulator clock to 24060
+ <24060, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 2 completed
+ <24060, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 0 from 1 to 2 to node 2
+ <24060, void PacketScheduler::process_packet()>
+Updated the simulator clock to 24070
+ <24070, void Scheduler::set_clock(Time)>
+SYN 1, ACK 0, FIN: 0,SRC: 1, DST: 2 and PCKID 0
+ <24070, void ztpPacket::print()>
+
+
+--------------------------------Received the SYN packet
+id of the packet is:0
+Currently in the node : 2--------------------------------
+
+ <24070, virtual void ztpHost::receive(Packet*)>
+Setting a timer for time 24070 at node 2
+ <24070, void Timer::set_timer(Time, void*, Node*)>
+Delivered packet id 0 from 1 to 2 to node 2
+ <24070, void PacketScheduler::process_packet()>
+Updated the simulator clock to 24070
+ <24070, void Scheduler::set_clock(Time)>
+Calling timer at 2
+ <24070, void Timer::process_timer()>
+Entering the loop in ACK in the Server
+ <24070, virtual void ztpHost::handle_timer(void*)>
+Nexthop from 2 towards 1 is 99
+ <24070, Address Topology::nexthop(Address, Address)>
+Queue size at (2, 99) is 1
+ <24070, int PacketQueue::enq(Packet*)>
+Enqueued at 2 packet (src 2, dst 1, id 0)
+ <24070, int FIFONode::send(Packet*)>
+Queue size at (2, 99) is 0
+ <24070, Packet* PacketQueue::deq()>
+Forwarding at 2 to nexthop 99 packet (src 2, dst 1, id 0)
+ <24070, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 2 time 36080 for packet id 0 from 2 to 1, nexthop 99
+ <24070, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 2 time 36070 for packet id 0 from 2 to 1, nexthop 99
+ <24070, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Updated the simulator clock to 36070
+ <36070, void Scheduler::set_clock(Time)>
+Ongoing transmission at 2 to nexthop 99 completed
+ <36070, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 0 from 2 to 1 to node 99
+ <36070, void PacketScheduler::process_packet()>
+Updated the simulator clock to 36080
+ <36080, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 1 is 1
+ <36080, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 1) is 1
+ <36080, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 1 packet (src 2, dst 1, id 0)
+ <36080, virtual void FIFONode::receive(Packet*)>
+Queue size at (99, 1) is 0
+ <36080, Packet* PacketQueue::deq()>
+Forwarding at 99 to nexthop 1 packet (src 2, dst 1, id 0)
+ <36080, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 48090 for packet id 0 from 2 to 1, nexthop 1
+ <36080, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 48080 for packet id 0 from 2 to 1, nexthop 1
+ <36080, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Delivered packet id 0 from 2 to 1 to node 99
+ <36080, void PacketScheduler::process_packet()>
+Updated the simulator clock to 48080
+ <48080, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 1 completed
+ <48080, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 0 from 2 to 1 to node 1
+ <48080, void PacketScheduler::process_packet()>
+Updated the simulator clock to 48090
+ <48090, void Scheduler::set_clock(Time)>
+SYN 1, ACK 1, FIN: 0,SRC: 2, DST: 1 and PCKID 0
+ <48090, void ztpPacket::print()>
+
+
+--------------------------------Received the ACK-SYN packet
+id of the packet is:0
+Currently in the node : 1--------------------------------
+
+ <48090, virtual void ztpHost::receive(Packet*)>
+Setting a timer for time 48090 at node 1
+ <48090, void Timer::set_timer(Time, void*, Node*)>
+Delivered packet id 0 from 2 to 1 to node 1
+ <48090, void PacketScheduler::process_packet()>
+Updated the simulator clock to 48090
+ <48090, void Scheduler::set_clock(Time)>
+Calling timer at 1
+ <48090, void Timer::process_timer()>
+Nexthop from 1 towards 2 is 99
+ <48090, Address Topology::nexthop(Address, Address)>
+Queue size at (1, 99) is 1
+ <48090, int PacketQueue::enq(Packet*)>
+Enqueued at 1 packet (src 1, dst 2, id 0)
+ <48090, int FIFONode::send(Packet*)>
+Queue size at (1, 99) is 0
+ <48090, Packet* PacketQueue::deq()>
+Forwarding at 1 to nexthop 99 packet (src 1, dst 2, id 0)
+ <48090, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 1 time 60100 for packet id 0 from 1 to 2, nexthop 99
+ <48090, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 1 time 60090 for packet id 0 from 1 to 2, nexthop 99
+ <48090, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Setting a timer for time 48090 at node 1
+ <48090, void Timer::set_timer(Time, void*, Node*)>
+Updated the simulator clock to 48090
+ <48090, void Scheduler::set_clock(Time)>
+Calling timer at 1
+ <48090, void Timer::process_timer()>
+Nexthop from 1 towards 2 is 99
+ <48090, Address Topology::nexthop(Address, Address)>
+Queue size at (1, 99) is 1
+ <48090, int PacketQueue::enq(Packet*)>
+Enqueued at 1 packet (src 1, dst 2, id 1)
+ <48090, int FIFONode::send(Packet*)>
+Setting a timer for time 48090 at node 1
+ <48090, void Timer::set_timer(Time, void*, Node*)>
+Updated the simulator clock to 48090
+ <48090, void Scheduler::set_clock(Time)>
+Calling timer at 1
+ <48090, void Timer::process_timer()>
+Nexthop from 1 towards 2 is 99
+ <48090, Address Topology::nexthop(Address, Address)>
+Queue size at (1, 99) is 2
+ <48090, int PacketQueue::enq(Packet*)>
+Enqueued at 1 packet (src 1, dst 2, id 99)
+ <48090, int FIFONode::send(Packet*)>
+Updated the simulator clock to 60090
+ <60090, void Scheduler::set_clock(Time)>
+Ongoing transmission at 1 to nexthop 99 completed
+ <60090, virtual void FIFONode::send_done(Address)>
+Queue size at (1, 99) is 1
+ <60090, Packet* PacketQueue::deq()>
+Forwarding at 1 to nexthop 99 packet (src 1, dst 2, id 1)
+ <60090, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 1 time 72100 for packet id 1 from 1 to 2, nexthop 99
+ <60090, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 1 time 72090 for packet id 1 from 1 to 2, nexthop 99
+ <60090, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Completed transmission of packet id 0 from 1 to 2 to node 99
+ <60090, void PacketScheduler::process_packet()>
+Updated the simulator clock to 60100
+ <60100, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 2 is 2
+ <60100, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 2) is 1
+ <60100, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 2 packet (src 1, dst 2, id 0)
+ <60100, virtual void FIFONode::receive(Packet*)>
+Queue size at (99, 2) is 0
+ <60100, Packet* PacketQueue::deq()>
+Forwarding at 99 to nexthop 2 packet (src 1, dst 2, id 0)
+ <60100, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 72110 for packet id 0 from 1 to 2, nexthop 2
+ This data is in the Hello.txt
+
+ <60100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 72100 for packet id 0 from 1 to 2, nexthop 2
+ <60100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Delivered packet id 0 from 1 to 2 to node 99
+ <60100, void PacketScheduler::process_packet()>
+Updated the simulator clock to 72090
+ <72090, void Scheduler::set_clock(Time)>
+Ongoing transmission at 1 to nexthop 99 completed
+ <72090, virtual void FIFONode::send_done(Address)>
+Queue size at (1, 99) is 0
+ <72090, Packet* PacketQueue::deq()>
+Forwarding at 1 to nexthop 99 packet (src 1, dst 2, id 99)
+ <72090, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 1 time 84100 for packet id 99 from 1 to 2, nexthop 99
+ <72090, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 1 time 84090 for packet id 99 from 1 to 2, nexthop 99
+ <72090, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Completed transmission of packet id 1 from 1 to 2 to node 99
+ <72090, void PacketScheduler::process_packet()>
+Updated the simulator clock to 72100
+ <72100, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 2 is 2
+ <72100, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 2) is 1
+ <72100, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 2 packet (src 1, dst 2, id 1)
+ <72100, virtual void FIFONode::receive(Packet*)>
+Delivered packet id 1 from 1 to 2 to node 99
+ <72100, void PacketScheduler::process_packet()>
+Updated the simulator clock to 72100
+ <72100, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 2 completed
+ <72100, virtual void FIFONode::send_done(Address)>
+Queue size at (99, 2) is 0
+ <72100, Packet* PacketQueue::deq()>
+Forwarding at 99 to nexthop 2 packet (src 1, dst 2, id 1)
+ <72100, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 84110 for packet id 1 from 1 to 2, nexthop 2
+ <72100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 84100 for packet id 1 from 1 to 2, nexthop 2
+ <72100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Completed transmission of packet id 0 from 1 to 2 to node 2
+ <72100, void PacketScheduler::process_packet()>
+Updated the simulator clock to 72110
+ <72110, void Scheduler::set_clock(Time)>
+SYN 0, ACK 1, FIN: 0,SRC: 1, DST: 2 and PCKID 0
+ <72110, void ztpPacket::print()>
+
+
+-------------Phase 2:three way handshake
+ <72110, virtual void ztpHost::receive(Packet*)>
+id of the packet is:0
+Currently in the node : 2--------------------------------
+
+ <72110, virtual void ztpHost::receive(Packet*)>
+Delivered packet id 0 from 1 to 2 to node 2
+ <72110, void PacketScheduler::process_packet()>
+Updated the simulator clock to 84090
+ <84090, void Scheduler::set_clock(Time)>
+Ongoing transmission at 1 to nexthop 99 completed
+ <84090, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 99 from 1 to 2 to node 99
+ <84090, void PacketScheduler::process_packet()>
+Updated the simulator clock to 84100
+ <84100, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 2 is 2
+ <84100, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 2) is 1
+ <84100, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 2 packet (src 1, dst 2, id 99)
+ <84100, virtual void FIFONode::receive(Packet*)>
+Delivered packet id 99 from 1 to 2 to node 99
+ <84100, void PacketScheduler::process_packet()>
+Updated the simulator clock to 84100
+ <84100, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 2 completed
+ <84100, virtual void FIFONode::send_done(Address)>
+Queue size at (99, 2) is 0
+ <84100, Packet* PacketQueue::deq()>
+Forwarding at 99 to nexthop 2 packet (src 1, dst 2, id 99)
+ <84100, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 96110 for packet id 99 from 1 to 2, nexthop 2
+ <84100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 96100 for packet id 99 from 1 to 2, nexthop 2
+ <84100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Completed transmission of packet id 1 from 1 to 2 to node 2
+ <84100, void PacketScheduler::process_packet()>
+Updated the simulator clock to 84110
+ <84110, void Scheduler::set_clock(Time)>
+SYN 0, ACK 0, FIN: 0,SRC: 1, DST: 2 and PCKID 1
+ <84110, void ztpPacket::print()>
+
+
+--------------------------------Received the Normal packet
+id of the packet is:1
+Currently in the node : 2--------------------------------
+
+ <84110, virtual void ztpHost::receive(Packet*)>
+Delivered packet id 1 from 1 to 2 to node 2
+ <84110, void PacketScheduler::process_packet()>
+Updated the simulator clock to 96100
+ <96100, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 2 completed
+ <96100, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 99 from 1 to 2 to node 2
+ <96100, void PacketScheduler::process_packet()>
+Updated the simulator clock to 96110
+ <96110, void Scheduler::set_clock(Time)>
+SYN 1, ACK 0, FIN: 1,SRC: 1, DST: 2 and PCKID 99
+ <96110, void ztpPacket::print()>
+
+
+--------------------------------Received the FIN packet
+id of the packet is:99
+Currently in the node : 2--------------------------------
+
+ <96110, virtual void ztpHost::receive(Packet*)>
+Setting a timer for time 96110 at node 2
+ <96110, void Timer::set_timer(Time, void*, Node*)>
+Delivered packet id 99 from 1 to 2 to node 2
+ <96110, void PacketScheduler::process_packet()>
+Updated the simulator clock to 96110
+ <96110, void Scheduler::set_clock(Time)>
+Calling timer at 2
+ <96110, void Timer::process_timer()>
+Nexthop from 2 towards 1 is 99
+ <96110, Address Topology::nexthop(Address, Address)>
+Queue size at (2, 99) is 1
+ <96110, int PacketQueue::enq(Packet*)>
+Enqueued at 2 packet (src 2, dst 1, id 100)
+ <96110, int FIFONode::send(Packet*)>
+Queue size at (2, 99) is 0
+ <96110, Packet* PacketQueue::deq()>
+Forwarding at 2 to nexthop 99 packet (src 2, dst 1, id 100)
+ <96110, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 2 time 108120 for packet id 100 from 2 to 1, nexthop 99
+ <96110, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 2 time 108110 for packet id 100 from 2 to 1, nexthop 99
+ <96110, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Updated the simulator clock to 108110
+ <108110, void Scheduler::set_clock(Time)>
+Ongoing transmission at 2 to nexthop 99 completed
+ <108110, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 100 from 2 to 1 to node 99
+ <108110, void PacketScheduler::process_packet()>
+Updated the simulator clock to 108120
+ <108120, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 1 is 1
+ <108120, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 1) is 1
+ <108120, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 1 packet (src 2, dst 1, id 100)
+ <108120, virtual void FIFONode::receive(Packet*)>
+Queue size at (99, 1) is 0
+ <108120, Packet* PacketQueue::deq()>
+Forwarding at 99 to nexthop 1 packet (src 2, dst 1, id 100)
+ <108120, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 120130 for packet id 100 from 2 to 1, nexthop 1
+ <108120, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 120120 for packet id 100 from 2 to 1, nexthop 1
+ <108120, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Delivered packet id 100 from 2 to 1 to node 99
+ <108120, void PacketScheduler::process_packet()>
+Updated the simulator clock to 120120
+ <120120, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 1 completed
+ <120120, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 100 from 2 to 1 to node 1
+ <120120, void PacketScheduler::process_packet()>
+Updated the simulator clock to 120130
+ <120130, void Scheduler::set_clock(Time)>
+SYN 0, ACK 1, FIN: 1,SRC: 2, DST: 1 and PCKID 100
+ <120130, void ztpPacket::print()>
+
+
+--------------------------------Received the FIN-ACK packet
+id of the packet is:100
+Currently in the node : 1--------------------------------
+
+ <120130, virtual void ztpHost::receive(Packet*)>
+Setting a timer for time 120130 at node 1
+ <120130, void Timer::set_timer(Time, void*, Node*)>
+Delivered packet id 100 from 2 to 1 to node 1
+ <120130, void PacketScheduler::process_packet()>
+Updated the simulator clock to 120130
+ <120130, void Scheduler::set_clock(Time)>
+Calling timer at 1
+ <120130, void Timer::process_timer()>
+Nexthop from 1 towards 2 is 99
+ <120130, Address Topology::nexthop(Address, Address)>
+Queue size at (1, 99) is 1
+ <120130, int PacketQueue::enq(Packet*)>
+Enqueued at 1 packet (src 1, dst 2, id 101)
+ <120130, int FIFONode::send(Packet*)>
+Queue size at (1, 99) is 0
+ <120130, Packet* PacketQueue::deq()>
+Forwarding at 1 to nexthop 99 packet (src 1, dst 2, id 101)
+ <120130, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 1 time 132140 for packet id 101 from 1 to 2, nexthop 99
+ <120130, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 1 time 132130 for packet id 101 from 1 to 2, nexthop 99
+ <120130, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Updated the simulator clock to 132130
+ <132130, void Scheduler::set_clock(Time)>
+Ongoing transmission at 1 to nexthop 99 completed
+ <132130, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 101 from 1 to 2 to node 99
+ <132130, void PacketScheduler::process_packet()>
+Updated the simulator clock to 132140
+ <132140, void Scheduler::set_clock(Time)>
+Nexthop from 99 towards 2 is 2
+ <132140, Address Topology::nexthop(Address, Address)>
+Queue size at (99, 2) is 1
+ <132140, int PacketQueue::enq(Packet*)>
+Forwarding at 99 nexthop 2 packet (src 1, dst 2, id 101)
+ <132140, virtual void FIFONode::receive(Packet*)>
+Queue size at (99, 2) is 0
+ <132140, Packet* PacketQueue::deq()>
+Forwarding at 99 to nexthop 2 packet (src 1, dst 2, id 101)
+ <132140, void FIFONode::send_it(Address)>
+Scheduled reception of transmission at node 99 time 144150 for packet id 101 from 1 to 2, nexthop 2
+ <132140, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Scheduled completion of transmission at node 99 time 144140 for packet id 101 from 1 to 2, nexthop 2
+ <132140, void PacketScheduler::send_packet(Packet*, Address, Node*)>
+Delivered packet id 101 from 1 to 2 to node 99
+ <132140, void PacketScheduler::process_packet()>
+Updated the simulator clock to 144140
+ <144140, void Scheduler::set_clock(Time)>
+Ongoing transmission at 99 to nexthop 2 completed
+ <144140, virtual void FIFONode::send_done(Address)>
+Completed transmission of packet id 101 from 1 to 2 to node 2
+ <144140, void PacketScheduler::process_packet()>
+Updated the simulator clock to 144150
+ <144150, void Scheduler::set_clock(Time)>
+SYN 1, ACK 1, FIN: 1,SRC: 1, DST: 2 and PCKID 101
+ <144150, void ztpPacket::print()>
+
+
+--------------------------------DONE TRANSMISSION!!!
+id of the packet is:101
+Currently in the node : 2--------------------------------
+
+ <144150, virtual void ztpHost::receive(Packet*)>
+Delivered packet id 101 from 1 to 2 to node 2
+ <144150, void PacketScheduler::process_packet()>
+No more events, done!
+ <144150, void Scheduler::run()>
