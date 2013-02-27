@@ -45,7 +45,7 @@ void writing(char *buffer)
 void writing2(char *buffer)
 {
   FILE * pFile;
-  pFile = fopen ( "output1.txt" , "ab+" );
+  pFile = fopen( "output1.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
   fclose (pFile);
 
@@ -88,7 +88,7 @@ char * file_handling(int packet_no,char *file_holder_host)
 
 }
 
-ztpHost::ztpHost(Address a) : FIFONode(a,100)
+ztpHost::ztpHost(Address a) : FIFONode(a,16000)
 {
     TRACE(TRL3, "Created a new Host with address %d\n", a);
 
@@ -108,7 +108,7 @@ ztpHost::receive(Packet* pkt)
       normal_packet=true;
       syn_recieved=false;
       finish_packet=true;      
-      set_timer(scheduler->time() +0, NULL);
+      set_timer(scheduler->time(), NULL);
     }
     else if( ((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==1  && ((ztpPacket*) pkt)->fin==0 )
     {
@@ -117,6 +117,7 @@ ztpHost::receive(Packet* pkt)
       syn_recieved=true;
       finish_packet=false;    
       set_timer(scheduler->time() +0, NULL);
+
     }
     else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->fin==0)
     {
@@ -189,10 +190,9 @@ ztpHost::handle_timer(void* cookie)
       pkt->syn=1;
       pkt->ack=0;
       pkt->fin=0;
-      pkt->id=0;
+      pkt->id=-1;
       pkt->data=NULL;  
-      //pkt->data=file_handling(0);
-
+       TRACE(TRL1,"\n\n\n\n\nID is %d \n\n\n",pkt->id);
 
     }
     else if(syn_recieved==false && normal_packet==true && finish_packet==true)
@@ -221,13 +221,16 @@ ztpHost::handle_timer(void* cookie)
     else if(syn_recieved==true && normal_packet==true && finish_packet==false)
     {
       //TRACE(TRL1, "Entering the loop in NORMAL in the Server\n");
+      done_transmission=false;
       pkt->syn=0;
       pkt->ack=0;
       pkt->fin=0;
       pkt->id=sent_so_far;
       pkt->data=file_handling((pkt->id)-1,file_holder);
-     // pkt->id=sent_so_far;
+      if(strlen(pkt->data)<PAYLOAD_SIZE || pkt->data==NULL)
+        done_transmission=true;
     }
+
     else if( normal_packet==false && finish_packet==true && syn_recieved==false)
     {
       //TRACE(TRL1, "Entering the loop in FIN in the Server\n");
@@ -273,9 +276,11 @@ ztpHost::handle_timer(void* cookie)
   if(normal_packet==true && finish_packet==false)
   {
       sent_so_far++;  
-      if( (sent_so_far <=packets_to_send))
+      //if( (sent_so_far <=packets_to_send))
+      if(done_transmission==false)
       {
         set_timer(scheduler->time(), NULL);
+        //
       }
       else
       {
@@ -285,6 +290,7 @@ ztpHost::handle_timer(void* cookie)
         finish_packet=true;
         syn_recieved=false;
         set_timer(scheduler->time(), NULL);
+      
       }
   }
   
@@ -297,7 +303,8 @@ void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
          destination = (d);
          sent_so_far = 0;
          file_holder=p;
-         packets_to_send=2;         
+//         packets_to_send=1000;         
+         cookie_count=-1;
          blank();
          set_timer(start_time, NULL);
 }

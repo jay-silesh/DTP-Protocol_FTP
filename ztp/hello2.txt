@@ -1,3 +1,6 @@
+ This data is in the Hello2.txt
+
+
 Added link between 1 and 99, prop. latency 10, bit time 1
  <0, void Topology::add_link(Address, Address, Time, Time)>
 Added link between 99 and 2, prop. latency 10, bit time 1
@@ -204,7 +207,7 @@ Queue size at (99, 2) is 0
 Forwarding at 99 to nexthop 2 packet (src 1, dst 2, id 0)
  <60100, void FIFONode::send_it(Address)>
 Scheduled reception of transmission at node 99 time 72110 for packet id 0 from 1 to 2, nexthop 2
- This data is in the Hello.txt
+
 
  <60100, void PacketScheduler::send_packet(Packet*, Address, Node*)>
 Scheduled completion of transmission at node 99 time 72100 for packet id 0 from 1 to 2, nexthop 2
