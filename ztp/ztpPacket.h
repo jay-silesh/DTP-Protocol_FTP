@@ -13,13 +13,9 @@ class ztpPacket : public Packet {
     bool ack;
     bool fin;
     char *data;
-    Time time_out;
-  	
-  	//  unsigned char data[PAYLOAD_SIZE];
-  
-    /*	These fields already exists
-    Address s,d;
-    int id,length;
-    */ 
-   
+    //Time time_out;
+  	ztpPacket ();
+    ztpPacket ( ztpPacket& pck );
+    bool sender;
+     
 };

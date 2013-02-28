@@ -1,5 +1,5 @@
 Host(1)
-Router(99,100)
+Router(99,1000)
 Host(2)
 
 Host(3)
@@ -10,14 +10,8 @@ Host(4)
 Link(1,99, 10, 1)
 Link(99, 2, 10, 1)
 
-#Host(5)
-#Host(6)
-#Link(5,99, 10, 1)
-#Link(99, 6, 10, 1)
-
 Link(3,99, 10, 1)
 Link(99, 4, 10, 1)
 
 FDTPFlow(3,4,0,"hello2.txt")
 FDTPFlow(1,2,0,"hello.txt")
-#FDTPFlow(5,6,0,"hello.txt")

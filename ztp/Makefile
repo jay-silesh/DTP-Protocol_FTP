@@ -1,7 +1,7 @@
 TARGET=netsim_app
-OBJECTS=main.o ztpHost.o ztpRouter.o ztpPacket.o app_config.o 
+OBJECTS=main.o ztpHost.o ztpRouter.o ztpPacket.o app_config.o cookie_class.o
 LIBRARY=../netsim/libnetsim.a
-SOURCES=main.cpp ztpHost.cpp ztpRouter.cpp ztpPacket.cpp app_config.cpp
+SOURCES=main.cpp ztpHost.cpp ztpRouter.cpp ztpPacket.cpp app_config.cpp cookie_class.cpp
 CCFLAGS=-g
 
 all: netsim $(TARGET)
@@ -36,19 +36,22 @@ ztpHost.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 ztpHost.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 ztpHost.o: ../netsim/Packet.h ztpPacket.h ../netsim/Timer.h
 ztpHost.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h ztpHost.h
-ztpHost.o: /usr/include/string.h /usr/include/xlocale.h
+ztpHost.o: new_library.h /usr/include/string.h /usr/include/xlocale.h
+ztpHost.o: cookie_class.h
 ztpRouter.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 ztpRouter.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 ztpRouter.o: ../netsim/Packet.h ztpPacket.h ../netsim/Timer.h
 ztpRouter.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h ztpHost.h
-ztpRouter.o: ztpRouter.h
+ztpRouter.o: new_library.h ztpRouter.h
 ztpPacket.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 ztpPacket.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 ztpPacket.o: ../netsim/Packet.h ztpPacket.h ../netsim/Timer.h
 ztpPacket.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h
+ztpPacket.o: /usr/include/string.h /usr/include/xlocale.h
 app_config.o: /usr/include/string.h /usr/include/features.h
 app_config.o: /usr/include/xlocale.h ../netsim/common.h /usr/include/stdlib.h
 app_config.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Node.h
-app_config.o: ../netsim/FIFONode.h ../netsim/Packet.h ztpHost.h
+app_config.o: ../netsim/FIFONode.h ../netsim/Packet.h ztpHost.h new_library.h
 app_config.o: ../netsim/PacketScheduler.h ztpPacket.h ../netsim/Timer.h
 app_config.o: ../netsim/Scheduler.h ztpRouter.h
+cookie_class.o: cookie_class.h
