@@ -1,0 +1,57 @@
+TARGET=netsim_app
+OBJECTS=main.o dtpHost.o dtpRouter.o dtpPacket.o app_config.o cookie_class.o
+LIBRARY=../netsim/libnetsim.a
+SOURCES=main.cpp dtpHost.cpp dtpRouter.cpp dtpPacket.cpp app_config.cpp cookie_class.cpp
+CCFLAGS=-g
+
+all: netsim $(TARGET)
+
+netsim:
+	(cd ../netsim; make)
+
+$(TARGET): $(OBJECTS) $(LIBRARY)
+	g++ $(CCFLAGS) -o $(TARGET) $(OBJECTS) $(LIBRARY)
+
+%.o: %.cpp
+	g++ -c $(CCFLAGS) $*.cpp
+
+%.o: %.c
+	gcc -c $(CCFLAGS) $*.c
+
+depend: $(SOURCES)
+	(cd ../netsim; make depend)
+	makedepend $(SOURCES)
+
+clean:
+	(cd ../netsim; make clean)
+	rm *.o
+
+# DO NOT DELETE
+
+main.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
+main.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Packet.h
+main.o: ../netsim/Timer.h ../netsim/PacketScheduler.h ../netsim/Scheduler.h
+main.o: ../netsim/Topology.h /usr/include/unistd.h /usr/include/getopt.h
+dtpHost.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
+dtpHost.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
+dtpHost.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
+dtpHost.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h dtpHost.h
+dtpHost.o: new_library.h /usr/include/string.h /usr/include/xlocale.h
+dtpHost.o: cookie_class.h
+dtpRouter.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
+dtpRouter.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
+dtpRouter.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
+dtpRouter.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h dtpHost.h
+dtpRouter.o: new_library.h dtpRouter.h
+dtpPacket.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
+dtpPacket.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
+dtpPacket.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
+dtpPacket.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h
+dtpPacket.o: /usr/include/string.h /usr/include/xlocale.h
+app_config.o: /usr/include/string.h /usr/include/features.h
+app_config.o: /usr/include/xlocale.h ../netsim/common.h /usr/include/stdlib.h
+app_config.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Node.h
+app_config.o: ../netsim/FIFONode.h ../netsim/Packet.h dtpHost.h new_library.h
+app_config.o: ../netsim/PacketScheduler.h dtpPacket.h ../netsim/Timer.h
+app_config.o: ../netsim/Scheduler.h dtpRouter.h
+cookie_class.o: cookie_class.h
