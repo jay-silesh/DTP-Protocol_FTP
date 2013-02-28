@@ -16,6 +16,4 @@ class ztpPacket : public Packet {
     //Time time_out;
   	ztpPacket ();
     ztpPacket ( ztpPacket& pck );
-    bool sender;
-     
-};
+ };

@@ -1,350 +1,36 @@
 Initialized host with address 1
  <0, ztpHost::ztpHost(Address)>
-Initialized host with address 2
- <0, ztpHost::ztpHost(Address)>
-Initialized host with address 3
- <0, ztpHost::ztpHost(Address)>
-Initialized host with address 4
- <0, ztpHost::ztpHost(Address)>
 Initialized router with address 99
  <0, ztpRouter::ztpRouter(Address, int)>
-Initialized router with address 100
- <0, ztpRouter::ztpRouter(Address, int)>
+Initialized host with address 2
+ <0, ztpHost::ztpHost(Address)>
 Sent packet from 1, id 0, length 1476
- <0, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 0, length 1476
  <0, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 2, id 0, length 1476
- <606, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 4, id 0, length 1476
- <798, virtual void ztpHost::handle_timer(void*)>
-@ NODE 1 -DELETING THE PACKET 0 in the RETRANMITTIN Q
- <1212, void ztpHost::delete_retransmission_timmer(int)>
+ <404, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 0, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 1, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 2, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 3, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 4, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 5, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 6, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 7, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 8, length 1476
- <1212, virtual void ztpHost::handle_timer(void*)>
-@ NODE 3 -DELETING THE PACKET 0 in the RETRANMITTIN Q
- <1404, void ztpHost::delete_retransmission_timmer(int)>
-Sent packet from 3, id 0, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 1, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 2, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 3, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 4, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 5, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 6, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 7, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 8, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 9, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 10, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 11, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 12, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 13, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 14, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 15, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <1404, virtual void ztpHost::handle_timer(void*)>
-@ NODE 2 -DELETING THE PACKET 0 in the RETRANMITTIN Q
- <1818, void ztpHost::delete_retransmission_timmer(int)>
-Established FDTP flow from 2 to 2 (1818)
- <1818, virtual void ztpHost::receive(Packet*)>
-@ NODE 4 -DELETING THE PACKET 0 in the RETRANMITTIN Q
- <2010, void ztpHost::delete_retransmission_timmer(int)>
-Established FDTP flow from 4 to 4 (2010)
- <2010, virtual void ztpHost::receive(Packet*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <4000, virtual void ztpHost::handle_timer(void*)>
+ <808, virtual void ztpHost::handle_timer(void*)>
+Established FDTP flow from 2 to 2 (1212)
+ <1212, virtual void ztpHost::receive(Packet*)>
+Sent packet from 2, id 0, length 1476
+ <88500, virtual void ztpHost::handle_timer(void*)>
 Sent packet from 1, id 8, length 1476
- <4000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <4000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <4000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <8000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <8000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <8000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <8000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <12000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <12000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <12000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <12000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <16000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <16000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <16000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <16000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <20000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <20000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <20000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <20000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <24000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <24000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <24000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <24000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <28000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <28000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <28000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <28000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <32000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <32000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <32000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <32000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <36000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <36000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <36000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <36000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <40000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <40000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <40000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <40000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <44000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <44000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <44000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <44000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <48000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <48000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <48000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <48000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <52000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <52000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <52000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <52000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <56000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <56000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <56000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <56000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <60000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <60000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <60000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <60000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <64000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <64000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <64000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <64000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <68000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <68000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <68000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <68000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <72000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <72000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <72000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <72000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 1 -Retransmission packet 0 from the node 1
-
- <76000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <76000, virtual void ztpHost::handle_timer(void*)>
-
-
-@ NODE 3 -Retransmission packet 0 from the node 3
-
- <76000, virtual void ztpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <76000, virtual void ztpHost::handle_timer(void*)>
+ <88904, virtual void ztpHost::handle_timer(void*)>
+Tore down FDTP flow from 2 to 2 (89308)
+ <89308, virtual void ztpHost::receive(Packet*)>
