@@ -20,13 +20,13 @@ void blank()
 {
  ofstream out("output.txt", ios::out);
   if(!out) {
-    cout << "Cannot open file.\n";
+   TRACE(TRL3, "File Error\n");
   }
   out.close();
   
   ofstream out1("output1.txt", ios::out);
   if(!out1) {
-    cout << "Cannot open file.\n";
+    TRACE(TRL3, "File Error\n");
   }
   out1.close();
 
@@ -56,13 +56,13 @@ char * file_handling(int packet_no,char *file_holder_host)
   FILE * pFile;
   char *buffer=(char *)malloc(1550);
   size_t result;
- // int packet_size=1500;
   int packet_size=PAYLOAD_SIZE;
   pFile = fopen ( file_holder_host , "rb" );
  
   if (pFile==NULL)
   {
-    fputs ("File error",stderr); return NULL;
+      TRACE(TRL3, "File Error\n");
+     return NULL;
   }
   
   
@@ -90,7 +90,7 @@ char * file_handling(int packet_no,char *file_holder_host)
 
 ztpHost::ztpHost(Address a) : FIFONode(a,16000)
 {
-    TRACE(TRL3, "Created a new Host with address %d\n", a);
+TRACE(TRL3, "Initialized host with address %d\n", a);
 
 }
 
@@ -100,57 +100,59 @@ ztpHost::receive(Packet* pkt)
     ((ztpPacket*) pkt)->print();
   
 
-
     if(((ztpPacket*) pkt)->syn==true && ((ztpPacket*) pkt)->ack==false && ((ztpPacket*) pkt)->fin==false)// && ((ztpPacket*) pkt)->id==0)
     {
-      TRACE(TRL1, "\n\n--------------------------------Received the SYN packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+//      TRACE(TRL1, "\n\n--------------------------------Received the SYN packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+      
       destination=((ztpPacket*) pkt)->source;
       normal_packet=true;
       syn_recieved=false;
       finish_packet=true;      
       set_timer(scheduler->time(), NULL);
+      
+      //
     }
     else if( ((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==1  && ((ztpPacket*) pkt)->fin==0 )
     {
-      TRACE(TRL1, "\n\n--------------------------------Received the ACK-SYN packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+  //    TRACE(TRL1, "\n\n--------------------------------Received the ACK-SYN packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
       normal_packet=false;
       syn_recieved=true;
       finish_packet=false;    
-      set_timer(scheduler->time() +0, NULL);
+      
+      set_timer(scheduler->time(), NULL);
 
     }
     else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->fin==0)
     {
-      TRACE(TRL1,"\n\n-------------Phase 2:three way handshake\n");     
-      TRACE(TRL1, "id of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
-      //set_timer(scheduler->time() +0, NULL);
+      TRACE(TRL3, "Established FDTP flow from %d to %d (%d)\n", address(), pkt->destination,scheduler->time());
     }
     else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==0 && ((ztpPacket*) pkt)->id!=0)
     {
-      TRACE(TRL1, "\n\n--------------------------------Received the Normal packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+      //TRACE(TRL1, "\n\n--------------------------------Received the Normal packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
       if(address()==2)
         {
           writing(((ztpPacket*) pkt)->data);
-          TRACE(TRL1,"\n\n\n\nWRITING IN 2\n\n");
+         
         }
       else
         {
           writing2(((ztpPacket*) pkt)->data);
-          TRACE(TRL1,"\n\n\n\nWRITING IN 4\n\n");
         }
-      //Reveiceved a normal packet...
+     
     }
     else if(((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==1)
     {
-      TRACE(TRL1, "\n\n--------------------------------Received the FIN packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+     // TRACE(TRL1, "\n\n--------------------------------Received the FIN packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
       normal_packet=false;
       syn_recieved=true;
       finish_packet=true;
       set_timer(scheduler->time() +0, NULL);
+      
+      
     }
     else if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->fin==1)
     {
-      TRACE(TRL1, "\n\n--------------------------------Received the FIN-ACK packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+    //  TRACE(TRL1, "\n\n--------------------------------Received the FIN-ACK packet\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
       normal_packet=true;
       syn_recieved=true;
       finish_packet=true;
@@ -158,9 +160,8 @@ ztpHost::receive(Packet* pkt)
     }
     else if(((ztpPacket*) pkt)->syn==1 && ((ztpPacket*) pkt)->ack==1 && ((ztpPacket*) pkt)->fin==1)
     {
-      TRACE(TRL1, "\n\n--------------------------------DONE TRANSMISSION!!!\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
-     // f_writing();
-      //DONE!!
+     // TRACE(TRL1, "\n\n--------------------------------DONE TRANSMISSION!!!\nid of the packet is:%d\nCurrently in the node : %d--------------------------------\n\n",((ztpPacket*) pkt)->id,address());
+      TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", address(), pkt->destination, scheduler->time());
     }
   
 
@@ -179,31 +180,32 @@ ztpHost::handle_timer(void* cookie)
     
     pkt->source = address();
     pkt->destination = destination;
-    pkt->length = sizeof(Packet) + PAYLOAD_SIZE;
+    pkt->length = sizeof(Packet);// + PAYLOAD_SIZE;
     pkt->id = sent_so_far;
     
 
 
     if(normal_packet==false && finish_packet==false && syn_recieved==false )//&& !(pkt->syn) && !(pkt->ack))
     {
-      TRACE(TRL1, "Entering the loop in SYN in the host function\n"); 
+//      TRACE(TRL1, "Entering the loop in SYN in the host function\n"); 
       pkt->syn=1;
       pkt->ack=0;
       pkt->fin=0;
       pkt->id=-1;
-      pkt->data=NULL;  
-       TRACE(TRL1,"\n\n\n\n\nID is %d \n\n\n",pkt->id);
+      pkt->data=NULL;
+
 
     }
     else if(syn_recieved==false && normal_packet==true && finish_packet==true)
     {
       
-      TRACE(TRL1, "Entering the loop in ACK in the Server\n"); 
+  //    TRACE(TRL1, "Entering the loop in ACK in the Server\n"); 
       pkt->syn=1; 
       pkt->ack=1;
       pkt->fin=0;
       pkt->id=0;
       pkt->data=NULL;
+    
     }
     else if(syn_recieved==true && normal_packet==false && finish_packet==false )
     {
@@ -217,6 +219,8 @@ ztpHost::handle_timer(void* cookie)
       normal_packet=true;
       syn_recieved=true;
       finish_packet=false;
+      
+
     }   
     else if(syn_recieved==true && normal_packet==true && finish_packet==false)
     {
@@ -229,6 +233,9 @@ ztpHost::handle_timer(void* cookie)
       pkt->data=file_handling((pkt->id)-1,file_holder);
       if(strlen(pkt->data)<PAYLOAD_SIZE || pkt->data==NULL)
         done_transmission=true;
+      pkt->length+=strlen(pkt->data);
+    
+
     }
 
     else if( normal_packet==false && finish_packet==true && syn_recieved==false)
@@ -239,6 +246,8 @@ ztpHost::handle_timer(void* cookie)
       pkt->fin=1;
       pkt->id=99;
       pkt->data=NULL;
+    
+
     }
     else if(normal_packet==false && finish_packet==true && syn_recieved==true)
     {
@@ -248,6 +257,7 @@ ztpHost::handle_timer(void* cookie)
       pkt->fin=1;
       pkt->id=100;
       pkt->data=NULL;
+      
     }
     else if(normal_packet==true && finish_packet==true && syn_recieved==true)
     {
@@ -257,12 +267,12 @@ ztpHost::handle_timer(void* cookie)
       pkt->fin=1;
       pkt->id=101;
       pkt->data=NULL;
+    
     }
 
    if(((ztpPacket*) pkt)->syn==0 && ((ztpPacket*) pkt)->ack==0 && ((ztpPacket*) pkt)->fin==0 && ((ztpPacket*) pkt)->id==0)
    {
-      TRACE(TRL1, "\n\n\n\n\n\n\nERROR IN THE PACKET!!!!!!!!!\n\n\n\n\n\n");
-      TRACE(TRL3, "\n\n\n\n\n\n\nERROR IN THE PACKET!!!!!!!!!\n\n\n\n\n\n");
+      TRACE(TRL3, "ERROR IN THE PACKET!!!!!!!!!\n\n\n\n\n\n");
       exit(0);
    }
   
@@ -276,11 +286,11 @@ ztpHost::handle_timer(void* cookie)
   if(normal_packet==true && finish_packet==false)
   {
       sent_so_far++;  
-      //if( (sent_so_far <=packets_to_send))
       if(done_transmission==false)
       {
         set_timer(scheduler->time(), NULL);
-        //
+
+        
       }
       else
       {
@@ -303,8 +313,8 @@ void ztpHost::FDTP(Address s,Address d,Time start_time,char *p)
          destination = (d);
          sent_so_far = 0;
          file_holder=p;
-//         packets_to_send=1000;         
          cookie_count=-1;
          blank();
          set_timer(start_time, NULL);
+
 }

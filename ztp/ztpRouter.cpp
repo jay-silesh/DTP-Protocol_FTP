@@ -13,6 +13,7 @@
 
 ztpRouter::ztpRouter(Address a,int q_size):FIFONode(a,q_size)
 {
+	TRACE(TRL3, "Initialized router with address %d\n", a);
 }
 
 

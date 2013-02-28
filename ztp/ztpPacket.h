@@ -13,6 +13,7 @@ class ztpPacket : public Packet {
     bool ack;
     bool fin;
     char *data;
+    Time time_out;
   	
   	//  unsigned char data[PAYLOAD_SIZE];
   
