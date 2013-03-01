@@ -8,7 +8,9 @@
 
 class dtpPacket : public Packet {
  public:
-    void print();
+    void print_receiver();
+    void print_sender();
+    void print_resender();
     bool syn;
     bool ack;
     bool fin;

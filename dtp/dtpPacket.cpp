@@ -9,12 +9,25 @@
 #include "string.h"
 
 void
-dtpPacket::print()
+dtpPacket::print_sender()
 {
+	   TRACE(TRL3, "Sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
     //Packet::print_header();
    // Packet::print_payload((char *) &data[0], length - sizeof(Packet), false);
-    TRACE(TRL1, "SYN %d, ACK %d, FIN: %d,SRC: %d, DST: %d and PCKID %d\n",this->syn,this->ack,this->fin,this->source,this->destination,this->id);
-  
+    //TRACE(TRL1, "SYN %d, ACK %d, FIN: %d,SRC: %d, DST: %d and PCKID %d\n",this->syn,this->ack,this->fin,this->source,this->destination,this->id);
+}
+
+void
+dtpPacket::print_resender()
+{
+	   TRACE(TRL3, "Re-sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+}
+
+
+void
+dtpPacket::print_receiver()
+{
+	   TRACE(TRL3, "Received Packet with the HEADER: source: %d, destination: %d, id: %d, length: %d,SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
 }
 
 dtpPacket::dtpPacket( dtpPacket& pck )
@@ -43,3 +56,4 @@ dtpPacket::dtpPacket()
 {
 
 }
+

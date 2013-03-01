@@ -21,6 +21,5 @@ Router(5, 40)
 Router(6, 40)
 Router(7, 40)
 
-FDTPFlow(1,8,50,"blank.txt")
-FDTPFlow(2,9,50,"blank.txt")
-#FDTPFlow(10,9,50,"blank.txt")
+FDTPFlow(1,8,50,"hello.txt")
+#FDTPFlow(2,9,50,"blank.txt")
