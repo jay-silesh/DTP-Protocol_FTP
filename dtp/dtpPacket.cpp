@@ -19,7 +19,6 @@ dtpPacket::print()
 
 dtpPacket::dtpPacket( dtpPacket& pck )
 {
-//	dtpPacket * temp=new dtpPacket();
 	this->id=pck.id;
 	this->syn=pck.syn;
 	this->ack=pck.ack;
@@ -35,6 +34,7 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 	}
 	else
 		this->data=NULL;
+	
 }
 
 dtpPacket::dtpPacket()

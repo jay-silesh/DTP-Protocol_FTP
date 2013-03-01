@@ -4,52 +4,32 @@ Initialized router with address 99
  <0, dtpRouter::dtpRouter(Address, int)>
 Initialized host with address 2
  <0, dtpHost::dtpHost(Address)>
-Initialized host with address 3
- <0, dtpHost::dtpHost(Address)>
-Initialized host with address 4
- <0, dtpHost::dtpHost(Address)>
-Sent packet from 3, id 0, length 1476
+
+
+SETTINT THE PACKET FOR Retransmission for the packet 0 at the node 1
+
+ <0, void dtpHost::FDTP(Address, Address, Time, char*)>
+
+
+QING THE PACKET 0 at the node 1
+
  <0, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 1, id 0, length 1476
  <0, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 4, id 0, length 1476
+
+
+SETTINT THE PACKET FOR Retransmission for the packet 0 at the node 2
+
+ <404, virtual void dtpHost::handle_timer(void*)>
+
+
+QING THE PACKET 0 at the node 2
+
  <404, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 2, id 0, length 1476
  <404, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 0, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 1, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 2, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 3, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 4, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 5, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 6, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 7, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 8, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 9, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 10, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 11, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 12, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 13, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 14, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 15, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
+@ NODE 1 -DELETING THE PACKET 0 in the RETRANMITTIN Q
+ <808, void dtpHost::delete_retransmission_timmer(int)>
 Sent packet from 1, id 0, length 1476
  <808, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 1, id 1, length 1476
@@ -68,19 +48,38 @@ Sent packet from 1, id 7, length 1476
  <808, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 1, id 8, length 1476
  <808, virtual void dtpHost::handle_timer(void*)>
-Established FDTP flow from 4 to 4 (1212)
+
+
+PACKET ID IS 0
+
  <1212, virtual void dtpHost::receive(Packet*)>
-Established FDTP flow from 2 to 2 (1212)
+@ NODE 2 -DELETING THE PACKET 0 in the RETRANMITTIN Q
+ <1212, void dtpHost::delete_retransmission_timmer(int)>
+Established FDTP flow from 1 to 2 (1212)
  <1212, virtual void dtpHost::receive(Packet*)>
+
+
+CATCHIN THE RE-PACKET TIMMER
+
+ <2404, virtual void dtpHost::handle_timer(void*)>
+
+
+DIDNT FIND THE PACKET 0 at the node 
+
+ <2404, virtual void dtpHost::handle_timer(void*)>
+
+
+CATCHIN THE RE-PACKET TIMMER
+
+ <4000, virtual void dtpHost::handle_timer(void*)>
+
+
+DIDNT FIND THE PACKET 0 at the node 
+
+ <4000, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 2, id 0, length 1476
  <88500, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 1, id 8, length 1476
  <88904, virtual void dtpHost::handle_timer(void*)>
 Tore down FDTP flow from 2 to 2 (89308)
  <89308, virtual void dtpHost::receive(Packet*)>
-Sent packet from 4, id 0, length 1476
- <184796, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 3, id 16, length 1476
- <185200, virtual void dtpHost::handle_timer(void*)>
-Tore down FDTP flow from 4 to 4 (185604)
- <185604, virtual void dtpHost::receive(Packet*)>

@@ -9,6 +9,8 @@ typedef pair<unsigned int,Packet*> RetransmissionPacketMapPair;
 
 
 
+
+
 class dtpHost : public FIFONode {
  public:
      dtpHost(Address a);		// Creating a Router...
@@ -25,7 +27,7 @@ class dtpHost : public FIFONode {
     int		sent_so_far;		// number sent
     char * file_holder;
     
-    RetransmissionPacketMap  re_packet_map;
+    
     enum
     {
        SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE 
@@ -33,7 +35,12 @@ class dtpHost : public FIFONode {
     bool sender;
     void set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p);
     void set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned int id_p);
-    //    void delete_retransmission_timmer(int packet_no);
+    RetransmissionPacketMap  re_packet_map;
+    void delete_retransmission_timmer(int packet_no);
+    void set_retransmission();
+    void set_retransmission_map(Packet *pkt_t);
+    void set_retransmission_cookie(unsigned int , int);
+
 
 };
 
