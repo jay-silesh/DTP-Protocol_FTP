@@ -17,4 +17,4 @@ class dtpPacket : public Packet {
     //Time time_out;
   	dtpPacket ();
     dtpPacket ( dtpPacket& pck );
- };
+};

@@ -16,8 +16,8 @@ Host(10)
 Host(11)
 Host(12)
 
-Router(99,1)
-Router(100,1)
+Router(99,2)
+Router(100,2)
 Link(99, 100, 10, 1)
 
 

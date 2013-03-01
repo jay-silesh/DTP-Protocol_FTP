@@ -78,8 +78,6 @@ char * file_handling(int packet_no,char *file_holder_host)
     fclose (pFile);
     return NULL;    
   }
-    
-
 }
 
 
@@ -88,7 +86,6 @@ dtpHost::dtpHost(Address a) : FIFONode(a,16000)
   TRACE(TRL3, "Initialized host with address %d\n", a);
   state=dtpHost::SYN;
   sender=false;
-
 }
 
 
@@ -111,13 +108,9 @@ dtpHost::receive(Packet* pkt)
 {
     ((dtpPacket*) pkt)->print();  
     
-    if(((dtpPacket*) pkt)->last_packet==true)
+    if(((dtpPacket*) pkt)->syn==true && ((dtpPacket*) pkt)->ack==false && ((dtpPacket*) pkt)->fin==false)// && ((dtpPacket*) pkt)->id==0)
     {
-      state=dtpHost::FIN;
-      set_timer(scheduler->time(), NULL); 
-    }
-    else if(((dtpPacket*) pkt)->syn==true && ((dtpPacket*) pkt)->ack==false && ((dtpPacket*) pkt)->fin==false)// && ((dtpPacket*) pkt)->id==0)
-    {
+///      TRACE(TRL3,"\n\nRECIVED!!!! SYN-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       //  Received the SYN packet @ the receiver side
       destination=((dtpPacket*) pkt)->source;
       set_timer(scheduler->time(), NULL);
@@ -125,6 +118,7 @@ dtpHost::receive(Packet* pkt)
     
     else if( ((dtpPacket*) pkt)->syn==1 && ((dtpPacket*) pkt)->ack==1  && ((dtpPacket*) pkt)->fin==0 )
     {
+   ///   TRACE(TRL3,"\n\nRECIVED!!!! SYN-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       //Received the SYN packet @ the Sender side
       delete_retransmission_timmer(pkt->id);
       state=dtpHost::SYN_ACK;
@@ -133,21 +127,25 @@ dtpHost::receive(Packet* pkt)
     
     else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==0)
     {
+     /// TRACE(TRL3,"\n\nRECIVED!!!! SYN_ACK-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       TRACE(TRL3, "Established FDTP flow from %d to %d (%d)\n", destination,address(),scheduler->time());
       delete_retransmission_timmer(pkt->id-1);
 
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       temp_sender->state=dtpHost::sending;      
-      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(1);
+      temp_sender->set_timer(scheduler->time(), NULL);
+      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(pkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
-        return;
+       // return;
       }
+      else
       (temp_sender->re_packet_map).erase (iit);
            
     }
     
     else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==0 && ((dtpPacket*) pkt)->fin==0 && ((dtpPacket*) pkt)->id!=0)
     {
+   ///   TRACE(TRL3,"\n\nRECIVED!!!! NORMAL-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       //Received the Normal packet\nid of the packet
       if(((dtpPacket*) pkt)->data!=NULL)
       {
@@ -158,8 +156,9 @@ dtpHost::receive(Packet* pkt)
       }
       if(((dtpPacket*) pkt)->data==NULL || strlen(((dtpPacket*) pkt)->data)<PAYLOAD_SIZE)
       {          
-        set_timer(scheduler->time(), NULL);
-        state=dtpHost::START_SENDING_FIN;
+        dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+        temp_sender->state=dtpHost::FIN;
+        temp_sender->set_timer(scheduler->time(), NULL);
       }
       
     }
@@ -167,6 +166,7 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==1 && ((dtpPacket*) pkt)->ack==0 && ((dtpPacket*) pkt)->fin==1)
     {
      //Received the FIN packet
+    ///  TRACE(TRL3,"\n\nRECIVED!!!! FIN-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       packets_rec=((dtpPacket*) pkt)->id;
       state=dtpHost::FIN;
       set_timer(scheduler->time(), NULL);
@@ -175,6 +175,7 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==1)
     {
     //Received the FIN-ACK packet
+    ///  TRACE(TRL3,"\n\nRECIVED!!!! FIN_ACK-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       packets_rec=((dtpPacket*) pkt)->id;
       delete_retransmission_timmer(pkt->id-1);
       state=dtpHost::FIN_ACK;
@@ -185,8 +186,19 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==1 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==1)
     {
      // DONE TRANSMISSION!!!
+    ///  TRACE(TRL3,"\n\nRECIVED!!!! DONE-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
       delete_retransmission_timmer(pkt->id-1);
-      TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", pkt->source, pkt->destination, scheduler->time());
+      
+      dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(pkt->id);
+      if (iit == (temp_sender->re_packet_map).end()) {
+       // return;
+      }
+      else
+      {
+          (temp_sender->re_packet_map).erase (iit);
+          TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", pkt->source, pkt->destination, scheduler->time());
+      }
     }
     delete pkt;
 }
@@ -211,9 +223,11 @@ dtpHost::handle_timer(void* cookie)
         
         if(state==dtpHost::SYN)
         {
+          pkt->data=NULL;
           if(sender==true)
           {  
             set_packet((dtpPacket*) pkt,1,0,0,0);
+            set_retransmission_cookie(pkt->id,4000);
             set_retransmission_map(pkt);
           }
           else //if it is the reciever
@@ -222,7 +236,7 @@ dtpHost::handle_timer(void* cookie)
             set_retransmission_cookie(pkt->id,4000);
             set_retransmission_map(pkt);
           }
-          pkt->data=NULL;
+       ///   TRACE(TRL3,"\n\nSYN-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
         }
         
        
@@ -232,10 +246,12 @@ dtpHost::handle_timer(void* cookie)
           set_packet((dtpPacket*) pkt,0,1,0,1);
           pkt->data=NULL;
           
+     //     state=dtpHost::sending;  
           set_retransmission_cookie(pkt->id,4000);
           set_retransmission_map(pkt);
 
-          state=dtpHost::sending;  
+          
+         /// TRACE(TRL3,"\n\nSYN_ACK-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
         }
 
         else if(state==dtpHost::sending)
@@ -243,6 +259,7 @@ dtpHost::handle_timer(void* cookie)
           //Sending NORMAL packets
           done_transmission=false;
           set_packet((dtpPacket*) pkt,0,0,0,sent_so_far+1);
+         /// TRACE(TRL3,"\n\nNORMAL PACKET @ %d -SENDING PACKET NO %d\n\n",address(),pkt->id);
           pkt->data=file_handling((pkt->id)-2,file_holder);
           if(pkt->data==NULL || strlen(pkt->data)<PAYLOAD_SIZE)
           {
@@ -255,6 +272,7 @@ dtpHost::handle_timer(void* cookie)
         else if( state==dtpHost::FIN)          //this is at the SENDER SIDE
         {
           //Sending FIN packets
+        ///  TRACE(TRL3,"\n\n@ %d \n\n",address());
           pkt->data=NULL;
           if(sender==true)
           {
@@ -269,7 +287,7 @@ dtpHost::handle_timer(void* cookie)
              set_retransmission_cookie(pkt->id,4000);
              set_retransmission_map(pkt);
           }
-          
+         /// TRACE(TRL3,"\n\nFIN-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
         }
         
         else if(state==dtpHost::FIN_ACK)//this is at the reciever side
@@ -277,11 +295,10 @@ dtpHost::handle_timer(void* cookie)
           //Sending FIN-ACK packet         
           set_packet((dtpPacket*) pkt,1,1,1,packets_rec+1);
           pkt->data=NULL;      
-        }  
-        else if(state==dtpHost::START_SENDING_FIN ) 
-        {
-          pkt->data=NULL;
-          pkt->last_packet=true;
+          
+          set_retransmission_cookie(pkt->id,4000);
+          set_retransmission_map(pkt);
+    ///      TRACE(TRL3,"\n\nFIN_ACK-PACKET @ %d  SENDING PACKET NO %d\n\n",address(),pkt->id);
         }  
   
     }
@@ -293,10 +310,15 @@ dtpHost::handle_timer(void* cookie)
          }
          else
          {
-            TRACE(TRL3,"\n\nDAMN!!\n");
-
-            pkt=(dtpPacket*)((*iit).second);
+     ///       TRACE(TRL3,"\n\nDAMN!!\n");
+            dtpPacket *temp=(dtpPacket*)((*iit).second);
+            
+            delete pkt;
+            dtpPacket*  pkt = new dtpPacket(*temp);
+            
+            delete_retransmission_timmer(temp->id);
             set_retransmission_cookie(pkt->id,4000);
+            set_retransmission_map(pkt);
           }
     }
 
@@ -326,7 +348,7 @@ void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
          blank();
          set_timer(start_time, NULL);
          
-         set_retransmission_cookie(0,4000);
+         
 }
 
 void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)
@@ -347,6 +369,7 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned
 
 void dtpHost::set_retransmission_map(Packet *pkt_t)
 {
+                        
             dtpPacket* temp_dtp=new dtpPacket(*(dtpPacket*)pkt_t);
             RetransmissionPacketMapPair entry(pkt_t->id,temp_dtp);
             re_packet_map.insert(entry);
@@ -357,6 +380,3 @@ void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)
             cookie_class* temp_cookie = new cookie_class(number);
             set_timer(scheduler->time()+rtt,temp_cookie);
 }
-
-
-

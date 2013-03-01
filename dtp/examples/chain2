@@ -16,6 +16,6 @@ Link(100, 2, 10, 1)
 Link(3,99, 10, 1)
 Link(100, 4, 10, 1)
 
-
-FDTPFlow(1,2,0,"hello333.txt")
 FDTPFlow(3,4,0,"hello333.txt")
+FDTPFlow(1,2,0,"hello333.txt")
+

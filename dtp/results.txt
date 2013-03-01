@@ -1,10 +1,28 @@
 Initialized host with address 1
  <0, dtpHost::dtpHost(Address)>
-Initialized router with address 99
- <0, dtpRouter::dtpRouter(Address, int)>
 Initialized host with address 2
  <0, dtpHost::dtpHost(Address)>
-Established FDTP flow from 1 to 2 (1212)
- <1212, virtual void dtpHost::receive(Packet*)>
-Tore down FDTP flow from 1 to 2 (3020)
- <3020, virtual void dtpHost::receive(Packet*)>
+Initialized host with address 10
+ <0, dtpHost::dtpHost(Address)>
+Initialized host with address 8
+ <0, dtpHost::dtpHost(Address)>
+Initialized host with address 9
+ <0, dtpHost::dtpHost(Address)>
+Initialized router with address 3
+ <0, dtpRouter::dtpRouter(Address, int)>
+Initialized router with address 4
+ <0, dtpRouter::dtpRouter(Address, int)>
+Initialized router with address 5
+ <0, dtpRouter::dtpRouter(Address, int)>
+Initialized router with address 6
+ <0, dtpRouter::dtpRouter(Address, int)>
+Initialized router with address 7
+ <0, dtpRouter::dtpRouter(Address, int)>
+Established FDTP flow from 1 to 8 (4778)
+ <4778, virtual void dtpHost::receive(Packet*)>
+Established FDTP flow from 2 to 9 (5162)
+ <5162, virtual void dtpHost::receive(Packet*)>
+Tore down FDTP flow from 1 to 8 (11082)
+ <11082, virtual void dtpHost::receive(Packet*)>
+Tore down FDTP flow from 2 to 9 (11466)
+ <11466, virtual void dtpHost::receive(Packet*)>

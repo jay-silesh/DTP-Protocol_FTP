@@ -38,7 +38,8 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 	
 }
 
+
 dtpPacket::dtpPacket()
 {
-}
 
+}

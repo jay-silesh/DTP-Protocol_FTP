@@ -41,7 +41,6 @@ class dtpHost : public FIFONode {
     void set_retransmission();
     void set_retransmission_map(Packet *pkt_t);
     void set_retransmission_cookie(unsigned int , int);
-
-
+  
 };
 
