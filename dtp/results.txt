@@ -34,20 +34,6 @@ Sent packet from 1, id 0, length 1476
  <808, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 1, id 1, length 1476
  <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 2, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 3, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 4, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 5, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 6, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 7, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <808, virtual void dtpHost::handle_timer(void*)>
 
 
 PACKET ID IS 0
@@ -57,29 +43,87 @@ PACKET ID IS 0
  <1212, void dtpHost::delete_retransmission_timmer(int)>
 Established FDTP flow from 1 to 2 (1212)
  <1212, virtual void dtpHost::receive(Packet*)>
-
-
-CATCHIN THE RE-PACKET TIMMER
-
- <2404, virtual void dtpHost::handle_timer(void*)>
-
-
-DIDNT FIND THE PACKET 0 at the node 
-
- <2404, virtual void dtpHost::handle_timer(void*)>
-
-
-CATCHIN THE RE-PACKET TIMMER
-
- <4000, virtual void dtpHost::handle_timer(void*)>
-
-
-DIDNT FIND THE PACKET 0 at the node 
-
- <4000, virtual void dtpHost::handle_timer(void*)>
 Sent packet from 2, id 0, length 1476
- <88500, virtual void dtpHost::handle_timer(void*)>
-Sent packet from 1, id 8, length 1476
- <88904, virtual void dtpHost::handle_timer(void*)>
-Tore down FDTP flow from 2 to 2 (89308)
- <89308, virtual void dtpHost::receive(Packet*)>
+ <1404, virtual void dtpHost::handle_timer(void*)>
+
+
+SETTINT THE PACKET FOR Retransmission for the packet 999 at the node 1
+
+ <1808, virtual void dtpHost::handle_timer(void*)>
+
+
+QING THE PACKET 999 at the node 1
+
+ <1808, virtual void dtpHost::handle_timer(void*)>
+Sent packet from 1, id 2, length 1476
+ <1808, virtual void dtpHost::handle_timer(void*)>
+
+
+SETTINT THE PACKET FOR Retransmission for the packet 1000 at the node 2
+
+ <2212, virtual void dtpHost::handle_timer(void*)>
+
+
+QING THE PACKET 1000 at the node 2
+
+ <2212, virtual void dtpHost::handle_timer(void*)>
+Sent packet from 2, id 0, length 1476
+ <2212, virtual void dtpHost::handle_timer(void*)>
+
+
+CATCHIN THE RE-PACKET TIMMER
+
+ <2404, virtual void dtpHost::handle_timer(void*)>
+
+
+DIDNT FIND THE PACKET 0 at the node 
+
+ <2404, virtual void dtpHost::handle_timer(void*)>
+
+
+PACKET ID IS 999
+
+ <2616, virtual void dtpHost::receive(Packet*)>
+@ NODE 1 -DELETING THE PACKET 999 in the RETRANMITTIN Q
+ <2616, void dtpHost::delete_retransmission_timmer(int)>
+Sent packet from 1, id 2, length 1476
+ <2616, virtual void dtpHost::handle_timer(void*)>
+
+
+PACKET ID IS 1000
+
+ <3020, virtual void dtpHost::receive(Packet*)>
+@ NODE 2 -DELETING THE PACKET 1000 in the RETRANMITTIN Q
+ <3020, void dtpHost::delete_retransmission_timmer(int)>
+Tore down FDTP flow from 2 to 2 (3020)
+ <3020, virtual void dtpHost::receive(Packet*)>
+
+
+CATCHIN THE RE-PACKET TIMMER
+
+ <4000, virtual void dtpHost::handle_timer(void*)>
+
+
+DIDNT FIND THE PACKET 0 at the node 
+
+ <4000, virtual void dtpHost::handle_timer(void*)>
+
+
+CATCHIN THE RE-PACKET TIMMER
+
+ <5808, virtual void dtpHost::handle_timer(void*)>
+
+
+DIDNT FIND THE PACKET 999 at the node 
+
+ <5808, virtual void dtpHost::handle_timer(void*)>
+
+
+CATCHIN THE RE-PACKET TIMMER
+
+ <6212, virtual void dtpHost::handle_timer(void*)>
+
+
+DIDNT FIND THE PACKET 1000 at the node 
+
+ <6212, virtual void dtpHost::handle_timer(void*)>

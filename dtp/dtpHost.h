@@ -30,7 +30,7 @@ class dtpHost : public FIFONode {
     
     enum
     {
-       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE 
+       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN 
     } state;
     bool sender;
     void set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p);

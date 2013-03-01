@@ -26,6 +26,7 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 	this->fin=pck.fin;
 	this->source=pck.source;
 	this->destination=pck.destination;
+	this->last_packet=pck.last_packet;
 	if(pck.data!=NULL)
 	{
 		char *buffer=(char *)malloc(1550);
