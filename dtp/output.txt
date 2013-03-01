@@ -1,4 +1,0 @@
-This data is in the Hello3.txt
-
-
-Feb 21 00:59:38 ubuntu rsyslogd: [origin software="rsyslogd" swVersion="5.8.6" x-pid="631" x-info="http://www.rsyslog.

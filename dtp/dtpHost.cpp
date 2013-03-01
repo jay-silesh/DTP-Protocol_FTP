@@ -60,7 +60,6 @@ char * file_handling(int packet_no,char *file_holder_host)
  
   if (pFile==NULL)
   {
-      TRACE(TRL3, "File Error\n");
       return NULL;
   }
   fseek (pFile , packet_no*packet_size , SEEK_SET);
@@ -101,7 +100,7 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
    }
 
    re_packet_map.erase (iit);
-   TRACE(TRL3,"@ NODE %d -DELETING THE PACKET %d in the RETRANMITTIN Q\n",address(),packet_no);
+///   TRACE(TRL3,"@ NODE %d -DELETING THE PACKET %d in the RETRANMITTIN Q\n",address(),packet_no);
 }
 
 
@@ -136,7 +135,6 @@ dtpHost::receive(Packet* pkt)
     
     else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==0)
     {
-      TRACE(TRL3, "\n\nPACKET ID IS %d\n\n",pkt->id-1);
       delete_retransmission_timmer(pkt->id-1);
       TRACE(TRL3, "Established FDTP flow from %d to %d (%d)\n", destination,address(),scheduler->time());
     }
@@ -151,7 +149,7 @@ dtpHost::receive(Packet* pkt)
         else
           writing2(((dtpPacket*) pkt)->data);
       }
-      if(strlen(((dtpPacket*) pkt)->data)<PAYLOAD_SIZE || ((dtpPacket*) pkt)->data==NULL)
+      if(((dtpPacket*) pkt)->data==NULL || strlen(((dtpPacket*) pkt)->data)<PAYLOAD_SIZE)
       {          
         set_timer(scheduler->time(), NULL);
         state=dtpHost::START_SENDING_FIN;
@@ -162,6 +160,8 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==1 && ((dtpPacket*) pkt)->ack==0 && ((dtpPacket*) pkt)->fin==1)
     {
      //Received the FIN packet
+    ///  TRACE(TRL3,"\n\n\n\n@ the RECIEEVER-THIS IS THE FIN PACKET NO %d\n\n\n\n",((dtpPacket*) pkt)->id);
+      packets_rec=((dtpPacket*) pkt)->id;
       state=dtpHost::FIN;
       set_timer(scheduler->time(), NULL);
     }
@@ -169,7 +169,8 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==1)
     {
     //Received the FIN-ACK packet
-      TRACE(TRL3, "\n\nPACKET ID IS %d\n\n",pkt->id-1);
+     /// TRACE(TRL3,"\n\n\n\n@ the SENDER SIDE -THIS IS THE FIN PACKET NO %d\n\n\n\n",((dtpPacket*) pkt)->id);
+      packets_rec=((dtpPacket*) pkt)->id;
       delete_retransmission_timmer(pkt->id-1);
       state=dtpHost::FIN_ACK;
       set_timer(scheduler->time(), NULL);
@@ -179,9 +180,9 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==1 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==1)
     {
      // DONE TRANSMISSION!!!
-      TRACE(TRL3, "\n\nPACKET ID IS %d\n\n",pkt->id-1);
+     /// TRACE(TRL3,"\n\n\n\n@ the final RECEIVER THIS IS THE FIN PACKET NO %d\n\n\n\n",((dtpPacket*) pkt)->id);
       delete_retransmission_timmer(pkt->id-1);
-      TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", address(), pkt->destination, scheduler->time());
+      TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", pkt->source, pkt->destination, scheduler->time());
     }
     delete pkt;
 }
@@ -210,15 +211,15 @@ dtpHost::handle_timer(void* cookie)
           {  
             set_packet((dtpPacket*) pkt,1,0,0,0);
             set_retransmission_map(pkt);
-            TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
+     ///       TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
           }
           else //if it is the reciever
           {  
             set_packet((dtpPacket*) pkt,1,1,0,0);
             set_retransmission_cookie(pkt->id,2000);
-            TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
+        ///    TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
             set_retransmission_map(pkt);
-            TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
+        ///    TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
           }
           pkt->data=NULL;
         }
@@ -253,29 +254,40 @@ dtpHost::handle_timer(void* cookie)
           pkt->data=NULL;
           if(sender==true)
           {
-            set_packet((dtpPacket*) pkt,1,0,1,999);
+            //DOING THIS TO MAKE SURE THAT SYN-PACKET-ID IS SYMMETRIC
             
+            set_packet((dtpPacket*) pkt,1,0,1,sent_so_far+1);
+            
+
+        ///    TRACE(TRL3,"\n\n\n\nFSENDIN FIN PACKET NO %d\n\n\n\n",pkt->id);
+            
+
             set_retransmission_cookie(pkt->id,4000);
-            TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
+          ///  TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
             set_retransmission_map(pkt);
-            TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
+          ///  TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
           }
           else
-          {  
-            set_packet((dtpPacket*) pkt,0,1,1,1000);
+          { 
+            
+            set_packet((dtpPacket*) pkt,0,1,1,packets_rec+1);
      
+          ///  TRACE(TRL3,"\n\n\n\n2FSENDIN FIN PACKET NO %d\n\n\n\n",pkt->id);
+
             set_retransmission_cookie(pkt->id,4000);
-            TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
+           /// TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
             set_retransmission_map(pkt);
-            TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
+           /// TRACE(TRL3,"\n\nQING THE PACKET %d at the node %d\n\n",pkt->id,address());
           }
           
         }
         
         else if(state==dtpHost::FIN_ACK)//this is at the reciever side
         {
-          //Sending FIN-ACK packet          
-          set_packet((dtpPacket*) pkt,1,1,1,1001);
+          //Sending FIN-ACK packet         
+          set_packet((dtpPacket*) pkt,1,1,1,packets_rec+1);
+          
+   ///       TRACE(TRL3,"\n\n\n\nFSENDIN FIN PACKET NO %d\n\n\n\n",pkt->id);
           pkt->data=NULL;      
         }  
         else if(state==dtpHost::START_SENDING_FIN ) 
@@ -287,10 +299,10 @@ dtpHost::handle_timer(void* cookie)
     }
     else
     {
-         TRACE(TRL3,"\n\nCATCHIN THE RE-PACKET TIMMER\n\n");
+     ///    TRACE(TRL3,"\n\nCATCHIN THE RE-PACKET TIMMER\n\n");
          RetransmissionPacketMapIterator iit = re_packet_map.find((int)((cookie_class *)cookie)->id);
          if (iit == re_packet_map.end()) {
-              TRACE(TRL3,"\n\nDIDNT FIND THE PACKET %d at the node \n\n",(int)((cookie_class *)cookie)->id,address());
+        ///      TRACE(TRL3,"\n\nDIDNT FIND THE PACKET %d at the node \n\n",(int)((cookie_class *)cookie)->id,address());
               return;
          }
          else
@@ -299,15 +311,14 @@ dtpHost::handle_timer(void* cookie)
 
             pkt=(dtpPacket*)((*iit).second);
             set_retransmission_cookie(pkt->id,4000);
-            TRACE(TRL3,"\n\n***** REsending the packet  %d and the correct one is %d at the node %d\n\n",(int)((cookie_class *)cookie)->id,pkt->id,address());
-            TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
+      ///      TRACE(TRL3,"\n\n***** REsending the packet  %d and the correct one is %d at the node %d\n\n",(int)((cookie_class *)cookie)->id,pkt->id,address());
+       ///     TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet %d at the node %d\n\n",pkt->id,address());
           }
     }
 
      
   if (send(pkt)) {
-      TRACE(TRL3, "Sent packet from %d, id %d, length %d\n", 
-            address(), sent_so_far, (int) PAYLOAD_SIZE);
+/////////      TRACE(TRL3, "Sent packet from %d, id %d, length %d\n",address(), sent_so_far, (int) PAYLOAD_SIZE);
   }
 
   if(state==dtpHost::sending)
@@ -333,7 +344,7 @@ void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
          set_timer(start_time, NULL);
          
          set_retransmission_cookie(0,4000);
-         TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet 0 at the node %d\n\n",address());
+      ///   TRACE(TRL3,"\n\nSETTINT THE PACKET FOR Retransmission for the packet 0 at the node %d\n\n",address());
 }
 
 void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)

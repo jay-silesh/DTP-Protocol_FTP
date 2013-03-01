@@ -27,6 +27,7 @@ class dtpHost : public FIFONode {
     int		sent_so_far;		// number sent
     char * file_holder;
     
+    unsigned int packets_rec;
     
     enum
     {
