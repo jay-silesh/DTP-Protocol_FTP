@@ -31,23 +31,29 @@ void
 
 }
 
+int wcounter=0;
+
 void writing(char *buffer)
 {
+  TRACE(TRL3, "\n\n\nWriting.... %d\n\n",++wcounter);
   FILE * pFile;
-  pFile = fopen ( "output.txt" , "ab+" );
+  if(wcounter==1)
+    pFile = fopen ( "output.txt" , "w" );
+  else
+    pFile = fopen ( "output.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
   fclose (pFile);
 }
 
 
-void writing2(char *buffer)
+/*void writing2(char *buffer)
 {
   FILE * pFile;
   pFile = fopen( "output1.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
   fclose (pFile);
 
-}
+}*/
 
 char * file_handling(int packet_no,char *file_holder_host)
 {
@@ -111,34 +117,32 @@ dtpHost::receive(Packet* pkt)
     else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==1 && ((dtpPacket*) pkt)->fin==0)
     {
       TRACE(TRL3, "Established FDTP flow from %d to %d (%d)\n", destination,address(),scheduler->time());
-      delete_retransmission_timmer(pkt->id-1);
+    //  delete_retransmission_timmer(pkt->id-1);
+        delete_retransmission_timmer(pkt->id);
 
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       temp_sender->state=dtpHost::sending;      
-      temp_sender->set_timer(scheduler->time(), NULL);
       RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(pkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
         //Do Nothing...
       }
       else
       (temp_sender->re_packet_map).erase (iit);
-           
+      temp_sender->set_timer(scheduler->time(), NULL);     
     }
     
-    else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==0 && ((dtpPacket*) pkt)->fin==0 && ((dtpPacket*) pkt)->id!=0)
+    else if(((dtpPacket*) pkt)->syn==0 && ((dtpPacket*) pkt)->ack==0 && ((dtpPacket*) pkt)->fin==0 )//&& ((dtpPacket*) pkt)->id!=0)
     {
       //Received the Normal packet
       if(((dtpPacket*) pkt)->data!=NULL)
       {
-          if(address()==2)
-          {
-             
+           //  TRACE(TRL3, "\n\n\nCALLING WRITI ON PACKET NO %d\n\n",((dtpPacket*) pkt)->id);
             writing(((dtpPacket*) pkt)->data);
-          }
-          else
-          {TRACE(TRL3, "\n\n\nWRITING IN TWO... \n\n\n");
-           writing2(((dtpPacket*) pkt)->data);
-          }
+          /*if(address()==2)
+              writing(((dtpPacket*) pkt)->data);
+            else
+              writing2(((dtpPacket*) pkt)->data);
+          */
       }
       if(((dtpPacket*) pkt)->data==NULL || strlen(((dtpPacket*) pkt)->data)<PAYLOAD_SIZE)
       {          
