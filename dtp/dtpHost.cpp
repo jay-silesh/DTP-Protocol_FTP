@@ -244,7 +244,8 @@ dtpHost::handle_timer(void* cookie)
             //Sending NORMAL packets
             done_transmission=false;
             set_packet((dtpPacket*) pkt,0,0,0,sent_so_far+1);
-            pkt->data=file_handling((pkt->id)-2,file_holder);
+            pkt->data=file_handling((pkt->id)-1,file_holder);
+            sent_so_far++;
             if(pkt->data==NULL || strlen(pkt->data)<PAYLOAD_SIZE)
             {
                done_transmission=true;
@@ -306,7 +307,7 @@ dtpHost::handle_timer(void* cookie)
 
   if(state==dtpHost::sending)
   {
-      sent_so_far++;  
+      //sent_so_far++;  
       if(done_transmission==false)
       { 
          set_timer(scheduler->time(), NULL);

@@ -18,26 +18,6 @@ Feb 21 01:04:42 ubuntu AptDaemon: INFO: Quitting was requested
 Feb 21 01:04:42 ubuntu dbus[604]: [system] Activating service name='org.debian.apt' (using servicehelper)
 Feb 21 01:04:42 ubuntu AptDaemon: INFO: Initializing daemon
 Feb 21 01:04:42 ubuntu dbus[604]: [system] Successfully activated service 'org.debian.apt'
-Feb 21 01:04:42 ubuntu AptDaemon.PackageKit: INFO: Initializing PackageKit compat la>This data is in the Hello.txt
-
-
-Feb 21 00:59:38 ubuntu rsyslogd: [origin software="rsyslogd" swVersion="5.8.6" x-pid="631" x-info="http://www.rsyslog.com"] rsyslogd was HUPed
-Feb 21 00:59:41 ubuntu AptDaemon: INFO: Quitting due to inactivity
-Feb 21 00:59:41 ubuntu AptDaemon: INFO: Quitting was requested
-Feb 21 00:59:41 ubuntu dbus[604]: [system] Activating service name='org.debian.apt' (using servicehelper)
-Feb 21 00:59:41 ubuntu AptDaemon: INFO: Initializing daemon
-Feb 21 00:59:41 ubuntu dbus[604]: [system] Successfully activated service 'org.debian.apt'
-Feb 21 00:59:41 ubuntu AptDaemon.PackageKit: INFO: Initializing PackageKit compat layer
-Feb 21 00:59:43 ubuntu anacron[10298]: Job `cron.daily' terminated
-Feb 21 00:59:43 ubuntu anacron[10298]: Normal exit (1 job run)
-Feb 21 01:00:17 ubuntu kernel: [18887.149796] usb 3-1: USB disconnect, device number 2
-Feb 21 01:00:56 ubuntu anacron[11193]: Anacron 2.3 started on 2013-02-21
-Feb 21 01:00:56 ubuntu anacron[11193]: Normal exit (0 jobs run)
-Feb 21 01:04:42 ubuntu AptDaemon: INFO: Quitting due to inactivity
-Feb 21 01:04:42 ubuntu AptDaemon: INFO: Quitting was requested
-Feb 21 01:04:42 ubuntu dbus[604]: [system] Activating service name='org.debian.apt' (using servicehelper)
-Feb 21 01:04:42 ubuntu AptDaemon: INFO: Initializing daemon
-Feb 21 01:04:42 ubuntu dbus[604]: [system] Successfully activated service 'org.debian.apt'
 Feb 21 01:04:42 ubuntu AptDaemon.PackageKit: INFO: Initializing PackageKit compat layer
 Feb 21 01:05:59 ubuntu dhclient: DHCPREQUEST of 207.151.92.94 on wlan0 to 207.151.92.2 port 67
 Feb 21 01:05:59 ubuntu dhclient: DHCPACK of 207.151.92.94 from 207.151.92.2
