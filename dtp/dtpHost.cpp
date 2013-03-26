@@ -14,8 +14,8 @@
 #include <cstring>
 #include "cookie_class.h"
 
-
-void blank()
+void
+ blank()
 {
   ofstream out("output.txt", ios::out);
   if(!out) {
@@ -40,14 +40,14 @@ void writing(char *buffer)
 }
 
 
-/*void writing2(char *buffer)
+void writing2(char *buffer)
 {
   FILE * pFile;
   pFile = fopen( "output1.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
   fclose (pFile);
 
-}*/
+}
 
 char * file_handling(int packet_no,char *file_holder_host)
 {
@@ -88,17 +88,6 @@ dtpHost::dtpHost(Address a) : FIFONode(a,16000)
 }
 
 
-void dtpHost::delete_retransmission_timmer(int packet_no)
-{
-   RetransmissionPacketMapIterator iit=re_packet_map.find(packet_no);
-   if (iit == re_packet_map.end()) {
-        return;
-   }
-
-   re_packet_map.erase (iit);
-}
-
-
 void
 dtpHost::receive(Packet* pkt)
 {
@@ -129,6 +118,7 @@ dtpHost::receive(Packet* pkt)
       temp_sender->set_timer(scheduler->time(), NULL);
       RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(pkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
+        //Do Nothing...
       }
       else
       (temp_sender->re_packet_map).erase (iit);
@@ -139,8 +129,17 @@ dtpHost::receive(Packet* pkt)
     {
       //Received the Normal packet
       if(((dtpPacket*) pkt)->data!=NULL)
-         writing(((dtpPacket*) pkt)->data);
-      
+      {
+          if(address()==2)
+          {
+             
+            writing(((dtpPacket*) pkt)->data);
+          }
+          else
+          {TRACE(TRL3, "\n\n\nWRITING IN TWO... \n\n\n");
+           writing2(((dtpPacket*) pkt)->data);
+          }
+      }
       if(((dtpPacket*) pkt)->data==NULL || strlen(((dtpPacket*) pkt)->data)<PAYLOAD_SIZE)
       {          
         dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
@@ -208,6 +207,8 @@ dtpHost::handle_timer(void* cookie)
         pkt->destination = destination;
         pkt->length = sizeof(Packet);// + PAYLOAD_SIZE;
         
+        //Set packet parameters... // SYN,ACK,FIN,ID
+
         if(state==dtpHost::SYN)
         {
             pkt->data=NULL;
@@ -224,12 +225,11 @@ dtpHost::handle_timer(void* cookie)
               set_retransmission_map(pkt);
             }
         }
-        
-       
+
         else if(state==dtpHost::SYN_ACK)
         {
             //Sending the SYN-ACK packets
-            set_packet((dtpPacket*) pkt,0,1,0,1);
+            set_packet((dtpPacket*) pkt,0,1,0,0);
             pkt->data=NULL;
             set_retransmission_cookie(pkt->id,4000);
             set_retransmission_map(pkt);
@@ -334,6 +334,7 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)
 
 void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned int id_p)
 {
+
   ((dtpPacket*) pkt_p)->syn=syn_p;
   ((dtpPacket*) pkt_p)->ack=ack_p;
   ((dtpPacket*) pkt_p)->fin=fin_p;
@@ -354,3 +355,15 @@ void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)
             cookie_class* temp_cookie = new cookie_class(number);
             set_timer(scheduler->time()+rtt,temp_cookie);
 }
+
+
+void dtpHost::delete_retransmission_timmer(int packet_no)
+{
+   RetransmissionPacketMapIterator iit=re_packet_map.find(packet_no);
+   if (iit == re_packet_map.end()) {
+        return;
+   }
+
+   re_packet_map.erase (iit);
+}
+
