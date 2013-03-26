@@ -46,7 +46,7 @@ Feb 21 01:07:01 ubuntu wpa_supplicant[965]: Trying to authenticate with 00:24:6c
 Feb 21 01:07:01 ubuntu kernel: [19291.110491] wlan0: authenticate with 00:24:6c:b4:a4:a0
 Feb 21 01:07:01 ubuntu kernel: [19291.118069] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 1/3)
 Feb 21 01:07:02 ubuntu kernel: [19291.320279] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 2/3)
-Feb 21 01:07:02 ubuntu kernel: [19291.523970] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 3/3)
+Feb 21 01:07:02 ubuntu kernel: [19291.523970] wlan0: direct probe to 00:24:6c:b4:a4:é©a0 (try 3/3)
 Feb 21 01:07:02 ubuntu kernel: [19291.727618] wlan0: authentication with 00:24:6c:b4:a4:a0 timed out
 
 Feb 21 00:59:38 ubuntu rsyslogd: [origin software="rsyslogd" swVersion="5.8.6" x-pid="631" x-info="http://www.rsyslog.com"] rsyslogd was HUPed

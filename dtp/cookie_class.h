@@ -7,5 +7,6 @@ class cookie_class {
      } cookie_state;
      cookie_class();
      cookie_class(int,all_cookie_states);
+     cookie_class(all_cookie_states);
      ~cookie_class();
 };
