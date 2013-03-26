@@ -2,16 +2,10 @@ Host(1)
 Router(99,32000)
 Host(2)
 
-Host(3)
-Host(4)
-
-
 
 Link(1,99, 10, 1)
 Link(99, 2, 10, 1)
 
-Link(3,99, 10, 1)
-Link(99, 4, 10, 1)
 
-FDTPFlow(3,4,0,"hello2.txt")
 FDTPFlow(1,2,0,"hello.txt")
+FDTPFlow(2,1,87636,"hello2.txt")

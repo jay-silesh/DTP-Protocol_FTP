@@ -46,14 +46,14 @@ void writing(char *buffer)
 }
 
 
-/*void writing2(char *buffer)
+void writing2(char *buffer)
 {
   FILE * pFile;
   pFile = fopen( "output1.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
   fclose (pFile);
 
-}*/
+}
 
 char * file_handling(int packet_no,char *file_holder_host)
 {
@@ -137,12 +137,11 @@ dtpHost::receive(Packet* pkt)
       if(((dtpPacket*) pkt)->data!=NULL)
       {
            //  TRACE(TRL3, "\n\n\nCALLING WRITI ON PACKET NO %d\n\n",((dtpPacket*) pkt)->id);
-            writing(((dtpPacket*) pkt)->data);
-          /*if(address()==2)
+          if(address()==2)
               writing(((dtpPacket*) pkt)->data);
-            else
-              writing2(((dtpPacket*) pkt)->data);
-          */
+          else if(address()==1)
+             writing2(((dtpPacket*) pkt)->data);
+          
       }
       if(((dtpPacket*) pkt)->data==NULL || strlen(((dtpPacket*) pkt)->data)<PAYLOAD_SIZE)
       {          
@@ -205,7 +204,9 @@ dtpHost::handle_timer(void* cookie)
     dtpPacket*  pkt = new dtpPacket;
     pkt->last_packet=false;
     
-    if(cookie==NULL)
+    cookie_class * new_cookie=(cookie_class*)cookie;
+
+    if(new_cookie==NULL)
     {
         pkt->source = address();
         pkt->destination = destination;
@@ -282,7 +283,7 @@ dtpHost::handle_timer(void* cookie)
         }  
         ((dtpPacket*) pkt)->print_sender();
     }
-    else
+    else if( new_cookie->cookie_state==cookie_class::retransmission)
     {
          RetransmissionPacketMapIterator iit = re_packet_map.find((int)((cookie_class *)cookie)->id);
          if (iit == re_packet_map.end()) {
@@ -357,7 +358,7 @@ void dtpHost::set_retransmission_map(Packet *pkt_t)
 
 void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)
 {
-            cookie_class* temp_cookie = new cookie_class(number);
+            cookie_class* temp_cookie = new cookie_class(number,cookie_class::retransmission);
             set_timer(scheduler->time()+rtt,temp_cookie);
 }
 
