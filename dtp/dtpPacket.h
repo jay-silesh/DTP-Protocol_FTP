@@ -15,7 +15,7 @@ class dtpPacket : public Packet {
     bool ack;
     bool fin;
     char *data;
-    bool last_packet;
+  //  bool last_packet;
     //Time time_out;
   	dtpPacket ();
     dtpPacket ( dtpPacket& pck );

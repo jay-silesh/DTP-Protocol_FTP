@@ -38,10 +38,8 @@ int wcounter=0;
 
 void writing(char *buffer)
 {
-  TRACE(TRL3, "\n\n\nWriting.... %d\n\n",++wcounter);
   FILE * pFile;
   pFile = fopen ( "output.txt" , "ab+" );
- // fputs (buffer,pFile);
   fwrite (buffer , 1 , strlen(buffer) , pFile);
   fclose (pFile);
 }
@@ -90,7 +88,7 @@ char * file_handling(int packet_no,char *file_holder_host)
 dtpHost::dtpHost(Address a) : FIFONode(a,16000)
 {
   TRACE(TRL3, "Initialized host with address %d\n", a);
-  state=dtpHost::SYN;
+ // state=dtpHost::SYN;
   sender=false;
 }
 
@@ -138,10 +136,10 @@ dtpHost::receive(Packet* pkt)
       //Received the Normal packet
       if(dpkt->data!=NULL)
       {
-          if(address()==2)
+//          if(address()==2)
               writing(dpkt->data);
-          else if(address()==1)
-             writing2(dpkt->data);
+  //        else 
+    //         writing2(dpkt->data);
           
       }
       if(dpkt->data==NULL || strlen(dpkt->data)<PAYLOAD_SIZE)
@@ -204,16 +202,36 @@ void
 dtpHost::handle_timer(void* cookie)
 {
     dtpPacket*  pkt = new dtpPacket;
-    pkt->last_packet=false;
+ //   pkt->last_packet=false;
     
     cookie_class * new_cookie=(cookie_class*)cookie;
 
     if(new_cookie->cookie_state==cookie_class::normal)
     {
-        pkt->source = address();
-        pkt->destination = destination;
-        pkt->length = sizeof(Packet);// + PAYLOAD_SIZE;
         
+        if(new_cookie->new_connection==true)
+        {
+          destination = new_cookie->destination;
+          sent_so_far = 0;
+          file_holder=new_cookie->file_holder;
+          sender=true;
+          state=dtpHost::SYN;        
+
+          /* setting up the destination's parameters...*/
+          dtpHost* temp_destination=(dtpHost*) scheduler->get_node(destination);
+          temp_destination->sent_so_far=0;
+          temp_destination->sender=false;
+          temp_destination->state=dtpHost::SYN;
+          /*********************************************/
+          TRACE(TRL3,"\n\n\nEntering the NEW CONNECTION for source %d and destination %d and packets %d\n\n\n\n",
+            address(),destination,sent_so_far);
+        }
+
+      pkt->source = address();
+      pkt->destination = destination;
+      pkt->length = sizeof(Packet);// + PAYLOAD_SIZE;
+
+    
         //Set packet parameters... // SYN,ACK,FIN,ID
 
         if(state==dtpHost::SYN)
@@ -324,12 +342,22 @@ dtpHost::handle_timer(void* cookie)
 
 void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
 {
-         destination = (d);
-         sent_so_far = 0;
-         file_holder=p;
-         sender=true;
+       //  destination = (d);
+       //  sent_so_far = 0;
+      //   file_holder=p;
+       //  sender=true;
          blank();
-         set_normal_cookie();
+
+         cookie_class* temp_cookie = new cookie_class(cookie_class::normal);
+         temp_cookie->destination=d;
+         temp_cookie->sent_so_far=0;
+         temp_cookie->sender=true;
+         temp_cookie->file_holder=p;
+         temp_cookie->new_connection=true;
+         set_timer(start_time,temp_cookie);
+
+
+         //set_normal_cookie();
          
 }
 
