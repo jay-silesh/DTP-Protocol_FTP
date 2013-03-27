@@ -17,8 +17,6 @@
 #include "cookie_class.h"
 
 
-int xxx=2;
-
 void
  blank()
 {
@@ -107,11 +105,7 @@ dtpHost::receive(Packet* pkt)
     {
       //  Received the SYN packet @ the receiver side
       destination=dpkt->source;
-    
-      if(xxx==1)
-       set_timer(scheduler->time(), NULL);
-      else if(xxx=2)
-        set_normal_cookie();
+      set_normal_cookie();
     }
     
     else if( dpkt->syn==1 && dpkt->ack==1  && dpkt->fin==0 )
@@ -119,10 +113,7 @@ dtpHost::receive(Packet* pkt)
       //Received the SYN packet @ the Sender side
       delete_retransmission_timmer(pkt->id);
       state=dtpHost::SYN_ACK;
-      if(xxx==1)
-       set_timer(scheduler->time(), NULL);
-      else if(xxx=2)
-        set_normal_cookie();
+      set_normal_cookie();
     }
     
     else if(dpkt->syn==0 && dpkt->ack==1 && dpkt->fin==0)
@@ -139,10 +130,7 @@ dtpHost::receive(Packet* pkt)
       else
       (temp_sender->re_packet_map).erase (iit);
       
-      if(xxx==1)
-        temp_sender->set_timer(scheduler->time(), NULL);     
-      else if (xxx==2)
-        temp_sender->set_normal_cookie();
+      temp_sender->set_normal_cookie();
     }
     
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==0 )//&& dpkt->id!=0)
@@ -160,11 +148,8 @@ dtpHost::receive(Packet* pkt)
       {          
         dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
         temp_sender->state=dtpHost::FIN;
-      
-        if(xxx==1)
-           temp_sender->set_timer(scheduler->time(), NULL);     
-        else if(xxx==2)
-          temp_sender->set_normal_cookie();
+   
+        temp_sender->set_normal_cookie();
       }
       
     }
@@ -174,9 +159,6 @@ dtpHost::receive(Packet* pkt)
      //Received the FIN packet
       packets_rec=dpkt->id;
       state=dtpHost::FIN;
-      if(xxx==1)
-      set_timer(scheduler->time(), NULL);
-      else if(xxx==2)
       set_normal_cookie();
     }
     
@@ -186,10 +168,7 @@ dtpHost::receive(Packet* pkt)
       packets_rec=dpkt->id;
       delete_retransmission_timmer(pkt->id-1);
       state=dtpHost::FIN_ACK;
-      if(xxx==1)
-        set_timer(scheduler->time(), NULL);
-      else if(xxx==2)
-        set_normal_cookie();
+      set_normal_cookie();
     }
 
 
@@ -229,7 +208,6 @@ dtpHost::handle_timer(void* cookie)
     
     cookie_class * new_cookie=(cookie_class*)cookie;
 
-//    if(new_cookie==NULL)
     if(new_cookie->cookie_state==cookie_class::normal)
     {
         pkt->source = address();
@@ -307,7 +285,6 @@ dtpHost::handle_timer(void* cookie)
         }  
         ((dtpPacket*) pkt)->print_sender();
     }
-   // else
     else if( new_cookie->cookie_state==cookie_class::retransmission)
     {
          //RetransmissionPacketMapIterator iit = re_packet_map.find((int)((cookie_class *)cookie)->id);
@@ -337,10 +314,7 @@ dtpHost::handle_timer(void* cookie)
       //sent_so_far++;  
       if(done_transmission==false)
       { 
-          if(xxx==1)
-          set_timer(scheduler->time(), NULL);
-          else if(xxx==2)
-          set_normal_cookie();
+         set_normal_cookie();
       }
      
   }
@@ -355,10 +329,7 @@ void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
          file_holder=p;
          sender=true;
          blank();
-         if(xxx==1)
-          set_timer(start_time, NULL);
-         else if(xxx==2)
-           set_normal_cookie();
+         set_normal_cookie();
          
 }
 

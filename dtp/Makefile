@@ -32,7 +32,6 @@ main.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 main.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Packet.h
 main.o: ../netsim/Timer.h ../netsim/PacketScheduler.h ../netsim/Scheduler.h
 main.o: ../netsim/Topology.h /usr/include/unistd.h /usr/include/getopt.h
-main.o: /usr/include/ctype.h /usr/include/endian.h /usr/include/xlocale.h
 dtpHost.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 dtpHost.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 dtpHost.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
