@@ -38,7 +38,7 @@ int wcounter=0;
 
 void writing(char *buffer)
 {
-  TRACE(TRL3,"\n\nWRITING -> %d\n\n",++wcounter);
+  //TRACE(TRL3,"\n\nWRITING -> %d\n\n",++wcounter);
   FILE * pFile;
   pFile = fopen ( "output.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
@@ -100,11 +100,6 @@ dtpHost::receive(Packet* pkt)
 {
     dtpPacket *dpkt=(dtpPacket*) pkt;
     
-    if(dpkt->id==2)
-      dpkt->id=6;
-    else if(dpkt->id==6)
-      dpkt->id=2;
-    
     if(dpkt->syn==true && dpkt->ack==false && dpkt->fin==false)
     {
       //  Received the SYN packet @ the receiver side
@@ -142,7 +137,7 @@ dtpHost::receive(Packet* pkt)
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==0 )//&& dpkt->id!=0)
     {
         //Received the Normal packet
-        TRACE(TRL3, "\n\n\nRECIEVED PACKET %d and expected is %d\n\n",dpkt->id,packet_expected);
+//        TRACE(TRL3, "\n\n\nRECIEVED PACKET %d and expected is %d\n\n",dpkt->id,packet_expected);
         if(dpkt->id==packet_expected)
         {
               //Received a Inorder packet...
@@ -151,7 +146,7 @@ dtpHost::receive(Packet* pkt)
               packet_expected++;
                 if(dpkt->data!=NULL)
                 {
-                    TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",dpkt->id);
+//                    TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",dpkt->id);
                   //          if(address()==2)
                                  writing(dpkt->data);
                   //          else 
@@ -162,7 +157,7 @@ dtpHost::receive(Packet* pkt)
                 if(dpkt->data==NULL || strlen(dpkt->data)<PAYLOAD_SIZE)
                 {
                   // Handling the case that the last packet is received and initialing the tear down..         
-                  TRACE(TRL3, "\n\n\nENTERING LAST CASE PACKET\n\n");
+  //                TRACE(TRL3, "\n\n\nENTERING LAST CASE PACKET\n\n");
                   dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
                   temp_sender->state=dtpHost::FIN;
                   temp_sender->set_normal_cookie();
@@ -175,7 +170,7 @@ dtpHost::receive(Packet* pkt)
         else
         {
             //Received a out of order packet...
-            TRACE(TRL3,"\n\nOut of order packet recived id %d and 'Q'ing it\n\n\n",dpkt->id);
+    //        TRACE(TRL3,"\n\nOut of order packet recived id %d and 'Q'ing it\n\n\n",dpkt->id);
             dtpPacket *inorder_temp_packet=new dtpPacket(*dpkt);
             InorderPacketMapPair entry_temp(inorder_temp_packet->id,inorder_temp_packet);
             order_packet_map.insert(entry_temp);
@@ -254,8 +249,8 @@ dtpHost::handle_timer(void* cookie)
           temp_destination->sender=false;
           temp_destination->state=dtpHost::SYN;
           /*********************************************/
-          TRACE(TRL3,"\n\n\nEntering the NEW CONNECTION for source %d and destination %d and packets %d\n\n\n\n",
-            address(),destination,sent_so_far);
+       /*   TRACE(TRL3,"\n\n\nEntering the NEW CONNECTION for source %d and destination %d and packets %d\n\n\n\n",
+            address(),destination,sent_so_far);  */
         }
 
       pkt->source = address();
@@ -445,17 +440,17 @@ void dtpHost::check_inorder_packets()
       InorderPacketMapIterator ott;
       for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
       {
-          TRACE(TRL3,"\n\n\nExpecting packet: %d and the it_packet id is: %d\n\n",packet_expected,ott->first);          
+//          TRACE(TRL3,"\n\n\nExpecting packet: %d and the it_packet id is: %d\n\n",packet_expected,ott->first);          
           if(ott->first==packet_expected)
           {
-            TRACE(TRL3,"\n\n\nCALLING THE RE-ORDERING FUCNTION WITH ID: %d\n\n",ott->first);
+  //          TRACE(TRL3,"\n\n\nCALLING THE RE-ORDERING FUCNTION WITH ID: %d\n\n",ott->first);
 
             dtpPacket *temp_packet=(dtpPacket*)((*ott).second);
             temp_packet->print_receiver();
             packet_expected++;
             if(temp_packet->data!=NULL)
             {
-                       TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",temp_packet->id);
+    //                   TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",temp_packet->id);
               //          if(address()==2) 
                              writing(temp_packet->data);
               //          else 
@@ -464,7 +459,7 @@ void dtpHost::check_inorder_packets()
             if(temp_packet->data==NULL || strlen(temp_packet->data)<PAYLOAD_SIZE)
             {
               // Handling the case that the last packet is received and initialing the tear down..         
-              TRACE(TRL3,"\n\n\nWRONG WRONG!!!!!!!! id : %d\n\n\n",temp_packet->id);
+      //        TRACE(TRL3,"\n\n\nWRONG WRONG!!!!!!!! id : %d\n\n\n",temp_packet->id);
               dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
               temp_sender->state=dtpHost::FIN;
               temp_sender->set_normal_cookie();
@@ -477,7 +472,7 @@ void dtpHost::check_inorder_packets()
           else
           { 
 
-            TRACE(TRL3,"\n\n\n\nBREAKIN OUT\n\n\n");
+        //    TRACE(TRL3,"\n\n\n\nBREAKIN OUT\n\n\n");
             break;
           }
       }
