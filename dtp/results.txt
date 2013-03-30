@@ -62,12 +62,12 @@ WRITING -> 1
 
 
 
-RECIEVED PACKET 5 and expected is 2
+RECIEVED PACKET 6 and expected is 2
 
  <37232, virtual void dtpHost::receive(Packet*)>
 
 
-Out of order packet recived id 5 and 'Q'ing it
+Out of order packet recived id 6 and 'Q'ing it
 
 
  <37232, virtual void dtpHost::receive(Packet*)>
@@ -98,121 +98,121 @@ Out of order packet recived id 4 and 'Q'ing it
 
 
 
-RECIEVED PACKET 2 and expected is 2
+RECIEVED PACKET 5 and expected is 2
 
  <73232, virtual void dtpHost::receive(Packet*)>
+
+
+Out of order packet recived id 5 and 'Q'ing it
+
+
+ <73232, virtual void dtpHost::receive(Packet*)>
+
+
+
+RECIEVED PACKET 2 and expected is 2
+
+ <85232, virtual void dtpHost::receive(Packet*)>
 Received Packet with the HEADER: source: 1, destination: 2, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <73232, void dtpPacket::print_receiver()>
+ <85232, void dtpPacket::print_receiver()>
 
 
 
 WRINTING PACKET 2
 
- <73232, virtual void dtpHost::receive(Packet*)>
+ <85232, virtual void dtpHost::receive(Packet*)>
 
 
 WRITING -> 2
 
- <73232, void writing(char*)>
+ <85232, void writing(char*)>
 
 
 
 Expecting packet: 3 and the it_packet id is: 3
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 
 CALLING THE RE-ORDERING FUCNTION WITH ID: 3
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 Received Packet with the HEADER: source: 1, destination: 2, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
- <73232, void dtpPacket::print_receiver()>
+ <85232, void dtpPacket::print_receiver()>
 
 
 
 WRINTING PACKET 3
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 WRITING -> 3
 
- <73232, void writing(char*)>
+ <85232, void writing(char*)>
 
 
 
 Expecting packet: 4 and the it_packet id is: 4
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 
 CALLING THE RE-ORDERING FUCNTION WITH ID: 4
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 Received Packet with the HEADER: source: 1, destination: 2, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
- <73232, void dtpPacket::print_receiver()>
+ <85232, void dtpPacket::print_receiver()>
 
 
 
 WRINTING PACKET 4
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 WRITING -> 4
 
- <73232, void writing(char*)>
+ <85232, void writing(char*)>
 
 
 
 Expecting packet: 5 and the it_packet id is: 5
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 
 CALLING THE RE-ORDERING FUCNTION WITH ID: 5
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 Received Packet with the HEADER: source: 1, destination: 2, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
- <73232, void dtpPacket::print_receiver()>
+ <85232, void dtpPacket::print_receiver()>
 
 
 
 WRINTING PACKET 5
 
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 WRITING -> 5
 
- <73232, void writing(char*)>
+ <85232, void writing(char*)>
 
 
 
-DELETEING packet 3
+Expecting packet: 6 and the it_packet id is: 6
 
- <73232, void dtpHost::check_inorder_packets()>
-
-
-
-DELETEING packet 4
-
- <73232, void dtpHost::check_inorder_packets()>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 
-DELETEING packet 5
+CALLING THE RE-ORDERING FUCNTION WITH ID: 6
 
- <73232, void dtpHost::check_inorder_packets()>
-
-
-
-RECIEVED PACKET 6 and expected is 6
-
- <85232, virtual void dtpHost::receive(Packet*)>
+ <85232, void dtpHost::check_inorder_packets()>
 Received Packet with the HEADER: source: 1, destination: 2, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
  <85232, void dtpPacket::print_receiver()>
 
@@ -220,7 +220,7 @@ Received Packet with the HEADER: source: 1, destination: 2, id: 6, length: 1500,
 
 WRINTING PACKET 6
 
- <85232, virtual void dtpHost::receive(Packet*)>
+ <85232, void dtpHost::check_inorder_packets()>
 
 
 WRITING -> 6

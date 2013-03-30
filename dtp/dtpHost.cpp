@@ -101,8 +101,8 @@ dtpHost::receive(Packet* pkt)
     dtpPacket *dpkt=(dtpPacket*) pkt;
     
     if(dpkt->id==2)
-      dpkt->id=5;
-    else if(dpkt->id==5)
+      dpkt->id=6;
+    else if(dpkt->id==6)
       dpkt->id=2;
     
     if(dpkt->syn==true && dpkt->ack==false && dpkt->fin==false)
@@ -442,20 +442,15 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
 
 void dtpHost::check_inorder_packets()
 {
-      int count=0;
       InorderPacketMapIterator ott;
       for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
       {
           TRACE(TRL3,"\n\n\nExpecting packet: %d and the it_packet id is: %d\n\n",packet_expected,ott->first);          
           if(ott->first==packet_expected)
           {
-            count++;
             TRACE(TRL3,"\n\n\nCALLING THE RE-ORDERING FUCNTION WITH ID: %d\n\n",ott->first);
 
             dtpPacket *temp_packet=(dtpPacket*)((*ott).second);
-          //            order_packet_map.erase(ott);
-
-          //  dtpPacket *temp_packet=new dtpPacket(*temp_pac);
             temp_packet->print_receiver();
             packet_expected++;
             if(temp_packet->data!=NULL)
@@ -474,7 +469,8 @@ void dtpHost::check_inorder_packets()
               temp_sender->state=dtpHost::FIN;
               temp_sender->set_normal_cookie();
             }
-      //      delete temp_packet;     
+            order_packet_map.erase(ott);
+      
             
            
           }
@@ -482,15 +478,7 @@ void dtpHost::check_inorder_packets()
           { 
 
             TRACE(TRL3,"\n\n\n\nBREAKIN OUT\n\n\n");
-            goto LABEL1;
-          }
-      }
-      LABEL1:
-      for(int i=0;i<count;i++)
-      {
-        for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
-          { TRACE(TRL3,"\n\n\nDELETEING packet %d\n\n",ott->first);
-            order_packet_map.erase(ott->first);
+            break;
           }
       }
 }
