@@ -38,6 +38,7 @@ int wcounter=0;
 
 void writing(char *buffer)
 {
+  TRACE(TRL3,"\n\nWRITING -> %d\n\n",++wcounter);
   FILE * pFile;
   pFile = fopen ( "output.txt" , "ab+" );
   fwrite (buffer , 1 , strlen(buffer) , pFile);
@@ -90,6 +91,7 @@ dtpHost::dtpHost(Address a) : FIFONode(a,16000)
   TRACE(TRL3, "Initialized host with address %d\n", a);
  // state=dtpHost::SYN;
   sender=false;
+  packet_expected=1;
 }
 
 
@@ -97,11 +99,16 @@ void
 dtpHost::receive(Packet* pkt)
 {
     dtpPacket *dpkt=(dtpPacket*) pkt;
-    dpkt->print_receiver();  
+    
+    if(dpkt->id==2)
+      dpkt->id=5;
+    else if(dpkt->id==5)
+      dpkt->id=2;
     
     if(dpkt->syn==true && dpkt->ack==false && dpkt->fin==false)
     {
       //  Received the SYN packet @ the receiver side
+      dpkt->print_receiver();
       destination=dpkt->source;
       set_normal_cookie();
     }
@@ -109,52 +116,76 @@ dtpHost::receive(Packet* pkt)
     else if( dpkt->syn==1 && dpkt->ack==1  && dpkt->fin==0 )
     {
       //Received the SYN packet @ the Sender side
-      delete_retransmission_timmer(pkt->id);
+      dpkt->print_receiver();
+      delete_retransmission_timmer(dpkt->id);
       state=dtpHost::SYN_ACK;
       set_normal_cookie();
     }
     
     else if(dpkt->syn==0 && dpkt->ack==1 && dpkt->fin==0)
     {
+      dpkt->print_receiver();
       TRACE(TRL3, "Established FDTP flow from %d to %d (%d)\n", destination,address(),scheduler->time());
-      delete_retransmission_timmer(pkt->id);
+      delete_retransmission_timmer(dpkt->id);
 
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       temp_sender->state=dtpHost::sending;      
-      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(pkt->id);
+      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(dpkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
         //Do Nothing...
       }
       else
       (temp_sender->re_packet_map).erase (iit);
-      
-      temp_sender->set_normal_cookie();
+       temp_sender->set_normal_cookie();
     }
     
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==0 )//&& dpkt->id!=0)
     {
-      //Received the Normal packet
-      if(dpkt->data!=NULL)
-      {
-//          if(address()==2)
-              writing(dpkt->data);
-  //        else 
-    //         writing2(dpkt->data);
-          
-      }
-      if(dpkt->data==NULL || strlen(dpkt->data)<PAYLOAD_SIZE)
-      {          
-        dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
-        temp_sender->state=dtpHost::FIN;
-   
-        temp_sender->set_normal_cookie();
-      }
-      
+        //Received the Normal packet
+        TRACE(TRL3, "\n\n\nRECIEVED PACKET %d and expected is %d\n\n",dpkt->id,packet_expected);
+        if(dpkt->id==packet_expected)
+        {
+              //Received a Inorder packet...
+              
+              dpkt->print_receiver();
+              packet_expected++;
+                if(dpkt->data!=NULL)
+                {
+                    TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",dpkt->id);
+                  //          if(address()==2)
+                                 writing(dpkt->data);
+                  //          else 
+                  //             writing2(dpkt->data);
+
+                }
+                
+                if(dpkt->data==NULL || strlen(dpkt->data)<PAYLOAD_SIZE)
+                {
+                  // Handling the case that the last packet is received and initialing the tear down..         
+                  TRACE(TRL3, "\n\n\nENTERING LAST CASE PACKET\n\n");
+                  dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+                  temp_sender->state=dtpHost::FIN;
+                  temp_sender->set_normal_cookie();
+                }
+                else
+                {
+                  check_inorder_packets();
+                }
+        }
+        else
+        {
+            //Received a out of order packet...
+            TRACE(TRL3,"\n\nOut of order packet recived id %d and 'Q'ing it\n\n\n",dpkt->id);
+            InorderPacketMapPair entry_temp(dpkt->id,dpkt);
+            order_packet_map.insert(entry_temp);
+        }
+        
     }
 
     else if(dpkt->syn==1 && dpkt->ack==0 && dpkt->fin==1)
     {
      //Received the FIN packet
+      dpkt->print_receiver();
       packets_rec=dpkt->id;
       state=dtpHost::FIN;
       set_normal_cookie();
@@ -163,8 +194,9 @@ dtpHost::receive(Packet* pkt)
     else if(dpkt->syn==0 && dpkt->ack==1 && dpkt->fin==1)
     {
     //Received the FIN-ACK packet
+      dpkt->print_receiver();
       packets_rec=dpkt->id;
-      delete_retransmission_timmer(pkt->id-1);
+      delete_retransmission_timmer(dpkt->id-1);
       state=dtpHost::FIN_ACK;
       set_normal_cookie();
     }
@@ -172,24 +204,22 @@ dtpHost::receive(Packet* pkt)
 
     else if(dpkt->syn==1 && dpkt->ack==1 && dpkt->fin==1)
     {
-     // DONE TRANSMISSION!!!
-      delete_retransmission_timmer(pkt->id-1);
+      // DONE TRANSMISSION!!!
+      dpkt->print_receiver();
+      delete_retransmission_timmer(dpkt->id-1);
       
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
-      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(pkt->id);
+      RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(dpkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
       }
       else
       {
           (temp_sender->re_packet_map).erase (iit);
-          TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", pkt->source, pkt->destination, scheduler->time());
-          
-          //Setting up new_host_setting
-
-
+          TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", dpkt->source, dpkt->destination, scheduler->time());
       }
     }
     delete pkt;
+//    delete dpkt;
 }
 
 dtpHost::~dtpHost()
@@ -409,3 +439,57 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
    re_packet_map.erase (iit);
 }
 
+void dtpHost::check_inorder_packets()
+{
+      int count=0;
+      InorderPacketMapIterator ott;
+      for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
+      {
+          TRACE(TRL3,"\n\n\nExpecting packet: %d and the it_packet id is: %d\n\n",packet_expected,ott->first);          
+          if(ott->first==packet_expected)
+          {
+            count++;
+            TRACE(TRL3,"\n\n\nCALLING THE RE-ORDERING FUCNTION WITH ID: %d\n\n",ott->first);
+
+            dtpPacket *temp_packet=(dtpPacket*)((*ott).second);
+          //            order_packet_map.erase(ott);
+
+          //  dtpPacket *temp_packet=new dtpPacket(*temp_pac);
+            temp_packet->print_receiver();
+            packet_expected++;
+            if(temp_packet->data!=NULL)
+            {
+                       TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",temp_packet->id);
+              //          if(address()==2) 
+                             writing(temp_packet->data);
+              //          else 
+              //             writing2(temp_packet->data);
+            }
+            if(temp_packet->data==NULL || strlen(temp_packet->data)<PAYLOAD_SIZE)
+            {
+              // Handling the case that the last packet is received and initialing the tear down..         
+              TRACE(TRL3,"\n\n\nWRONG WRONG!!!!!!!! id : %d\n\n\n",temp_packet->id);
+              dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+              temp_sender->state=dtpHost::FIN;
+              temp_sender->set_normal_cookie();
+            }
+      //      delete temp_packet;     
+            
+           
+          }
+          else
+          { 
+
+            TRACE(TRL3,"\n\n\n\nBREAKIN OUT\n\n\n");
+            goto LABEL1;
+          }
+      }
+      LABEL1:
+      for(int i=0;i<count;i++)
+      {
+        for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
+          { TRACE(TRL3,"\n\n\nDELETEING packet %d\n\n",ott->first);
+            order_packet_map.erase(ott->first);
+          }
+      }
+}

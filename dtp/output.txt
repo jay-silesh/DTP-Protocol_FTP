@@ -1,8 +1,64 @@
-hello
+>This data is in the Hello.txt
 
-3
-end<<
-hello
 
-4
-end<<
+Feb 21 00:59:38 ubuntu rsyslogd: [origin software="rsyslogd" swVersion="5.8.6" x-pid="631" x-info="http://www.rsyslog.com"] rsyslogd was HUPed
+Feb 21 00:59:41 ubuntu AptDaemon: INFO: Quitting due to inactivity
+Feb 21 00:59:41 ubuntu AptDaemon: INFO: Quitting was requested
+Feb 21 00:59:41 ubuntu dbus[604]: [system] Activating service name='org.debian.apt' (using servicehelper)
+Feb 21 00:59:41 ubuntu AptDaemon: INFO: Initializing daemon
+Feb 21 00:59:41 ubuntu dbus[604]: [system] Successfully activated service 'org.debian.apt'
+Feb 21 00:59:41 ubuntu AptDaemon.PackageKit: INFO: Initializing PackageKit compat layer
+Feb 21 00:59:43 ubuntu anacron[10298]: Job `cron.daily' terminated
+Feb 21 00:59:43 ubuntu anacron[10298]: Normal exit (1 job run)
+Feb 21 01:00:17 ubuntu kernel: [18887.149796] usb 3-1: USB disconnect, device number 2
+Feb 21 01:00:56 ubuntu anacron[11193]: Anacron 2.3 started on 2013-02-21
+Feb 21 01:00:56 ubuntu anacron[11193]: Normal exit (0 jobs run)
+Feb 21 01:04:42 ubuntu AptDaemon: INFO: Quitting due to inactivity
+Feb 21 01:04:42 ubuntu AptDaemon: INFO: Quitting was requested
+Feb 21 01:04:42 ubuntu dbus[604]: [system] Activating service name='org.debian.apt' (using servicehelper)
+Feb 21 01:04:42 ubuntu AptDaemon: INFO: Initializing daemon
+Feb 21 01:04:42 ubuntu dbus[604]: [system] Successfully activated service 'org.debian.apt'
+Feb 21 01:04:42 ubuntu AptDaemon.PackageKit: INFO: Initializing PackageKit compat lavice 'org.debian.apt'
+Feb 21 01:04:42 ubuntu AptDaemon.PackageKit: INFO: Initializing PackageKit compat layer
+Feb 21 01:05:59 ubuntu dhclient: DHCPREQUEST of 207.151.92.94 on wlan0 to 207.151.92.2 port 67
+Feb 21 01:05:59 ubuntu dhclient: DHCPACK of 207.151.92.94 from 207.151.92.2
+Feb 21 01:05:59 ubuntu dhclient: bound to 207.151.92.94 -- renewal in 784 seconds.
+Feb 21 01:06:53 ubuntu wpa_supplicant[965]: Trying to authenticate with 00:24:6c:b4:a4:a0 (SSID='USC Wireless' freq=2412 MHz)
+Feb 21 01:06:53 ubuntu kernel: [19282.432783] wlan0: authenticate with 00:24:6c:b4:a4:a0
+Feb 21 01:06:53 ubuntu wpa_supplicant[965]: CTRL-EVENT-DISCONNECTED bssid=00:24:6c:b4:a4:a0 reason=4
+Feb 21 01:06:53 ubuntu NetworkManager[845]: <info> (wlan0): supplicant interface state: completed -> authenticating
+Feb 21 01:06:53 ubuntu kernel: [19282.435512] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 1/3)
+Feb 21 01:06:53 ubuntu kernel: [19282.435579] cfg80211: All devices are disconnected, going to restore regulatory settings
+Feb 21 01:06:53 ubuntu kernel: [19282.435583] cfg80211: Restoring regulatory settings
+Feb 21 01:06:53 ubuntu kernel: [19282.435588] cfg80211: Calling CRDA to update world regulatory domain
+Feb 21 01:06:53 ubuntu kernel: [19282.439081] cfg80211: Ignoring regulatory request Set by core since the driver uses its own custom regulatory domain
+Feb 21 01:06:53 ubuntu kernel: [19282.439085] cfg80211: World regulatory domain updated:
+Feb 21 01:06:53 ubuntu kernel: 53 ubuntu kernel: [19282.439088] cfg80211:   (2402000 KHz - 2472000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Feb 21 01:06:53 ubuntu kernel: [19282.439090] cfg80211:   (2457000 KHz - 2482000 KHz @ 20000 KHz), (300 mBi, 2000 mBm)
+Feb 21 01:06:53 ubuntu kernel: [19282.439092] cfg80211:   (2474000 KHz - 2494000 KHz @ 20000 KHz), (300 mBi, 2000 mBm)
+Feb 21 01:06:53 ubuntu kernel: [19282.439093] cfg80211:   (5170000 KHz - 5250000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Feb 21 01:06:53 ubuntu kernel: [19282.439095] cfg80211:   (5735000 KHz - 5835000 KHz @ 40000 KHz), (300 mBi, 2000 mBm)
+Feb 21 01:06:53 ubuntu kernel: [19282.637217] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 2/3)
+Feb 21 01:06:53 ubuntu kernel: [19282.840853] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 3/3)
+Feb 21 01:06:53 ubuntu kernel: [19283.044602] wlan0: authentication with 00:24:6c:b4:a4:a0 timed out
+Feb 21 01:06:57 ubuntu NetworkManager[845]: <info> (wlan0): roamed from BSSID 00:24:6C:B4:B1:98 (USC Wireless) to (none) ((none))
+Feb 21 01:07:01 ubuntu wpa_supplicant[965]: Trying to authenticate with 00:24:6c:b4:a4:a0 (SSID='USC Wireless' freq=2412 MHz)
+Feb 21 01:07:01 ubuntu kernel: [19291.110491] wlan0: authenticate with 00:24:6c:b4:a4:a0
+Feb 21 01:07:01 ubuntu kernel: [19291.118069] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 1/3)
+Feb 21 01:07:02 ubuntu kernel: [19291.320279] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 2/3)
+Feb 21 01:07:02 ubuntu kernel: [19291.523970] wlan0: direct yer
+Feb 21 01:05:59 ubuntu dhclient: DHCPREQUEST of 207.151.92.94 on wlan0 to 207.151.92.2 port 67
+Feb 21 01:05:59 ubuntu dhclient: DHCPACK of 207.151.92.94 from 207.151.92.2
+Feb 21 01:05:59 ubuntu dhclient: bound to 207.151.92.94 -- renewal in 784 seconds.
+Feb 21 01:06:53 ubuntu wpa_supplicant[965]: Trying to authenticate with 00:24:6c:b4:a4:a0 (SSID='USC Wireless' freq=2412 MHz)
+Feb 21 01:06:53 ubuntu kernel: [19282.432783] wlan0: authenticate with 00:24:6c:b4:a4:a0
+Feb 21 01:06:53 ubuntu wpa_supplicant[965]: CTRL-EVENT-DISCONNECTED bssid=00:24:6c:b4:a4:a0 reason=4
+Feb 21 01:06:53 ubuntu NetworkManager[845]: <info> (wlan0): supplicant interface state: completed -> authenticating
+Feb 21 01:06:53 ubuntu kernel: [19282.435512] wlan0: direct probe to 00:24:6c:b4:a4:a0 (try 1/3)
+Feb 21 01:06:53 ubuntu kernel: [19282.435579] cfg80211: All devices are disconnected, going to restore regulatory settings
+Feb 21 01:06:53 ubuntu kernel: [19282.435583] cfg80211: Restoring regulatory settings
+Feb 21 01:06:53 ubuntu kernel: [19282.435588] cfg80211: Calling CRDA to update world regulatory domain
+Feb 21 01:06:53 ubuntu kernel: [19282.439081] cfg80211: Ignoring regulatory request Set by core since the driver uses its own custom regulatory domain
+Feb 21 01:06:53 ubuntu kernel: [19282.439085] cfg80211: World regulatory domain updated:
+Feb 21 01:06:53 ubuntu kernel: [19282.439086] cfg80211:   (start_freq - end_freq @ bandwidth), (max_antenna_gain, max_eirp)
+Feb 21 01:06:

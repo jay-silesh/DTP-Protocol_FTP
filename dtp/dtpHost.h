@@ -8,6 +8,9 @@ typedef map<unsigned int, Packet*, ltid>::iterator RetransmissionPacketMapIterat
 typedef pair<unsigned int,Packet*> RetransmissionPacketMapPair;
 
 
+typedef map<unsigned int, Packet*, ltid> InorderPacketMap;
+typedef map<unsigned int, Packet*, ltid>::iterator InorderPacketMapIterator;
+typedef pair<unsigned int,Packet*> InorderPacketMapPair;
 
 
 
@@ -27,10 +30,8 @@ class dtpHost : public FIFONode {
     char * file_holder;
     
 
-    //CHECK THIS VARIABLE..  
     unsigned int packets_rec;
-    //int        packets_to_send;    // number of packets
-
+    unsigned int packet_expected;
 
     enum
     {
@@ -39,12 +40,15 @@ class dtpHost : public FIFONode {
     bool sender;
     void set_packet( Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p);
     void set_packet( Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned int id_p);
-    RetransmissionPacketMap  re_packet_map;
     void delete_retransmission_timmer(int packet_no);
     void set_retransmission();
     void set_retransmission_map(Packet *pkt_t);
     void set_retransmission_cookie(unsigned int , int);
     void set_normal_cookie();
+    void check_inorder_packets();
   
+    RetransmissionPacketMap  re_packet_map;
+    InorderPacketMap order_packet_map;
+
 };
 
