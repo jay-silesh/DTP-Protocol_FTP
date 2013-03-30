@@ -176,7 +176,8 @@ dtpHost::receive(Packet* pkt)
         {
             //Received a out of order packet...
             TRACE(TRL3,"\n\nOut of order packet recived id %d and 'Q'ing it\n\n\n",dpkt->id);
-            InorderPacketMapPair entry_temp(dpkt->id,dpkt);
+            dtpPacket *inorder_temp_packet=new dtpPacket(*dpkt);
+            InorderPacketMapPair entry_temp(inorder_temp_packet->id,inorder_temp_packet);
             order_packet_map.insert(entry_temp);
         }
         
