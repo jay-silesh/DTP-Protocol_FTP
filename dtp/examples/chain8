@@ -23,6 +23,6 @@ Host(5)
 
 Host(6)
 
-FDTPFlow(1,5,50,"Readme")
+FDTPFlow(1,5,50,"hello.txt")
 
-FDTPFlow(2,6,52,"Readme")
+FDTPFlow(2,6,52,"hello2.txt")

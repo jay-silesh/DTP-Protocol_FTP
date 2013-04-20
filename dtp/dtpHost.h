@@ -45,7 +45,7 @@ class dtpHost : public FIFONode {
     void set_packet( Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned int id_p);
     void delete_retransmission_timmer(int packet_no);
     void set_retransmission();
-    void set_retransmission_map(Packet *pkt_t);
+    void set_retransmission_map(const Packet *pkt_t);
     void set_retransmission_cookie(unsigned int , int);
     void set_normal_cookie();
     void check_inorder_packets();

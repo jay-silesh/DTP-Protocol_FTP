@@ -18,7 +18,7 @@
 
 int initial_rtt=50000;
 
-int write_host=10;
+int write_host=2;
 int write_host2=4;
 
 
@@ -134,13 +134,11 @@ dtpHost::receive(Packet* pkt)
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       temp_sender->state=dtpHost::sending;      
       RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(dpkt->id);
-  /*      if (iit == (temp_sender->re_packet_map).end()) {
+      if (iit == (temp_sender->re_packet_map).end()) {
         //Do Nothing...
       }
       else
-      (temp_sender->re_packet_map).erase (iit);*/
-
-       temp_sender->delete_retransmission_timmer(dpkt->id); 
+      (temp_sender->re_packet_map).erase (iit);
        temp_sender->set_normal_cookie();
     }
     
@@ -399,6 +397,7 @@ dtpHost::handle_timer(void* cookie)
     {
         /* This is thr re-transmission part of the code.... 
           The host is now Re-transmitting one of the packets */
+          TRACE(TRL3,"\n\nTrying to pull out pack no: %d\n\n",new_cookie->id);
           
          dtpPacket * pkt1;
          RetransmissionPacketMapIterator iit = re_packet_map.find(new_cookie->id);
@@ -410,13 +409,13 @@ dtpHost::handle_timer(void* cookie)
             dtpPacket *temp=(dtpPacket*)((*iit).second);
         //    delete pkt;
             
-              pkt1 = new dtpPacket(*temp);
+            dtpPacket*  pkt1 = new dtpPacket(*temp);
             
             delete_retransmission_timmer(temp->id);
             set_retransmission_cookie(pkt1->id,rtt_in_host);
             set_retransmission_map(pkt1);
           }
-    //      TRACE(TRL3, "\nHost is : %d\n",address());
+          TRACE(TRL3, "\nHost is : %d\n",address());
      
         ((dtpPacket*) pkt1)->print_resender();
       send(pkt1);
@@ -467,9 +466,9 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned
 }
 
 
-void dtpHost::set_retransmission_map(const Packet *pkt_t)
+void dtpHost::set_retransmission_map(Packet *pkt_t)
 {
-      //      TRACE(TRL3,"\n\nInserting RE-trnas: %d @ host %d\n\n",pkt_t->id,address());          
+              TRACE(TRL3,"\n\nInserting RE-trnas: %d @ host %d\n\n",pkt_t->id,address());          
             dtpPacket* temp_dtp=new dtpPacket(*(dtpPacket*)pkt_t);
             RetransmissionPacketMapPair entry(pkt_t->id,temp_dtp);
             re_packet_map.insert(entry);
@@ -490,7 +489,7 @@ void dtpHost::set_normal_cookie()
 
 void dtpHost::delete_retransmission_timmer(int packet_no)
 {
-   //TRACE(TRL3,"\n\nDeleteing pack: %d @ host %d\n\n",packet_no,address());
+   TRACE(TRL3,"\n\nDeleteing pack: %d @ host %d\n\n",packet_no,address());
 
    RetransmissionPacketMapIterator iit=re_packet_map.find(packet_no);
    if (iit == re_packet_map.end()) {
