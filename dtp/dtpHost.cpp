@@ -21,6 +21,8 @@ int initial_rtt=50000;
 int write_host=10;
 int write_host2=4;
 
+int initial_cwnd=3;
+
 
 void
  blank()
@@ -99,7 +101,7 @@ dtpHost::dtpHost(Address a) : FIFONode(a,16000)
   packet_expected=1;
   rtt_in_host=initial_rtt;
   packet_expected_sender_side=2;
-
+  cwnd_host=initial_cwnd;
 }
 
 
@@ -152,11 +154,16 @@ dtpHost::receive(Packet* pkt)
         {
               //Received a Inorder packet...
 
-              /*Setting up for sending the ACK packet from the reciever side */
-              state=dtpHost::sending; //Setting up the sending state for the receiver...
-              normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
-              set_normal_cookie();  // Have to send ACK-for each packet...              
-              
+              if(cwnd_host== 0)
+              {    
+                /*Setting up for sending the ACK packet from the reciever side */
+                state=dtpHost::sending; //Setting up the sending state for the receiver...
+                normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
+                set_normal_cookie();  // Have to send ACK-for each packet...              
+                cwnd_host=initial_cwnd;
+              }
+              else
+                cwnd_host--;
 
               dpkt->print_receiver();
               packet_expected++;
@@ -194,7 +201,9 @@ dtpHost::receive(Packet* pkt)
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==1)
     {
      //Received the ACK FOR THE NORMAL PACKET at the sender's side
-        
+      
+      cwnd_host=initial_cwnd; // Setting the cwnd Window back.. 
+
       dpkt->fin=0;  //Changing the value of fin so that it is in symetry
       dpkt->print_receiver();
       delete_retransmission_timmer(dpkt->id-1);
@@ -282,7 +291,7 @@ dtpHost::handle_timer(void* cookie)
           packet_expected=1;
           packet_expected_sender_side=2;
           rtt_in_host=initial_rtt;
-          
+          cwnd_host=initial_cwnd;         
 
           /* setting up the destination's parameters...*/
           dtpHost* temp_destination=(dtpHost*) scheduler->get_node(destination);
@@ -292,6 +301,7 @@ dtpHost::handle_timer(void* cookie)
           temp_destination->packet_expected=1;
           temp_destination->packet_expected_sender_side=2;
           temp_destination->rtt_in_host=initial_rtt;
+          temp_destination->cwnd_host=initial_cwnd;
           /*********************************************/
         }
 
@@ -422,18 +432,18 @@ dtpHost::handle_timer(void* cookie)
       send(pkt1);
     }
 
-  //send(pkt);
   
-/*   // This is part of the code is for basically sending packets continously... Also check the receiver Normal packet segment 
-  if(state==dtpHost::sending)
+   // This is part of the code is for basically sending packets continously... Also check the receiver Normal packet segment 
+  if(state==dtpHost::sending && (cwnd_host > 0 ) )
   {
+      cwnd_host--;
       //sent_so_far++;  
       if(done_transmission==false)
       { 
          set_normal_cookie();
       }
      
-  }*/
+  }
   
   return;
 }
