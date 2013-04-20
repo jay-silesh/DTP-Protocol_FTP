@@ -29,9 +29,12 @@ class dtpHost : public FIFONode {
     int		sent_so_far;		// number sent
     char * file_holder;
     
-
+    int rtt_in_host; // The RTT recorded in the host...
     unsigned int packets_rec;
     unsigned int packet_expected;
+    unsigned int packet_expected_sender_side;
+    unsigned int normal_packet_received;  //At the receiver side , to know which NORMAL packets has been recieved
+
 
     enum
     {

@@ -1,0 +1,9 @@
+//MAKE THE NEW_PARAMETER INI is done in all places....
+
+
+//File handling to binary file_handling
+
+//Change the copying of Char-packet to Binary-Copy packet
+
+//Try to change the 3-way connection setup to 2-way connection setup
+

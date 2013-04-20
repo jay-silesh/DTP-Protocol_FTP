@@ -1,6 +1,10 @@
 #!/bin/sh
 
-if [ $1 -eq 2 ]; then
+
+if [ -n "$1"];  then
+	source_file="hello.txt"
+	dest_file="output.txt"
+elif [ "$1" -eq 2 ]; then
 	source_file="hello2.txt"
 	dest_file="output1.txt"
 else

@@ -16,6 +16,8 @@
 #include <cstring>
 #include "cookie_class.h"
 
+int initial_rtt=24000;
+
 
 void
  blank()
@@ -92,6 +94,9 @@ dtpHost::dtpHost(Address a) : FIFONode(a,16000)
  // state=dtpHost::SYN;
   sender=false;
   packet_expected=1;
+  rtt_in_host=initial_rtt;
+  packet_expected_sender_side=2;
+
 }
 
 
@@ -102,7 +107,7 @@ dtpHost::receive(Packet* pkt)
     
     if(dpkt->syn==true && dpkt->ack==false && dpkt->fin==false)
     {
-      //  Received the SYN packet @ the receiver side
+      //Received the SYN packet @ the receiver side
       dpkt->print_receiver();
       destination=dpkt->source;
       set_normal_cookie();
@@ -137,16 +142,21 @@ dtpHost::receive(Packet* pkt)
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==0 )//&& dpkt->id!=0)
     {
         //Received the Normal packet
-//        TRACE(TRL3, "\n\n\nRECIEVED PACKET %d and expected is %d\n\n",dpkt->id,packet_expected);
+        //NOTE: What ever changes made here has to be made in the "check_inorder_packets()"
         if(dpkt->id==packet_expected)
         {
               //Received a Inorder packet...
+
+              /*Setting up for sending the ACK packet from the reciever side */
+              state=dtpHost::sending; //Setting up the sending state for the receiver...
+              normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
+              set_normal_cookie();  // Have to send ACK-for each packet...              
               
+
               dpkt->print_receiver();
               packet_expected++;
                 if(dpkt->data!=NULL)
                 {
-//                    TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",dpkt->id);
                   //          if(address()==2)
                                  writing(dpkt->data);
                   //          else 
@@ -157,10 +167,9 @@ dtpHost::receive(Packet* pkt)
                 if(dpkt->data==NULL || strlen(dpkt->data)<PAYLOAD_SIZE)
                 {
                   // Handling the case that the last packet is received and initialing the tear down..         
-  //                TRACE(TRL3, "\n\n\nENTERING LAST CASE PACKET\n\n");
-                  dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+                  /*dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
                   temp_sender->state=dtpHost::FIN;
-                  temp_sender->set_normal_cookie();
+                  temp_sender->set_normal_cookie();*/
                 }
                 else
                 {
@@ -170,12 +179,31 @@ dtpHost::receive(Packet* pkt)
         else
         {
             //Received a out of order packet...
-    //        TRACE(TRL3,"\n\nOut of order packet recived id %d and 'Q'ing it\n\n\n",dpkt->id);
             dtpPacket *inorder_temp_packet=new dtpPacket(*dpkt);
             InorderPacketMapPair entry_temp(inorder_temp_packet->id,inorder_temp_packet);
             order_packet_map.insert(entry_temp);
         }
         
+    }
+
+    else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==1)
+    {
+     //Received the ACK FOR THE NORMAL PACKET at the sender's side
+        
+      dpkt->fin=0;  //Changing the value of fin so that it is in symetry
+      dpkt->print_receiver();
+      delete_retransmission_timmer(dpkt->id-1);
+      if(done_transmission==false)
+      {
+         set_normal_cookie();
+      }
+      else if(done_transmission==true)
+      {
+            /* this is basically checking if this is the last packet and 
+                here after you have to send a FIN packet */
+              state=dtpHost::FIN;
+              set_normal_cookie();
+      }
     }
 
     else if(dpkt->syn==1 && dpkt->ack==0 && dpkt->fin==1)
@@ -242,20 +270,22 @@ dtpHost::handle_timer(void* cookie)
           file_holder=new_cookie->file_holder;
           sender=true;
           state=dtpHost::SYN;        
+          packet_expected=1;
+          packet_expected_sender_side=2;
 
           /* setting up the destination's parameters...*/
           dtpHost* temp_destination=(dtpHost*) scheduler->get_node(destination);
           temp_destination->sent_so_far=0;
           temp_destination->sender=false;
           temp_destination->state=dtpHost::SYN;
+          temp_destination->packet_expected=1;
+          temp_destination->packet_expected_sender_side=2;
           /*********************************************/
-       /*   TRACE(TRL3,"\n\n\nEntering the NEW CONNECTION for source %d and destination %d and packets %d\n\n\n\n",
-            address(),destination,sent_so_far);  */
         }
 
-      pkt->source = address();
-      pkt->destination = destination;
-      pkt->length = sizeof(Packet);// + PAYLOAD_SIZE;
+        pkt->source = address();
+        pkt->destination = destination;
+        pkt->length = sizeof(Packet);// + PAYLOAD_SIZE;
 
     
         //Set packet parameters... // SYN,ACK,FIN,ID
@@ -266,13 +296,13 @@ dtpHost::handle_timer(void* cookie)
             if(sender==true)
             {  
               set_packet((dtpPacket*)pkt,1,0,0,0);
-              set_retransmission_cookie(pkt->id,4000);
+              set_retransmission_cookie(pkt->id,rtt_in_host);
               set_retransmission_map(pkt);
             }
             else //if it is the reciever
             {  
               set_packet((dtpPacket*)pkt,1,1,0,0);
-              set_retransmission_cookie(pkt->id,4000);
+              set_retransmission_cookie(pkt->id,rtt_in_host);
               set_retransmission_map(pkt);
             }
         }
@@ -282,23 +312,44 @@ dtpHost::handle_timer(void* cookie)
             //Sending the SYN-ACK packets
             set_packet((dtpPacket*)pkt,0,1,0,0);
             pkt->data=NULL;
-            set_retransmission_cookie(pkt->id,4000);
+            set_retransmission_cookie(pkt->id,rtt_in_host);
             set_retransmission_map(pkt);
         }
 
         else if(state==dtpHost::sending)
         {
-            //Sending NORMAL packets
-            done_transmission=false;
-            set_packet((dtpPacket*)pkt,0,0,0,sent_so_far+1);
-            pkt->data=file_handling((pkt->id)-1,file_holder);
-            sent_so_far++;
-            if(pkt->data==NULL || strlen(pkt->data)<PAYLOAD_SIZE)
-            {
-               done_transmission=true;
-            }
-            else 
-              pkt->length+=strlen(pkt->data);
+              
+              //Sending NORMAL packets
+              
+          if(sender==true)
+          {
+              done_transmission=false;
+              set_packet((dtpPacket*)pkt,0,0,0,sent_so_far+1);
+              pkt->data=file_handling((pkt->id)-1,file_holder);
+              
+              //Re-transmission for Normal Packets
+              set_retransmission_cookie(pkt->id,rtt_in_host);
+              set_retransmission_map(pkt);
+
+
+              sent_so_far++;
+              if(pkt->data==NULL || strlen(pkt->data)<PAYLOAD_SIZE)
+              {
+                 done_transmission=true;
+              }
+              else 
+                pkt->length+=strlen(pkt->data);
+          }
+          else
+          {
+            //Sending NORMAL packets at the receiver side .... i.e. Sending the ACK FOR NORMAL packets
+              pkt->data=NULL;
+              set_packet((dtpPacket*)pkt,0,0,1,normal_packet_received+1);  //sent_so_far+2 = Since ACK shd always be one plus
+   //           set_retransmission_cookie(pkt->id,rtt_in_host);
+   //           set_retransmission_map(pkt);
+
+          }
+
         }
 
         else if( state==dtpHost::FIN)          //this is at the SENDER SIDE
@@ -308,13 +359,13 @@ dtpHost::handle_timer(void* cookie)
             if(sender==true)
             {
               set_packet((dtpPacket*)pkt,1,0,1,sent_so_far+1);
-              set_retransmission_cookie(pkt->id,4000);
+              set_retransmission_cookie(pkt->id,rtt_in_host);
               set_retransmission_map(pkt);
             }
             else
             { 
                set_packet((dtpPacket*)pkt,0,1,1,packets_rec+1);
-               set_retransmission_cookie(pkt->id,4000);
+               set_retransmission_cookie(pkt->id,rtt_in_host);
                set_retransmission_map(pkt);
             }
         }
@@ -324,13 +375,16 @@ dtpHost::handle_timer(void* cookie)
             //Sending FIN-ACK packet         
             set_packet((dtpPacket*)pkt,1,1,1,packets_rec+1);
             pkt->data=NULL;      
-            set_retransmission_cookie(pkt->id,4000);
+            set_retransmission_cookie(pkt->id,rtt_in_host);
             set_retransmission_map(pkt);
         }  
         ((dtpPacket*) pkt)->print_sender();
     }
     else if( new_cookie->cookie_state==cookie_class::retransmission)
     {
+        /* This is thr re-transmission part of the code.... 
+          The host is now Re-transmitting one of the packets */
+
          //RetransmissionPacketMapIterator iit = re_packet_map.find((int)((cookie_class *)cookie)->id);
          RetransmissionPacketMapIterator iit = re_packet_map.find(new_cookie->id);
          if (iit == re_packet_map.end()) {
@@ -344,7 +398,7 @@ dtpHost::handle_timer(void* cookie)
             dtpPacket*  pkt = new dtpPacket(*temp);
             
             delete_retransmission_timmer(temp->id);
-            set_retransmission_cookie(pkt->id,4000);
+            set_retransmission_cookie(pkt->id,rtt_in_host);
             set_retransmission_map(pkt);
           }
         ((dtpPacket*) pkt)->print_resender();
@@ -352,7 +406,7 @@ dtpHost::handle_timer(void* cookie)
 
   send(pkt);
   
-
+/*   // This is part of the code is for basically sending packets continously... Also check the receiver Normal packet segment 
   if(state==dtpHost::sending)
   {
       //sent_so_far++;  
@@ -361,19 +415,14 @@ dtpHost::handle_timer(void* cookie)
          set_normal_cookie();
       }
      
-  }
+  }*/
   
   return;
 }
 
 void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
 {
-       //  destination = (d);
-       //  sent_so_far = 0;
-      //   file_holder=p;
-       //  sender=true;
          blank();
-
          cookie_class* temp_cookie = new cookie_class(cookie_class::normal);
          temp_cookie->destination=d;
          temp_cookie->sent_so_far=0;
@@ -381,10 +430,6 @@ void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
          temp_cookie->file_holder=p;
          temp_cookie->new_connection=true;
          set_timer(start_time,temp_cookie);
-
-
-         //set_normal_cookie();
-         
 }
 
 void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)
@@ -440,17 +485,16 @@ void dtpHost::check_inorder_packets()
       InorderPacketMapIterator ott;
       for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
       {
-//          TRACE(TRL3,"\n\n\nExpecting packet: %d and the it_packet id is: %d\n\n",packet_expected,ott->first);          
           if(ott->first==packet_expected)
           {
-  //          TRACE(TRL3,"\n\n\nCALLING THE RE-ORDERING FUCNTION WITH ID: %d\n\n",ott->first);
-
             dtpPacket *temp_packet=(dtpPacket*)((*ott).second);
             temp_packet->print_receiver();
+            
+            normal_packet_received=packet_expected; // This is for normal packet ACK to be sent for...
+
             packet_expected++;
             if(temp_packet->data!=NULL)
             {
-    //                   TRACE(TRL3, "\n\n\nWRINTING PACKET %d\n\n",temp_packet->id);
               //          if(address()==2) 
                              writing(temp_packet->data);
               //          else 
@@ -458,21 +502,14 @@ void dtpHost::check_inorder_packets()
             }
             if(temp_packet->data==NULL || strlen(temp_packet->data)<PAYLOAD_SIZE)
             {
-              // Handling the case that the last packet is received and initialing the tear down..         
-      //        TRACE(TRL3,"\n\n\nWRONG WRONG!!!!!!!! id : %d\n\n\n",temp_packet->id);
               dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
               temp_sender->state=dtpHost::FIN;
               temp_sender->set_normal_cookie();
             }
             order_packet_map.erase(ott);
-      
-            
-           
           }
           else
           { 
-
-        //    TRACE(TRL3,"\n\n\n\nBREAKIN OUT\n\n\n");
             break;
           }
       }
