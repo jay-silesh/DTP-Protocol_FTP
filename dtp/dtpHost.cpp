@@ -16,7 +16,10 @@
 #include <cstring>
 #include "cookie_class.h"
 
-int initial_rtt=24000;
+int initial_rtt=50000;
+
+int write_host=8;
+int write_host2=9;
 
 
 void
@@ -157,10 +160,10 @@ dtpHost::receive(Packet* pkt)
               packet_expected++;
                 if(dpkt->data!=NULL)
                 {
-                  //          if(address()==2)
+                            if(address()==write_host)
                                  writing(dpkt->data);
-                  //          else 
-                  //             writing2(dpkt->data);
+                            else if(address()==write_host2)
+                               writing2(dpkt->data);
 
                 }
                 
@@ -272,6 +275,8 @@ dtpHost::handle_timer(void* cookie)
           state=dtpHost::SYN;        
           packet_expected=1;
           packet_expected_sender_side=2;
+          rtt_in_host=initial_rtt;
+          
 
           /* setting up the destination's parameters...*/
           dtpHost* temp_destination=(dtpHost*) scheduler->get_node(destination);
@@ -280,6 +285,7 @@ dtpHost::handle_timer(void* cookie)
           temp_destination->state=dtpHost::SYN;
           temp_destination->packet_expected=1;
           temp_destination->packet_expected_sender_side=2;
+          temp_destination->rtt_in_host=initial_rtt;
           /*********************************************/
         }
 
@@ -495,10 +501,10 @@ void dtpHost::check_inorder_packets()
             packet_expected++;
             if(temp_packet->data!=NULL)
             {
-              //          if(address()==2) 
+                        if(address()==2) 
                              writing(temp_packet->data);
-              //          else 
-              //             writing2(temp_packet->data);
+                        else if(address()==4)
+                           writing2(temp_packet->data);
             }
             if(temp_packet->data==NULL || strlen(temp_packet->data)<PAYLOAD_SIZE)
             {
