@@ -154,12 +154,13 @@ dtpHost::receive(Packet* pkt)
         {
               //Received a Inorder packet...
 
-              if(cwnd_host== 0)
+              normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
+              
+              if(cwnd_host == 1)
               {    
                 /*Setting up for sending the ACK packet from the reciever side */
-                state=dtpHost::sending; //Setting up the sending state for the receiver...
-                normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
                 set_normal_cookie();  // Have to send ACK-for each packet...              
+                state=dtpHost::sending; //Setting up the sending state for the receiver...
                 cwnd_host=initial_cwnd;
               }
               else
@@ -200,37 +201,43 @@ dtpHost::receive(Packet* pkt)
 
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==1)
     {
-     //Received the ACK FOR THE NORMAL PACKET at the sender's side
-      
-      cwnd_host=initial_cwnd; // Setting the cwnd Window back.. 
+       //Received the ACK FOR THE NORMAL PACKET at the sender's side
+        
+        dpkt->fin=0;  //Changing the value of fin so that it is in symetry
+        dpkt->print_receiver();
+        
+        int temp_cwnd=cwnd_host;
+        while(temp_cwnd>0)
+        {
+          delete_retransmission_timmer( (dpkt->id)-temp_cwnd);
+          temp_cwnd--;
+        }
 
-      dpkt->fin=0;  //Changing the value of fin so that it is in symetry
-      dpkt->print_receiver();
-      delete_retransmission_timmer(dpkt->id-1);
-      
-      dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
-      temp_sender->delete_retransmission_timmer(dpkt->id);
+        //delete_retransmission_timmer(dpkt->id-1);
+        
+        dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+        temp_sender->delete_retransmission_timmer(dpkt->id);
 
-      if(done_transmission==false)
-      {
-         set_normal_cookie();
-      }
-      else if(done_transmission==true)
-      {
-            /* this is basically checking if this is the last packet and 
-                here after you have to send a FIN packet */
-              state=dtpHost::FIN;
-              set_normal_cookie();
-      }
+        if(done_transmission==false)
+        {
+           set_normal_cookie();
+        }
+        else if(done_transmission==true)
+        {
+              /* this is basically checking if this is the last packet and 
+                  here after you have to send a FIN packet */
+                state=dtpHost::FIN;
+                set_normal_cookie();
+        }
     }
 
     else if(dpkt->syn==1 && dpkt->ack==0 && dpkt->fin==1)
     {
-     //Received the FIN packet
-      dpkt->print_receiver();
-      packets_rec=dpkt->id;
-      state=dtpHost::FIN;
-      set_normal_cookie();
+       //Received the FIN packet
+        dpkt->print_receiver();
+        packets_rec=dpkt->id;
+        state=dtpHost::FIN;
+        set_normal_cookie();
     }
     
     else if(dpkt->syn==0 && dpkt->ack==1 && dpkt->fin==1)
@@ -350,7 +357,7 @@ dtpHost::handle_timer(void* cookie)
               pkt->data=file_handling((pkt->id)-1,file_holder);
               
               //Re-transmission for Normal Packets
-              set_retransmission_cookie(pkt->id,rtt_in_host);
+              set_retransmission_cookie(pkt->id,rtt_in_host*(cwnd_host+1));
               set_retransmission_map(pkt);
 
 
@@ -367,7 +374,7 @@ dtpHost::handle_timer(void* cookie)
             //Sending NORMAL packets at the receiver side .... i.e. Sending the ACK FOR NORMAL packets
               pkt->data=NULL;
               set_packet((dtpPacket*)pkt,0,0,1,normal_packet_received+1);  //sent_so_far+2 = Since ACK shd always be one plus
-              set_retransmission_cookie(pkt->id,rtt_in_host);
+              set_retransmission_cookie(pkt->id,rtt_in_host);  //Sending the ACK immediately...
               set_retransmission_map(pkt);
 
           }
@@ -423,7 +430,7 @@ dtpHost::handle_timer(void* cookie)
               pkt1 = new dtpPacket(*temp);
             
             delete_retransmission_timmer(temp->id);
-            set_retransmission_cookie(pkt1->id,rtt_in_host);
+            set_retransmission_cookie(pkt1->id,rtt_in_host*(cwnd_host+1));
             set_retransmission_map(pkt1);
           }
     //      TRACE(TRL3, "\nHost is : %d\n",address());
@@ -434,15 +441,18 @@ dtpHost::handle_timer(void* cookie)
 
   
    // This is part of the code is for basically sending packets continously... Also check the receiver Normal packet segment 
-  if(state==dtpHost::sending && (cwnd_host > 0 ) )
-  {
-      cwnd_host--;
-      //sent_so_far++;  
-      if(done_transmission==false)
-      { 
-         set_normal_cookie();
+  if(state==dtpHost::sending &&  (sender==true) )
+  { 
+      if( (cwnd_host) > 1 )
+      {
+        cwnd_host--;
+        if(done_transmission==false)
+        { 
+           set_normal_cookie();
+        }
       }
-     
+      else
+        cwnd_host= initial_cwnd; //Clearing the Host's CWND...
   }
   
   return;
