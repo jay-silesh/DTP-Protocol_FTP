@@ -18,8 +18,8 @@
 
 int initial_rtt=50000;
 
-int write_host=2;
-int write_host2=4;
+int write_host=5;
+int write_host2=6;
 
 int initial_cwnd=1;
 
@@ -190,6 +190,7 @@ dtpHost::receive(Packet* pkt)
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(dpkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
+      
       }
       else
       {
@@ -289,9 +290,7 @@ void dtpHost::handle_timer(void* cookie)
                         set_packet((dtpPacket*)pkt_normal,0,0,0,sent_so_far+1);
                         pkt_normal->data=file_handling((pkt_normal->id)-1,file_holder);
                         
-                        set_retransmission_cookie(pkt_normal->id, rtt_in_host*2 );
-                        set_retransmission_map(pkt_normal);
-
+                        
                         sent_so_far++;
                         
                         if(pkt_normal->data==NULL)
@@ -310,6 +309,10 @@ void dtpHost::handle_timer(void* cookie)
                           // pkt_normal->length+=strlen(pkt_normal->data);
                           pkt_normal->length+=MTU-sizeof(Packet);
                         }
+                        set_retransmission_cookie(pkt_normal->id, rtt_in_host*2 );
+                        set_retransmission_map(pkt_normal);
+
+
                         ((dtpPacket*) pkt_normal)->print_sender();
                         send(pkt_normal);
                         
@@ -318,12 +321,7 @@ void dtpHost::handle_timer(void* cookie)
                   }
 
               }
-           /*   else
-              {
-                  TRACE(TRL3,"\n\n1.ERROR ... SHOULDN't come here...\n\n");
-
-              }*/
-
+ 
         }
         else if( state==dtpHost::sending_ack_listening)
         {
@@ -373,7 +371,7 @@ void dtpHost::handle_timer(void* cookie)
          dtpPacket * pkt1;
          RetransmissionPacketMapIterator iit = re_packet_map.find(new_cookie->id);
          if (iit == re_packet_map.end()) {
-            return;
+            //return;
          }
          else
          {
@@ -384,10 +382,11 @@ void dtpHost::handle_timer(void* cookie)
             delete_retransmission_timmer(temp->id);
             set_retransmission_cookie(pkt1->id,rtt_in_host*(cwnd_host+1));
             set_retransmission_map(pkt1);
+            ((dtpPacket*) pkt1)->print_resender();
+            send(pkt1);
           }
      
-        ((dtpPacket*) pkt1)->print_resender();
-        send(pkt1);
+        
     }
 
   
@@ -456,10 +455,10 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
 {
    RetransmissionPacketMapIterator iit=re_packet_map.find(packet_no);
    if (iit == re_packet_map.end()) {
-        return;
+   //     return;
    }
-
-   re_packet_map.erase (iit);
+   else
+      re_packet_map.erase (iit);
 }
 
 void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool last_pac=false)
