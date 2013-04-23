@@ -157,11 +157,28 @@ dtpHost::receive(Packet* pkt)
           delete_retransmission_timmer( (dpkt->id)-temp_delete_pack_no);
           temp_delete_pack_no--;
         }
-        dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
-        temp_sender->delete_retransmission_timmer(dpkt->id);
+        
 
 
-        lastest_ack_rec=dpkt->id-1;
+        /*******************************************************************/
+                
+          /*dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+          int x2=lastest_ack_rec+1;
+          int x3=dpkt->id;
+          while(x2<x3)
+          {
+            temp_sender->delete_retransmission_timmer(x2+1);
+            x2++;
+          }*/
+          
+          
+          dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+          temp_sender->delete_retransmission_timmer(dpkt->id);
+                
+        /***************************************************************/
+          lastest_ack_rec=dpkt->id-1;
+
+
 
          
         //delete_retransmission_timmer(dpkt->id-1);
@@ -396,7 +413,7 @@ void dtpHost::handle_timer(void* cookie)
 
 void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
 {
-       
+
          blank();
          cookie_class* temp_cookie = new cookie_class(cookie_class::normal);
          temp_cookie->destination=d;
@@ -438,7 +455,6 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned
 
 void dtpHost::set_retransmission_map(const Packet *pkt_t)
 {
-      //      TRACE(TRL3,"\n\nInserting RE-trnas: %d @ host %d\n\n",pkt_t->id,address());          
             
          if(re_packet_map.find(pkt_t->id) == re_packet_map.end()) 
          {
@@ -464,12 +480,12 @@ void dtpHost::set_normal_cookie()
 
 void dtpHost::delete_retransmission_timmer(int packet_no)
 {
-   RetransmissionPacketMapIterator iit=re_packet_map.find(packet_no);
-   if (iit == re_packet_map.end()) {
-   //     return;
-   }
-   else
+   if (  (re_packet_map.find(packet_no)) != (re_packet_map.end()) ) 
+   {
       re_packet_map.erase (iit);
+   }
+   
+      
 }
 
 void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool last_pac=false)
