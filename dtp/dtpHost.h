@@ -32,14 +32,14 @@ class dtpHost : public FIFONode {
     int rtt_in_host; // The RTT recorded in the host...
     unsigned int packets_rec;
     unsigned int packet_expected;
-    unsigned int packet_expected_sender_side;
     unsigned int normal_packet_received;  //At the receiver side , to know which NORMAL packets has been recieved
+    unsigned int actual_packets_rec;
 
     int cwnd_host;  //Congestion window in the host..
 
     enum
     {
-       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN 
+       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening 
     } state;
     bool sender;
     void set_packet( Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p);
@@ -50,7 +50,10 @@ class dtpHost : public FIFONode {
     void set_retransmission_cookie(unsigned int , int);
     void set_normal_cookie();
     void check_inorder_packets();
-  
+    void send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp);
+    int  check_congestion(Packet* pkt_p);
+
+
     RetransmissionPacketMap  re_packet_map;
     InorderPacketMap order_packet_map;
 

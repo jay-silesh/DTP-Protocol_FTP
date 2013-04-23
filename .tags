@@ -338,9 +338,9 @@ FATAL	netsim/common.h	50;"	d
 FDTP	dtp/dtpHost.cpp	/^void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)$/;"	f	class:dtpHost
 FIFONode	netsim/FIFONode.cpp	/^FIFONode::FIFONode(Address a,$/;"	f	class:FIFONode
 FIFONode	netsim/FIFONode.h	/^class FIFONode : public Node {$/;"	c
-FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-FIN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-FIN_DONE	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+FIN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+FIN_DONE	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 FLEXINT_H	netsim/lex.yy.c	29;"	d	file:
 FLEX_BETA	netsim/lex.yy.c	13;"	d	file:
 FLEX_SCANNER	netsim/lex.yy.c	8;"	d	file:
@@ -414,10 +414,10 @@ SHA1_USAGE_ERROR	sha1/shacmp.cpp	33;"	d	file:
 SOURCES	cbr_app/Makefile	/^SOURCES=main.cpp CbrSender.cpp CbrReceiver.cpp CbrPacket.cpp app_config.cpp$/;"	m
 SOURCES	dtp/Makefile	/^SOURCES=main.cpp dtpHost.cpp dtpRouter.cpp dtpPacket.cpp app_config.cpp cookie_class.cpp$/;"	m
 SOURCES	netsim/Makefile	/^SOURCES=Node.cpp FIFONode.cpp Scheduler.cpp PacketScheduler.cpp Timer.cpp Topology.cpp Packet.cpp$/;"	m
-START_SENDING_FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+START_SENDING_FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 STL_SEQUENCE_CONCEPTS_H	docs/STL_doc/sequence_concepts.h	15;"	d
-SYN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-SYN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+SYN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+SYN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 Scheduler	netsim/Scheduler.cpp	/^Scheduler::Scheduler()$/;"	f	class:Scheduler
 Scheduler	netsim/Scheduler.h	/^class Scheduler : public Timer, public PacketScheduler {$/;"	c
 ShowUsage	scripts/extract.sh	/^ShowUsage()$/;"	f
@@ -2058,6 +2058,7 @@ _const_ReversibleContainer_requirement_violation	docs/STL_doc/container_concepts
 accumulate	docs/STL_doc/stl_numeric.h	/^_Tp accumulate(_InputIterator __first, _InputIterator __last, _Tp __init)$/;"	f
 accumulate	docs/STL_doc/stl_numeric.h	/^_Tp accumulate(_InputIterator __first, _InputIterator __last, _Tp __init,$/;"	f
 ack	dtp/dtpPacket.h	/^    bool ack;$/;"	m	class:dtpPacket
+actual_packets_rec	dtp/dtpHost.h	/^    unsigned int actual_packets_rec;$/;"	m	class:dtpHost
 add_arg	netsim/Config.cpp	/^Config::add_arg(char* arg)$/;"	f	class:Config
 add_arg	netsim/Config.cpp	/^Config::add_arg(int arg)$/;"	f	class:Config
 add_link	netsim/Topology.cpp	/^Topology::add_link(Address s,$/;"	f	class:Topology
@@ -2262,7 +2263,8 @@ char_type	docs/STL_doc/stl_iterator.h	/^  typedef _CharT                        
 char_type	docs/STL_doc/stl_iterator.h	/^  typedef _CharT                           char_type;$/;"	t	class:ostreambuf_iterator
 char_type	docs/STL_doc/stl_iterator.h	/^  typedef _CharT                         char_type;$/;"	t	class:istream_iterator
 char_type	docs/STL_doc/stl_iterator.h	/^  typedef _CharT                         char_type;$/;"	t	class:ostream_iterator
-check_inorder_packets	dtp/dtpHost.cpp	/^void dtpHost::check_inorder_packets()$/;"	f	class:dtpHost
+check_congestion	dtp/dtpHost.cpp	/^int dtpHost::check_congestion(Packet* pkt_p)$/;"	f	class:dtpHost
+check_inorder_packets	dtp/dtpHost.cpp	/^bool dtpHost::check_inorder_packets()$/;"	f	class:dtpHost
 clear	docs/STL_doc/stl_bvector.h	/^  void clear() { erase(begin(), end()); }$/;"	f	class:__BVECTOR
 clear	docs/STL_doc/stl_deque.h	/^void deque<_Tp,_Alloc>::clear()$/;"	f	class:deque
 clear	docs/STL_doc/stl_hash_map.h	/^  void clear() { _M_ht.clear(); }$/;"	f	class:hash_map
@@ -2463,6 +2465,7 @@ crope	docs/STL_doc/stl_rope.h	/^typedef rope<char> crope;$/;"	t
 current	docs/STL_doc/stl_iterator.h	/^  _BidirectionalIterator current;$/;"	m	class:reverse_bidirectional_iterator
 current	docs/STL_doc/stl_iterator.h	/^  _Iterator current;$/;"	m	class:reverse_iterator
 current	docs/STL_doc/stl_iterator.h	/^  _RandomAccessIterator current;$/;"	m	class:reverse_iterator
+cwnd_host	dtp/dtpHost.h	/^    int cwnd_host;  \/\/Congestion window in the host..$/;"	m	class:dtpHost
 data	cbr_app/CbrPacket.h	/^    unsigned char data[PAYLOAD_SIZE];$/;"	m	class:CbrPacket
 data	dtp/dtpPacket.h	/^    char *data;$/;"	m	class:dtpPacket
 data_type	docs/STL_doc/stl_hash_map.h	/^  typedef _Tp data_type;$/;"	t	class:hash_map
@@ -2571,6 +2574,7 @@ done_transmission	dtp/cookie_class.h	/^    bool    done_transmission;$/;"	m	clas
 done_transmission	dtp/dtpHost.h	/^    bool    done_transmission;$/;"	m	class:dtpHost
 dtpHost	dtp/dtpHost.cpp	/^dtpHost::dtpHost(Address a) : FIFONode(a,16000)$/;"	f	class:dtpHost
 dtpHost	dtp/dtpHost.h	/^class dtpHost : public FIFONode {$/;"	c
+dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket ( Address source_temp, Address destination_temp,unsigned int length_temp)$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket( dtpPacket& pck )$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket()$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.h	/^class dtpPacket : public Packet {$/;"	c
@@ -2833,7 +2837,7 @@ get_temporary_buffer	docs/STL_doc/stl_tempbuf.h	/^inline pair<_Tp*, ptrdiff_t> g
 greater	docs/STL_doc/stl_function.h	/^struct greater : public binary_function<_Tp,_Tp,bool> $/;"	s
 greater_equal	docs/STL_doc/stl_function.h	/^struct greater_equal : public binary_function<_Tp,_Tp,bool>$/;"	s
 handle_timer	cbr_app/CbrSender.cpp	/^CbrSender::handle_timer(void* cookie)$/;"	f	class:CbrSender
-handle_timer	dtp/dtpHost.cpp	/^dtpHost::handle_timer(void* cookie)$/;"	f	class:dtpHost
+handle_timer	dtp/dtpHost.cpp	/^void dtpHost::handle_timer(void* cookie)$/;"	f	class:dtpHost
 handle_timer	netsim/FIFONode.cpp	/^FIFONode::handle_timer(void* cookie)$/;"	f	class:FIFONode
 handle_timer	netsim/Node.cpp	/^Node::handle_timer(void* cookie)$/;"	f	class:Node
 has_trivial_assignment_operator	docs/STL_doc/type_traits.h	/^   typedef __false_type    has_trivial_assignment_operator;$/;"	t	struct:__type_traits
@@ -2938,6 +2942,8 @@ identity_element	docs/STL_doc/stl_rope.h	/^identity_element(_Rope_Concat_fn<_Cha
 includes	docs/STL_doc/stl_algo.h	/^bool includes(_InputIter1 __first1, _InputIter1 __last1,$/;"	f
 index	docs/STL_doc/stl_rope.h	/^    size_t index() const { return _M_current_pos; }$/;"	f	class:_Rope_iterator_base
 init_page_size	docs/STL_doc/defalloc.h	/^    size_type init_page_size() { $/;"	f	class:allocator
+initial_cwnd	dtp/dtpHost.cpp	/^int initial_cwnd=1;$/;"	v
+initial_rtt	dtp/dtpHost.cpp	/^int initial_rtt=50000;$/;"	v
 inner_product	docs/STL_doc/stl_numeric.h	/^_Tp inner_product(_InputIterator1 __first1, _InputIterator1 __last1,$/;"	f
 inplace_merge	docs/STL_doc/stl_algo.h	/^inline void inplace_merge(_BidirectionalIter __first,$/;"	f
 input_iterator	docs/STL_doc/stl_iterator_base.h	/^template <class _Tp, class _Distance> struct input_iterator {$/;"	s
@@ -3225,7 +3231,7 @@ list	docs/STL_doc/stl_list.h	/^  list(const list<_Tp, _Alloc>& __x) : _Base(__x.
 list	docs/STL_doc/stl_list.h	/^  list(const_iterator __first, const_iterator __last,$/;"	f	class:list
 list	docs/STL_doc/stl_list.h	/^  list(size_type __n, const _Tp& __value,$/;"	f	class:list
 list	docs/STL_doc/stl_list.h	/^class list : protected _List_base<_Tp, _Alloc> {$/;"	c
-listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 logical_and	docs/STL_doc/stl_function.h	/^struct logical_and : public binary_function<_Tp,_Tp,bool>$/;"	s
 logical_not	docs/STL_doc/stl_function.h	/^struct logical_not : public unary_function<_Tp,bool>$/;"	s
 logical_or	docs/STL_doc/stl_function.h	/^struct logical_or : public binary_function<_Tp,_Tp,bool>$/;"	s
@@ -3365,6 +3371,7 @@ node	netsim/PacketScheduler.h	/^    Node* 	node;$/;"	m	class:PacketData
 node	netsim/Timer.h	/^    Node* 	node;$/;"	m	class:TimerData
 node_map	netsim/PacketScheduler.h	/^    NodeMap	node_map;	\/\/ address to node mapping$/;"	m	class:PacketScheduler
 normal	dtp/cookie_class.h	/^     	normal,retransmission$/;"	e	enum:cookie_class::all_cookie_states
+normal_packet_received	dtp/dtpHost.h	/^    unsigned int normal_packet_received;  \/\/At the receiver side , to know which NORMAL packets has been recieved$/;"	m	class:dtpHost
 not1	docs/STL_doc/stl_function.h	/^not1(const _Predicate& __pred)$/;"	f
 not2	docs/STL_doc/stl_function.h	/^not2(const _Predicate& __pred)$/;"	f
 not_eof	docs/STL_doc/char_traits.h	/^  static int_type not_eof(const int_type& __c) {$/;"	f	class:__char_traits_base
@@ -3841,6 +3848,7 @@ other	docs/STL_doc/stl_alloc.h	/^    typedef __allocator<_Tp1, _Alloc> other;$/;
 other	docs/STL_doc/stl_alloc.h	/^    typedef allocator<_Tp1> other;$/;"	t	struct:allocator::rebind
 output_iterator	docs/STL_doc/stl_iterator_base.h	/^struct output_iterator {$/;"	s
 output_iterator_tag	docs/STL_doc/stl_iterator_base.h	/^struct output_iterator_tag {};$/;"	s
+packet	dtp/dtpPacket.h	/^    bool last packet;$/;"	m	class:dtpPacket
 packet	netsim/PacketScheduler.h	/^    Packet*	packet;$/;"	m	class:PacketData
 packet_expected	dtp/dtpHost.h	/^    unsigned int packet_expected;$/;"	m	class:dtpHost
 packet_map	netsim/PacketScheduler.h	/^    PacketMap	packet_map;	\/\/ sorted map of packet events$/;"	m	class:PacketScheduler
@@ -4221,6 +4229,7 @@ rope	docs/STL_doc/stl_rope.h	/^class rope : public _Rope_base<_CharT,_Alloc> {$/
 rotate	docs/STL_doc/ropeimpl.h	/^inline void rotate(_Rope_iterator<char,__STL_DEFAULT_ALLOCATOR(char)> __first,$/;"	f
 rotate	docs/STL_doc/stl_algo.h	/^inline _ForwardIter rotate(_ForwardIter __first, _ForwardIter __middle,$/;"	f
 rotate_copy	docs/STL_doc/stl_algo.h	/^_OutputIter rotate_copy(_ForwardIter __first, _ForwardIter __middle,$/;"	f
+rtt_in_host	dtp/dtpHost.h	/^    int rtt_in_host; \/\/ The RTT recorded in the host...$/;"	m	class:dtpHost
 run	netsim/Scheduler.cpp	/^Scheduler::run()$/;"	f	class:Scheduler
 scheduler	netsim/Scheduler.cpp	/^Scheduler* scheduler;$/;"	v
 search	docs/STL_doc/stl_algo.h	/^_ForwardIter1 search(_ForwardIter1 __first1, _ForwardIter1 __last1,$/;"	f
@@ -4235,11 +4244,13 @@ send	netsim/FIFONode.cpp	/^FIFONode::send(Packet* packet)$/;"	f	class:FIFONode
 send	netsim/Node.cpp	/^Node::send(Packet* packet,$/;"	f	class:Node
 send_done	netsim/FIFONode.cpp	/^FIFONode::send_done(Address nhop)$/;"	f	class:FIFONode
 send_done	netsim/Node.cpp	/^Node::send_done(Address nhop)$/;"	f	class:Node
+send_immediately	dtp/dtpHost.cpp	/^void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp)$/;"	f	class:dtpHost
 send_it	netsim/FIFONode.cpp	/^FIFONode::send_it(Address nhop)$/;"	f	class:FIFONode
 send_packet	netsim/PacketScheduler.cpp	/^PacketScheduler::send_packet(Packet* packet,$/;"	f	class:PacketScheduler
 sender	dtp/cookie_class.h	/^    bool sender;    $/;"	m	class:cookie_class
 sender	dtp/dtpHost.h	/^    bool sender;$/;"	m	class:dtpHost
-sending	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+sending	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+sending_ack_listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 sent_so_far	cbr_app/CbrSender.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:CbrSender
 sent_so_far	dtp/cookie_class.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:cookie_class
 sent_so_far	dtp/dtpHost.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:dtpHost
@@ -4265,7 +4276,7 @@ set_normal_cookie	dtp/dtpHost.cpp	/^void dtpHost::set_normal_cookie()$/;"	f	clas
 set_packet	dtp/dtpHost.cpp	/^void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)$/;"	f	class:dtpHost
 set_packet	dtp/dtpHost.cpp	/^void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned int id_p)$/;"	f	class:dtpHost
 set_retransmission_cookie	dtp/dtpHost.cpp	/^void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)$/;"	f	class:dtpHost
-set_retransmission_map	dtp/dtpHost.cpp	/^void dtpHost::set_retransmission_map(Packet *pkt_t)$/;"	f	class:dtpHost
+set_retransmission_map	dtp/dtpHost.cpp	/^void dtpHost::set_retransmission_map(const Packet *pkt_t)$/;"	f	class:dtpHost
 set_symmetric_difference	docs/STL_doc/stl_algo.h	/^set_symmetric_difference(_InputIter1 __first1, _InputIter1 __last1,$/;"	f
 set_timer	netsim/Node.cpp	/^Node::set_timer(Time abs,$/;"	f	class:Node
 set_timer	netsim/Timer.cpp	/^Timer::set_timer(Time time,$/;"	f	class:Timer
@@ -4559,8 +4570,9 @@ vector	docs/STL_doc/stl_vector.h	/^  vector(const vector<_Tp, _Alloc>& __x) $/;"
 vector	docs/STL_doc/stl_vector.h	/^  vector(size_type __n, const _Tp& __value,$/;"	f	class:vector
 vector	docs/STL_doc/stl_vector.h	/^class vector : protected _Vector_base<_Tp, _Alloc> $/;"	c
 virtual_clock	netsim/Scheduler.h	/^    Time 		virtual_clock;$/;"	m	class:Scheduler
-wcounter	dtp/dtpHost.cpp	/^int wcounter=0;$/;"	v
 write	docs/STL_doc/stl_rope.h	/^        sequence_buffer& write(value_type* __s, size_t __len)$/;"	f	class:sequence_buffer
+write_host	dtp/dtpHost.cpp	/^int write_host=10;$/;"	v
+write_host2	dtp/dtpHost.cpp	/^int write_host2=4;$/;"	v
 writing	dtp/dtpHost.cpp	/^void writing(char *buffer)$/;"	f
 writing2	dtp/dtpHost.cpp	/^void writing2(char *buffer)$/;"	f
 wrope	docs/STL_doc/stl_rope.h	/^typedef rope<wchar_t> wrope;$/;"	t
