@@ -480,10 +480,12 @@ void dtpHost::set_normal_cookie()
 
 void dtpHost::delete_retransmission_timmer(int packet_no)
 {
-   if (  (re_packet_map.find(packet_no)) != (re_packet_map.end()) ) 
-   {
-      re_packet_map.erase (iit);
+   RetransmissionPacketMapIterator iit=re_packet_map.find(packet_no);
+   if (iit == re_packet_map.end()) {
+   //     return;
    }
+   else
+      re_packet_map.erase (iit);
    
       
 }

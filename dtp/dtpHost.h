@@ -57,6 +57,7 @@ class dtpHost : public FIFONode {
 
     RetransmissionPacketMap  re_packet_map;
     InorderPacketMap order_packet_map;
+  //  queue<Time> queue_for_rtt;
 
 };
 
