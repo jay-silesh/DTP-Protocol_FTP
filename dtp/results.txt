@@ -2,467 +2,659 @@ Initialized host with address 1
  <0, dtpHost::dtpHost(Address)>
 Initialized host with address 2
  <0, dtpHost::dtpHost(Address)>
-Initialized host with address 10
+Initialized host with address 3
+ <0, dtpHost::dtpHost(Address)>
+Initialized host with address 4
+ <0, dtpHost::dtpHost(Address)>
+Initialized host with address 5
+ <0, dtpHost::dtpHost(Address)>
+Initialized host with address 6
+ <0, dtpHost::dtpHost(Address)>
+Initialized host with address 7
  <0, dtpHost::dtpHost(Address)>
 Initialized host with address 8
  <0, dtpHost::dtpHost(Address)>
 Initialized host with address 9
  <0, dtpHost::dtpHost(Address)>
-Initialized router with address 3
+Initialized host with address 10
+ <0, dtpHost::dtpHost(Address)>
+Initialized router with address 11
  <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 4
+Initialized router with address 12
  <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 5
+Initialized router with address 13
  <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 6
+Initialized router with address 14
  <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 7
+Initialized router with address 15
  <0, dtpRouter::dtpRouter(Address, int)>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
- <50, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
- <50, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
+ <10, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
+ <10, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
+ <10, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
+ <10, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 0, length: 24, SYN 1, ACK 0, FIN: 0
+ <10, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
+ <616, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
+ <616, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
+ <616, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
+ <616, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
+ <616, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
+ <616, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
+ <818, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
+ <818, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
+ <818, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
+ <818, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
+ <1222, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
+ <1222, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
+ <1222, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
+ <1222, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
+ <1222, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
+ <1222, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
  <1626, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
  <1626, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 0, length: 24,SYN 1, ACK 0, FIN: 0
- <2010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 0, length: 24, SYN 1, ACK 1, FIN: 0
- <2010, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
- <3202, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
- <3202, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
- <3586, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
- <3586, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
- <4778, void dtpPacket::print_receiver()>
-Established FDTP flow from 1 to 8 (4778)
- <4778, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <4778, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
- <5162, void dtpPacket::print_receiver()>
-Established FDTP flow from 2 to 9 (5162)
- <5162, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <5162, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <100818, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
- <100818, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
- <102394, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <102394, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
- <102394, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <105162, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <124818, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
- <124818, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
- <126394, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <126394, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
- <126394, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <198434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
- <198434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
- <200010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
- <200010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
- <200010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
- <200010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
- <200010, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
- <202394, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 0, length: 24,SYN 1, ACK 1, FIN: 0
+ <1626, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 0, length: 24, SYN 0, ACK 1, FIN: 0
+ <1626, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
+ <1828, void dtpPacket::print_receiver()>
+Established FDTP flow from 2 to 7 (1828)
+ <1828, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <1828, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
+ <1828, void dtpPacket::print_receiver()>
+Established FDTP flow from 3 to 9 (1828)
+ <1828, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <1828, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
+ <1828, void dtpPacket::print_receiver()>
+Established FDTP flow from 4 to 8 (1828)
+ <1828, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <1828, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
+ <2434, void dtpPacket::print_receiver()>
+Established FDTP flow from 1 to 6 (2434)
+ <2434, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <2434, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 0, length: 24,SYN 0, ACK 1, FIN: 0
+ <2434, void dtpPacket::print_receiver()>
+Established FDTP flow from 5 to 10 (2434)
+ <2434, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <2434, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <37858, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
+ <37858, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <37858, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
+ <37858, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <37858, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
+ <37858, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <38464, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <50474, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
+ <50474, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <50474, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 2, length: 24, SYN 0, ACK 0, FIN: 1
+ <50474, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
+ <51282, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <51282, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <51282, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 2, length: 24,SYN 0, ACK 0, FIN: 0
+ <51282, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <51282, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <51282, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <74494, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
+ <74494, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <74494, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
+ <74494, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <74494, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
+ <74494, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <75100, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <86494, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
+ <86494, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <86494, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
+ <86494, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <86494, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
+ <86494, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <87100, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <99322, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
+ <99322, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <99322, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
+ <99322, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <100130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <111130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
+ <111130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <111130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
+ <111130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <111130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
+ <111130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <111322, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
+ <111322, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <111322, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
+ <111322, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 11, length: 1500, SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 12, length: 1500, SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 13, length: 1500, SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 14, length: 1500, SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 15, length: 448, SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
+ <111736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
+ <112130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <123130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
+ <123130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <123130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
+ <123130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <123130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
+ <123130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
+ <123736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
+ <123736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
+ <123736, void dtpPacket::print_receiver()>
+Re-sending the Packet with the HEADER:source: 2, destination: 7, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <135100, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
+ <135100, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
+ <135100, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
+ <135100, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
+ <135100, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 4, destination: 8, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <135100, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <135130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
+ <135130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <135130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
+ <135130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <135130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
+ <135130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
+ <135736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
+ <135736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
+ <135736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 2, destination: 7, id: 7, length: 412,SYN 0, ACK 0, FIN: 0
+ <138426, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <138426, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 7, length: 412,SYN 0, ACK 0, FIN: 0
+ <138426, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <138426, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
+ <139032, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 7, id: 9, length: 24, SYN 1, ACK 0, FIN: 1
+ <139032, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 8, destination: 4, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
+ <139032, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 4, destination: 8, id: 9, length: 24, SYN 1, ACK 0, FIN: 1
+ <139032, void dtpPacket::print_sender()>
 
 
 REceived a REPEATED PACKET HERE
 
- <222434, virtual void dtpHost::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <226394, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
- <226394, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
- <246434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
- <246434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
- <248010, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <270434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 3, length: 24, SYN 0, ACK 0, FIN: 1
- <270434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 3, length: 24,SYN 0, ACK 0, FIN: 0
- <272010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
- <272010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
- <272010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
- <272010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
- <272010, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
- <294434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 4, length: 24, SYN 0, ACK 0, FIN: 1
- <294434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 4, length: 24,SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 11, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 12, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 13, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 14, length: 1500, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 15, length: 448, SYN 0, ACK 0, FIN: 0
- <296010, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
- <300010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
- <300010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
- <300010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
- <300010, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
- <318434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
- <318434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
- <320010, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
- <342434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
- <342434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
- <344010, void dtpPacket::print_receiver()>
+ <145018, virtual void dtpHost::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <366434, virtual void dtpHost::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
- <372010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
- <372010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
- <372010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
- <372010, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
- <390434, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
- <390434, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
- <392010, void dtpPacket::print_receiver()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 11, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 12, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 13, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 14, length: 1500, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 15, length: 448, SYN 0, ACK 0, FIN: 0
- <396010, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 7, length: 412,SYN 0, ACK 0, FIN: 0
- <403618, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
- <403618, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
- <405194, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 8, length: 24, SYN 1, ACK 0, FIN: 1
- <405194, void dtpPacket::print_sender()>
+ <145018, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 7, id: 9, length: 24,SYN 1, ACK 0, FIN: 1
+ <145210, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 7, destination: 2, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
+ <145210, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 4, destination: 8, id: 9, length: 24,SYN 1, ACK 0, FIN: 1
+ <145210, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 8, destination: 4, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
+ <145210, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 7, destination: 2, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
+ <145816, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 7 to 2 (145816)
+ <145816, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 8, destination: 4, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
+ <145816, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 8 to 4 (145816)
+ <145816, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 3, destination: 9, id: 7, length: 1500,SYN 0, ACK 0, FIN: 0
+ <147130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <147130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
+ <147736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <148170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
+ <148170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <148170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
+ <148170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 8, length: 1500,SYN 0, ACK 0, FIN: 0
+ <159130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 9, length: 24, SYN 0, ACK 0, FIN: 1
+ <159130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 9, length: 24,SYN 0, ACK 0, FIN: 0
+ <159736, void dtpPacket::print_receiver()>
+Re-sending the Packet with the HEADER:source: 1, destination: 6, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <160130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
+ <160130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
+ <160130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
+ <160130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
+ <160130, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <160170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
+ <160170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <160170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
+ <160170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
+ <163850, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 11, length: 1500, SYN 0, ACK 0, FIN: 0
+ <163850, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 12, length: 1500, SYN 0, ACK 0, FIN: 0
+ <163850, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 13, length: 1500, SYN 0, ACK 0, FIN: 0
+ <163850, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 14, length: 1500, SYN 0, ACK 0, FIN: 0
+ <163850, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 15, length: 448, SYN 0, ACK 0, FIN: 0
+ <163850, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 9, length: 1500,SYN 0, ACK 0, FIN: 0
+ <171130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 10, length: 24, SYN 0, ACK 0, FIN: 1
+ <171130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 10, length: 24,SYN 0, ACK 0, FIN: 0
+ <171736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <172170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
+ <172170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <172170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
+ <172170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
+ <172554, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
+ <172978, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 7, length: 412,SYN 0, ACK 0, FIN: 0
+ <175466, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <175466, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 10, length: 1500,SYN 0, ACK 0, FIN: 0
+ <183130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 11, length: 24, SYN 0, ACK 0, FIN: 1
+ <183130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 11, length: 24,SYN 0, ACK 0, FIN: 0
+ <183736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 7, length: 1500,SYN 0, ACK 0, FIN: 0
+ <184170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <184170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
+ <184978, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 11, length: 1500,SYN 0, ACK 0, FIN: 0
+ <195130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 12, length: 24, SYN 0, ACK 0, FIN: 1
+ <195130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 12, length: 24,SYN 0, ACK 0, FIN: 0
+ <195736, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
+ <196554, void dtpPacket::print_receiver()>
+Re-sending the Packet with the HEADER:source: 10, destination: 5, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
+ <198170, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
+ <198978, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 12, length: 1500,SYN 0, ACK 0, FIN: 0
+ <207130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 13, length: 24, SYN 0, ACK 0, FIN: 1
+ <207130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 13, length: 24,SYN 0, ACK 0, FIN: 0
+ <207736, void dtpPacket::print_receiver()>
+Re-sending the Packet with the HEADER:source: 1, destination: 6, id: 7, length: 412, SYN 0, ACK 0, FIN: 0
+ <208130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
+ <208130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
+ <208130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
+ <208130, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 6, destination: 1, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
+ <210170, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 13, length: 1500,SYN 0, ACK 0, FIN: 0
+ <219130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 14, length: 24, SYN 0, ACK 0, FIN: 1
+ <219130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 14, length: 24,SYN 0, ACK 0, FIN: 0
+ <219736, void dtpPacket::print_receiver()>
 
 
 REceived a REPEATED PACKET HERE
 
- <414434, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 9, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
- <445026, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 5, length: 24, SYN 0, ACK 0, FIN: 1
- <445026, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 5, length: 24,SYN 0, ACK 0, FIN: 0
- <446602, void dtpPacket::print_receiver()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 8, length: 24, SYN 1, ACK 0, FIN: 1
- <455194, void dtpPacket::print_resender()>
+ <221354, virtual void dtpHost::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 6, destination: 1, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <225466, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 14, length: 1500,SYN 0, ACK 0, FIN: 0
+ <231130, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 15, length: 24, SYN 0, ACK 0, FIN: 1
+ <231130, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 15, length: 24,SYN 0, ACK 0, FIN: 0
+ <231736, void dtpPacket::print_receiver()>
 
 
 REceived a REPEATED PACKET HERE
 
- <469026, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 9, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
- <493026, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 6, length: 24, SYN 0, ACK 0, FIN: 1
- <493026, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
- <494602, void dtpPacket::print_receiver()>
+ <232170, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 1, id: 6, length: 24,SYN 0, ACK 0, FIN: 0
+ <232554, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 15, length: 448,SYN 0, ACK 0, FIN: 0
+ <234714, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 16, length: 24, SYN 0, ACK 0, FIN: 1
+ <234714, void dtpPacket::print_sender()>
+Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 15, length: 448, SYN 0, ACK 0, FIN: 0
+ <234916, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 16, length: 24,SYN 0, ACK 0, FIN: 0
+ <235320, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 3, destination: 9, id: 17, length: 24, SYN 1, ACK 0, FIN: 1
+ <235320, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 8, length: 1500,SYN 0, ACK 0, FIN: 0
+ <244170, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 9, length: 1500,SYN 0, ACK 0, FIN: 0
+ <244170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 10, length: 24, SYN 0, ACK 0, FIN: 1
+ <244170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 10, length: 24,SYN 0, ACK 0, FIN: 0
+ <244978, void dtpPacket::print_receiver()>
 
 
 REceived a REPEATED PACKET HERE
 
- <517026, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 9, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
- <541026, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 7, length: 24, SYN 0, ACK 0, FIN: 1
- <541026, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 7, length: 24,SYN 0, ACK 0, FIN: 0
- <542602, void dtpPacket::print_receiver()>
+ <246714, virtual void dtpHost::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <565026, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 9, id: 7, length: 1500,SYN 0, ACK 0, FIN: 0
- <589026, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
- <589026, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
- <590602, void dtpPacket::print_receiver()>
+ <258714, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 10, id: 10, length: 1500,SYN 0, ACK 0, FIN: 0
+ <268170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 11, length: 24, SYN 0, ACK 0, FIN: 1
+ <268170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 11, length: 24,SYN 0, ACK 0, FIN: 0
+ <268978, void dtpPacket::print_receiver()>
 
 
 REceived a REPEATED PACKET HERE
 
- <613026, virtual void dtpHost::receive(Packet*)>
+ <270714, virtual void dtpHost::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 6, destination: 1, id: 8, length: 24, SYN 0, ACK 0, FIN: 1
+ <275466, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 11, length: 1500,SYN 0, ACK 0, FIN: 0
+ <280170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 12, length: 24, SYN 0, ACK 0, FIN: 1
+ <280170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 12, length: 24,SYN 0, ACK 0, FIN: 0
+ <280978, void dtpPacket::print_receiver()>
 
 
 REceived a REPEATED PACKET HERE
 
- <619618, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 8, id: 8, length: 24,SYN 1, ACK 0, FIN: 1
- <620386, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 9, length: 24, SYN 0, ACK 1, FIN: 1
- <620386, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 9, length: 24,SYN 0, ACK 1, FIN: 1
- <621962, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <621962, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 8, length: 1500,SYN 0, ACK 0, FIN: 0
- <643618, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 9, length: 24, SYN 0, ACK 0, FIN: 1
- <643618, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 9, length: 24,SYN 0, ACK 0, FIN: 0
- <645194, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 9, length: 1500,SYN 0, ACK 0, FIN: 0
- <668002, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 10, length: 24, SYN 0, ACK 0, FIN: 1
- <668002, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 8, length: 24,SYN 1, ACK 0, FIN: 1
- <668770, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 1, id: 9, length: 24, SYN 0, ACK 1, FIN: 1
- <668770, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 10, length: 24,SYN 0, ACK 0, FIN: 0
- <669578, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 9, length: 24,SYN 0, ACK 1, FIN: 1
- <670346, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <670346, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 8, destination: 1, id: 9, length: 24, SYN 0, ACK 1, FIN: 1
- <670386, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <671962, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 9, length: 24,SYN 0, ACK 1, FIN: 1
- <671962, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <671962, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 10, length: 1500,SYN 0, ACK 0, FIN: 0
- <692002, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 11, length: 24, SYN 0, ACK 0, FIN: 1
- <692002, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 11, length: 24,SYN 0, ACK 0, FIN: 0
- <693578, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 11, length: 1500,SYN 0, ACK 0, FIN: 0
- <716386, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 12, length: 24, SYN 0, ACK 0, FIN: 1
- <716386, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 12, length: 24,SYN 0, ACK 0, FIN: 0
- <717962, void dtpPacket::print_receiver()>
-Re-sending the Packet with the HEADER:source: 8, destination: 1, id: 9, length: 24, SYN 0, ACK 1, FIN: 1
- <718770, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <720346, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 9, length: 24,SYN 0, ACK 1, FIN: 1
- <720346, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <720346, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <721962, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 12, length: 1500,SYN 0, ACK 0, FIN: 0
- <740386, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 13, length: 24, SYN 0, ACK 0, FIN: 1
- <740386, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 13, length: 24,SYN 0, ACK 0, FIN: 0
- <741962, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 13, length: 1500,SYN 0, ACK 0, FIN: 0
- <764386, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 14, length: 24, SYN 0, ACK 0, FIN: 1
- <764386, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 14, length: 24,SYN 0, ACK 0, FIN: 0
- <765962, void dtpPacket::print_receiver()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <770346, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 8, destination: 1, id: 9, length: 24, SYN 0, ACK 1, FIN: 1
- <770386, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 8, destination: 1, id: 9, length: 24,SYN 0, ACK 1, FIN: 1
- <771962, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <771962, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 14, length: 1500,SYN 0, ACK 0, FIN: 0
- <788386, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 15, length: 24, SYN 0, ACK 0, FIN: 1
- <788386, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 15, length: 24,SYN 0, ACK 0, FIN: 0
- <789962, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 15, length: 448,SYN 0, ACK 0, FIN: 0
- <795554, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 16, length: 24, SYN 0, ACK 0, FIN: 1
- <795554, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 16, length: 24,SYN 0, ACK 0, FIN: 0
- <797130, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 16, length: 24, SYN 1, ACK 0, FIN: 1
- <797130, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 8, destination: 1, id: 9, length: 24, SYN 0, ACK 1, FIN: 1
- <818770, void dtpPacket::print_resender()>
+ <282714, virtual void dtpHost::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <819554, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 8, destination: 1, id: 9, length: 24,SYN 0, ACK 1, FIN: 1
- <820346, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <820346, void dtpPacket::print_sender()>
-Re-sending the Packet with the HEADER:source: 1, destination: 8, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
- <821962, void dtpPacket::print_resender()>
+ <286298, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 10, id: 12, length: 1500,SYN 0, ACK 0, FIN: 0
+ <292170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 13, length: 24, SYN 0, ACK 0, FIN: 1
+ <292170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 8, length: 24,SYN 0, ACK 0, FIN: 0
+ <292554, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 6, id: 9, length: 24, SYN 1, ACK 0, FIN: 1
+ <292554, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 13, length: 24,SYN 0, ACK 0, FIN: 0
+ <292978, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 1, destination: 6, id: 9, length: 24,SYN 1, ACK 0, FIN: 1
+ <293362, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 1, id: 10, length: 24, SYN 1, ACK 1, FIN: 1
+ <293362, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 1, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
+ <294170, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 6 to 1 (294170)
+ <294170, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 10, id: 13, length: 1500,SYN 0, ACK 0, FIN: 0
+ <304170, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 14, length: 24, SYN 0, ACK 0, FIN: 1
+ <304170, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 14, length: 24,SYN 0, ACK 0, FIN: 0
+ <304978, void dtpPacket::print_receiver()>
 
 
 REceived a REPEATED PACKET HERE
 
- <843554, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <844322, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 1 to 8 (844322)
- <844322, virtual void dtpHost::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 2, destination: 9, id: 16, length: 24, SYN 1, ACK 0, FIN: 1
- <847130, void dtpPacket::print_resender()>
+ <331754, virtual void dtpHost::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <867554, virtual void dtpHost::receive(Packet*)>
+ <343754, virtual void dtpHost::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <891938, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <892706, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <893090, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <893474, void dtpPacket::print_receiver()>
-
-
-REceived a REPEATED PACKET HERE
-
- <915938, virtual void dtpHost::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <941090, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <941858, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <942242, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <942626, void dtpPacket::print_receiver()>
-
-
-REceived a REPEATED PACKET HERE
-
- <965090, virtual void dtpHost::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <990242, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <991010, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <991394, void dtpPacket::print_receiver()>
-
-
-REceived a REPEATED PACKET HERE
-
- <1014242, virtual void dtpHost::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <1039010, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <1047330, void dtpPacket::print_receiver()>
-Received Packet with the HEADER: source: 1, destination: 8, id: 10, length: 24,SYN 1, ACK 1, FIN: 1
- <1047714, void dtpPacket::print_receiver()>
-
-
-REceived a REPEATED PACKET HERE
-
- <1063010, virtual void dtpHost::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <1070178, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 9, id: 16, length: 24,SYN 1, ACK 0, FIN: 1
- <1070562, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 17, length: 24, SYN 0, ACK 1, FIN: 1
- <1070562, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 16, length: 24,SYN 1, ACK 0, FIN: 1
- <1070946, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 2, id: 17, length: 24, SYN 0, ACK 1, FIN: 1
- <1070946, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 17, length: 24,SYN 0, ACK 1, FIN: 1
- <1072138, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 18, length: 24, SYN 1, ACK 1, FIN: 1
- <1072138, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 2, id: 17, length: 24,SYN 0, ACK 1, FIN: 1
- <1072522, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 9, id: 18, length: 24, SYN 1, ACK 1, FIN: 1
- <1072522, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 2, destination: 9, id: 18, length: 24,SYN 1, ACK 1, FIN: 1
- <1073714, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 2 to 9 (1073714)
- <1073714, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 9, id: 18, length: 24,SYN 1, ACK 1, FIN: 1
- <1074098, void dtpPacket::print_receiver()>
+ <355754, virtual void dtpHost::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 17, length: 24, SYN 1, ACK 0, FIN: 1
+ <358904, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 3, destination: 9, id: 17, length: 24,SYN 1, ACK 0, FIN: 1
+ <359510, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 9, destination: 3, id: 18, length: 24, SYN 1, ACK 1, FIN: 1
+ <359510, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 9, destination: 3, id: 18, length: 24,SYN 1, ACK 1, FIN: 1
+ <360116, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 9 to 3 (360116)
+ <360116, virtual void dtpHost::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 14, length: 1500, SYN 0, ACK 0, FIN: 0
+ <422450, void dtpPacket::print_resender()>
+Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 15, length: 448, SYN 0, ACK 0, FIN: 0
+ <422450, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 14, length: 1500,SYN 0, ACK 0, FIN: 0
+ <470490, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 15, length: 24, SYN 0, ACK 0, FIN: 1
+ <470490, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 15, length: 24,SYN 0, ACK 0, FIN: 0
+ <471298, void dtpPacket::print_receiver()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 15, length: 448,SYN 0, ACK 0, FIN: 0
+ <474074, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 16, length: 24, SYN 0, ACK 0, FIN: 1
+ <474074, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 16, length: 24,SYN 0, ACK 0, FIN: 0
+ <474882, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 10, id: 17, length: 24, SYN 1, ACK 0, FIN: 1
+ <474882, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 5, destination: 10, id: 17, length: 24,SYN 1, ACK 0, FIN: 1
+ <475690, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 10, destination: 5, id: 18, length: 24, SYN 1, ACK 1, FIN: 1
+ <475690, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 10, destination: 5, id: 18, length: 24,SYN 1, ACK 1, FIN: 1
+ <476498, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 10 to 5 (476498)
+ <476498, virtual void dtpHost::receive(Packet*)>

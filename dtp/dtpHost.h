@@ -36,6 +36,7 @@ class dtpHost : public FIFONode {
     unsigned int actual_packets_rec;
     unsigned int lastest_ack_rec;
     int cwnd_host;  //Congestion window in the host..
+    Time rtt_estimation;
 
     enum
     {
