@@ -20,6 +20,6 @@ class dtpPacket : public Packet {
     dtpPacket ( Address source_1, Address destination_1,unsigned int length_1);
 
     /* Used for cummulative ,window,etc ...MAKE CHANGES IN DTPPACKET.h*/
-    bool last packet;
+    bool last_packet;
 
 };

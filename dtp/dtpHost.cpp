@@ -18,7 +18,7 @@
 
 int initial_rtt=50000;
 
-int write_host=10;
+int write_host=2;
 int write_host2=4;
 
 int initial_cwnd=1;
@@ -39,6 +39,7 @@ dtpHost::dtpHost(Address a) : FIFONode(a,16000)
   packet_expected=1;
   rtt_in_host=initial_rtt;
   cwnd_host=initial_cwnd;
+  sent_so_far = 0;
 }
 
 
@@ -104,18 +105,21 @@ dtpHost::receive(Packet* pkt)
                                writing2(dpkt->data);
 
                 }
-                
-                if(packet_expected < actual_packets_rec)
+
+                int flag_last_packet=dpkt->last_packet;
+                if(packet_expected < actual_packets_rec+1)
                 {
-                  check_inorder_packets();
+                  flag_last_packet= check_inorder_packets();
                 }
-                send_immediately(0,0,1,packet_expected,rtt_in_host);
+                if(flag_last_packet==false)
+                  send_immediately(0,0,1,packet_expected,rtt_in_host,flag_last_packet);
+                else
+                  send_immediately(0,0,1,packet_expected,rtt_in_host,flag_last_packet);
         }
         else if(dpkt->id > packet_expected)
         {
             //Received a out of order packet...
-            InorderPacketMapIterator iterator_temp=order_packet_map.find(dpkt->id);
-            if(iterator_temp==map::end)
+            if( order_packet_map.find(dpkt->id) == order_packet_map.end())
             {
               actual_packets_rec++;
               dtpPacket *inorder_temp_packet=new dtpPacket(*dpkt);
@@ -131,7 +135,7 @@ dtpHost::receive(Packet* pkt)
     else if(dpkt->syn==0 && dpkt->ack==0 && dpkt->fin==1)
     {
        //SENDER's side: Received the ACK FOR THE NORMAL PACKET at the sender's side
-        TRACE("\n\nREceived ACK of %d\n\n",dpkt->id);
+    //    TRACE(TRL3,"\n\nREceived ACK of %d\n\n",dpkt->id);
         lastest_ack_rec=dpkt->id;
 
         dpkt->fin=0;  //Changing the value of fin so that it is in symetry
@@ -141,7 +145,7 @@ dtpHost::receive(Packet* pkt)
         dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
         temp_sender->delete_retransmission_timmer(dpkt->id);
 
-        if(done_transmission==false || ((dpkt->last_packet==false)&&(dpkt->id==sent_so_far)) )
+        if(done_transmission==false || (dpkt->last_packet==false) )
         {
            int temp_cong=check_congestion(dpkt);
            state=dtpHost::sending;
@@ -274,7 +278,7 @@ void dtpHost::handle_timer(void* cookie)
               
               //Sending NORMAL packets
               
-              if(sender==true)
+              if(sender==true && done_transmission==false)
               {
                   done_transmission=false;
                   
@@ -283,7 +287,7 @@ void dtpHost::handle_timer(void* cookie)
                   {
                         dtpPacket*  pkt_normal = new dtpPacket(address(),destination,sizeof(Packet));
                         set_packet((dtpPacket*)pkt_normal,0,0,0,sent_so_far+1);
-                        pkt->data=file_handling((pkt_normal->id)-1,file_holder);
+                        pkt_normal->data=file_handling((pkt_normal->id)-1,file_holder);
                         
                         set_retransmission_cookie(pkt_normal->id, rtt_in_host*2 );
                         set_retransmission_map(pkt_normal);
@@ -293,31 +297,32 @@ void dtpHost::handle_timer(void* cookie)
                         if(pkt_normal->data==NULL)
                         {
                            done_transmission=true;
-                           pkt->last_packet=true;
+                           pkt_normal->last_packet=true;
                         }
                         else if ( strlen(pkt_normal->data)<PAYLOAD_SIZE)
                         {
                            pkt_normal->length+=strlen(pkt_normal->data);
                            done_transmission=true;  
-                           pkt->last_packet=true;
+                           pkt_normal->last_packet=true;
                         }
                         else
                         {
-                           pkt_normal->length+=strlen(pkt_normal->data);
+                          // pkt_normal->length+=strlen(pkt_normal->data);
+                          pkt_normal->length+=MTU-sizeof(Packet);
                         }
-
+                        ((dtpPacket*) pkt_normal)->print_sender();
                         send(pkt_normal);
+                        
                         temp_cwnd--;
+
                   }
 
-                  delete pkt;
-                  return;
               }
-              else
+           /*   else
               {
                   TRACE(TRL3,"\n\n1.ERROR ... SHOULDN't come here...\n\n");
 
-              }
+              }*/
 
         }
         else if( state==dtpHost::sending_ack_listening)
@@ -352,10 +357,13 @@ void dtpHost::handle_timer(void* cookie)
             set_retransmission_cookie(pkt->id,rtt_in_host);
             set_retransmission_map(pkt);
         }  
-        ((dtpPacket*) pkt)->print_sender();
       
-
-      send(pkt);
+      
+        if(state!=dtpHost::sending)
+        {
+          ((dtpPacket*) pkt)->print_sender();
+          send(pkt);
+        }
     }
     else if( new_cookie->cookie_state==cookie_class::retransmission)
     {
@@ -418,6 +426,7 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned
   ((dtpPacket*)pkt_p)->syn=syn_p;
   ((dtpPacket*)pkt_p)->ack=ack_p;
   ((dtpPacket*)pkt_p)->fin=fin_p;
+  ((dtpPacket*)pkt_p)->last_packet=false;
   ((dtpPacket*)pkt_p)->id=id_p;
 }
 
@@ -453,19 +462,23 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
    re_packet_map.erase (iit);
 }
 
-void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp)
+void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool last_pac=false)
 {
         dtpPacket * pkt_temp=new dtpPacket(address(),destination,sizeof(Packet));
         pkt_temp->data=NULL;
         set_packet((dtpPacket*)pkt_temp,syn_temp,ack_temp,fin_temp,id_temp);  //sent_so_far+2 = Since ACK shd always be one plus
+        pkt_temp->last_packet=last_pac;
         set_retransmission_cookie(pkt_temp->id,time_temp);  //Sending the ACK immediately...
         set_retransmission_map(pkt_temp);
+
+        ((dtpPacket*) pkt_temp)->print_sender();
         send(pkt_temp);
 }
 
-void dtpHost::check_inorder_packets()
+bool dtpHost::check_inorder_packets()
 {
       InorderPacketMapIterator ott;
+      bool flag_last_packet=false;
       for (ott=order_packet_map.begin(); ott!=order_packet_map.end(); ++ott)
       {
           if(ott->first==packet_expected)
@@ -485,6 +498,7 @@ void dtpHost::check_inorder_packets()
 
                 }
                 
+                flag_last_packet=dpkt->last_packet;
                 
                order_packet_map.erase(ott);
           }
@@ -493,7 +507,7 @@ void dtpHost::check_inorder_packets()
             break;
           }
       }
-      
+      return flag_last_packet;
 }
 
 
@@ -535,10 +549,10 @@ void writing2(char *buffer)
 
 }
 
-char * file_handling(int packet_no,char *file_holder_host)
+/*char * file_handling(int packet_no,char *file_holder_host)
 {
   FILE * pFile;
-  char *buffer=(char *)malloc(1550);
+ 
   size_t result;
   int packet_size=PAYLOAD_SIZE;
   pFile = fopen ( file_holder_host , "rb" );
@@ -564,4 +578,23 @@ char * file_handling(int packet_no,char *file_holder_host)
     return NULL;    
   }
 }
+*/
 
+
+char* file_handling(int packet_no,char *file_holder_host)
+{
+    
+     std::ifstream in(file_holder_host);
+
+        if(!in.is_open())
+        {
+            TRACE(TRL3, " FILE NOT FOUND!\n");
+            return NULL;
+        }
+        char *s = new char [MTU];
+        in.seekg (packet_no*PAYLOAD_SIZE, in.beg);
+        in.get(s, PAYLOAD_SIZE +1, EOF);
+        in.close();
+       return s;
+    
+}

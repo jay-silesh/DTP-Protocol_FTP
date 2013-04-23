@@ -34,7 +34,7 @@ class dtpHost : public FIFONode {
     unsigned int packet_expected;
     unsigned int normal_packet_received;  //At the receiver side , to know which NORMAL packets has been recieved
     unsigned int actual_packets_rec;
-
+    unsigned int lastest_ack_rec;
     int cwnd_host;  //Congestion window in the host..
 
     enum
@@ -49,8 +49,8 @@ class dtpHost : public FIFONode {
     void set_retransmission_map(const Packet *pkt_t);
     void set_retransmission_cookie(unsigned int , int);
     void set_normal_cookie();
-    void check_inorder_packets();
-    void send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp);
+    bool check_inorder_packets();
+    void send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool);
     int  check_congestion(Packet* pkt_p);
 
 

@@ -2713,7 +2713,7 @@ erase_link	netsim/Topology.cpp	/^Topology::erase_link(Address s,$/;"	f	class:Top
 explicit	docs/STL_doc/stl_config.h	449;"	d
 failed	docs/STL_doc/stl_iterator.h	/^  bool failed() const { return !_M_ok; }$/;"	f	class:ostreambuf_iterator
 false	docs/STL_doc/stl_config.h	429;"	d
-file_handling	dtp/dtpHost.cpp	/^char * file_handling(int packet_no,char *file_holder_host)$/;"	f
+file_handling	dtp/dtpHost.cpp	/^char* file_handling(int packet_no,char *file_holder_host)$/;"	f
 file_holder	dtp/cookie_class.h	/^    char * file_holder;$/;"	m	class:cookie_class
 file_holder	dtp/dtpHost.h	/^    char * file_holder;$/;"	m	class:dtpHost
 fill	docs/STL_doc/stl_algobase.h	/^inline void fill(char* __first, char* __last, const char& __c) {$/;"	f
@@ -3210,6 +3210,8 @@ key_type	docs/STL_doc/stl_multimap.h	/^  typedef _Key                  key_type;
 key_type	docs/STL_doc/stl_multiset.h	/^  typedef _Key     key_type;$/;"	t	class:multiset
 key_type	docs/STL_doc/stl_set.h	/^  typedef _Key     key_type;$/;"	t	class:set
 key_type	docs/STL_doc/stl_tree.h	/^  typedef _Key key_type;$/;"	t	class:_Rb_tree
+last_packet	dtp/dtpPacket.h	/^    bool last_packet;$/;"	m	class:dtpPacket
+lastest_ack_rec	dtp/dtpHost.h	/^    unsigned int lastest_ack_rec;$/;"	m	class:dtpHost
 length	docs/STL_doc/char_traits.h	/^  static size_t length(const _CharT* __s) {$/;"	f	class:__char_traits_base
 length	docs/STL_doc/char_traits.h	/^  static size_t length(const char* __s) { return strlen(__s); }$/;"	f	class:char_traits
 length	docs/STL_doc/stl_rope.h	/^        size_type length() const {$/;"	f	class:rope
@@ -3848,7 +3850,6 @@ other	docs/STL_doc/stl_alloc.h	/^    typedef __allocator<_Tp1, _Alloc> other;$/;
 other	docs/STL_doc/stl_alloc.h	/^    typedef allocator<_Tp1> other;$/;"	t	struct:allocator::rebind
 output_iterator	docs/STL_doc/stl_iterator_base.h	/^struct output_iterator {$/;"	s
 output_iterator_tag	docs/STL_doc/stl_iterator_base.h	/^struct output_iterator_tag {};$/;"	s
-packet	dtp/dtpPacket.h	/^    bool last packet;$/;"	m	class:dtpPacket
 packet	netsim/PacketScheduler.h	/^    Packet*	packet;$/;"	m	class:PacketData
 packet_expected	dtp/dtpHost.h	/^    unsigned int packet_expected;$/;"	m	class:dtpHost
 packet_map	netsim/PacketScheduler.h	/^    PacketMap	packet_map;	\/\/ sorted map of packet events$/;"	m	class:PacketScheduler
@@ -4244,7 +4245,7 @@ send	netsim/FIFONode.cpp	/^FIFONode::send(Packet* packet)$/;"	f	class:FIFONode
 send	netsim/Node.cpp	/^Node::send(Packet* packet,$/;"	f	class:Node
 send_done	netsim/FIFONode.cpp	/^FIFONode::send_done(Address nhop)$/;"	f	class:FIFONode
 send_done	netsim/Node.cpp	/^Node::send_done(Address nhop)$/;"	f	class:Node
-send_immediately	dtp/dtpHost.cpp	/^void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp)$/;"	f	class:dtpHost
+send_immediately	dtp/dtpHost.cpp	/^void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool last_pac=false)$/;"	f	class:dtpHost
 send_it	netsim/FIFONode.cpp	/^FIFONode::send_it(Address nhop)$/;"	f	class:FIFONode
 send_packet	netsim/PacketScheduler.cpp	/^PacketScheduler::send_packet(Packet* packet,$/;"	f	class:PacketScheduler
 sender	dtp/cookie_class.h	/^    bool sender;    $/;"	m	class:cookie_class
@@ -4571,7 +4572,7 @@ vector	docs/STL_doc/stl_vector.h	/^  vector(size_type __n, const _Tp& __value,$/
 vector	docs/STL_doc/stl_vector.h	/^class vector : protected _Vector_base<_Tp, _Alloc> $/;"	c
 virtual_clock	netsim/Scheduler.h	/^    Time 		virtual_clock;$/;"	m	class:Scheduler
 write	docs/STL_doc/stl_rope.h	/^        sequence_buffer& write(value_type* __s, size_t __len)$/;"	f	class:sequence_buffer
-write_host	dtp/dtpHost.cpp	/^int write_host=10;$/;"	v
+write_host	dtp/dtpHost.cpp	/^int write_host=2;$/;"	v
 write_host2	dtp/dtpHost.cpp	/^int write_host2=4;$/;"	v
 writing	dtp/dtpHost.cpp	/^void writing(char *buffer)$/;"	f
 writing2	dtp/dtpHost.cpp	/^void writing2(char *buffer)$/;"	f

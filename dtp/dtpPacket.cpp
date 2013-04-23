@@ -41,7 +41,8 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 	this->destination=pck.destination;
 	if(pck.data!=NULL)
 	{
-		char *buffer=(char *)malloc(1550);
+		char *buffer = new char [MTU];
+		//char *buffer=(char *)malloc(1550);
 	    strcpy(buffer,pck.data);
 		this->data=buffer;
 	}
