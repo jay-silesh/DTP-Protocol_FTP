@@ -146,7 +146,20 @@ dtpHost::receive(Packet* pkt)
     {
        //SENDER's side: Received the ACK FOR THE NORMAL PACKET at the sender's side
         
-        rtt_in_host=scheduler->time()-rtt_estimation;
+      //  rtt_estimation;
+
+        if(!queue_for_rtt.empty())
+        {
+          rtt_in_host=(scheduler->time())- (queue_for_rtt.front());
+          rtt_estimation=queue_for_rtt.front();
+          queue_for_rtt.pop();
+        }
+        else
+        {
+           rtt_in_host=(scheduler->time()- rtt_estimation);
+        }
+        
+
         dpkt->fin=0;  //Changing the value of fin so that it is in symetry
         dpkt->print_receiver();
      
@@ -313,7 +326,8 @@ void dtpHost::handle_timer(void* cookie)
               if(sender==true && done_transmission==false)
               {
                   done_transmission=false;
-                  
+                  bool first_time_rtt=true;
+
                   int temp_cwnd=cwnd_host;
                   while( temp_cwnd > 0 && done_transmission==false )
                   {
@@ -345,7 +359,11 @@ void dtpHost::handle_timer(void* cookie)
 
 
                         ((dtpPacket*) pkt_normal)->print_sender();
-                        rtt_estimation=scheduler->time();
+                        if(first_time_rtt)
+                        {
+                          queue_for_rtt.push(scheduler->time());
+                          first_time_rtt=false;
+                        }
                         send(pkt_normal);
                         
                         temp_cwnd--;
