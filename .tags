@@ -390,14 +390,19 @@ PacketData	netsim/PacketScheduler.h	/^class PacketData {$/;"	c
 PacketMap	netsim/PacketScheduler.h	/^typedef multimap<Time, PacketData*, ltTime> PacketMap;$/;"	t
 PacketMapIterator	netsim/PacketScheduler.h	/^typedef multimap<Time, PacketData*, ltTime>::iterator PacketMapIterator;$/;"	t
 PacketMapPair	netsim/PacketScheduler.h	/^typedef pair<Time, PacketData*> PacketMapPair;$/;"	t
+PacketQueue	dtp/dtpRouter.cpp	/^PacketQueue::PacketQueue(int sz,$/;"	f	class:PacketQueue
+PacketQueue	dtp/dtpRouter.h	/^class PacketQueue {$/;"	c
 PacketQueue	netsim/FIFONode.cpp	/^PacketQueue::PacketQueue(int sz,$/;"	f	class:PacketQueue
 PacketQueue	netsim/FIFONode.h	/^class PacketQueue {$/;"	c
 PacketScheduler	netsim/PacketScheduler.cpp	/^PacketScheduler::PacketScheduler()$/;"	f	class:PacketScheduler
 PacketScheduler	netsim/PacketScheduler.h	/^class PacketScheduler  {$/;"	c
 PadMessage	sha1/sha1.cpp	/^void SHA1::PadMessage()$/;"	f	class:SHA1
 ProcessMessageBlock	sha1/sha1.cpp	/^void SHA1::ProcessMessageBlock()$/;"	f	class:SHA1
+QueueMap	dtp/dtpRouter.h	/^typedef map<Address, PacketQueue*, ltAddress> QueueMap;$/;"	t
 QueueMap	netsim/FIFONode.h	/^typedef map<Address, PacketQueue*, ltAddress> QueueMap;$/;"	t
+QueueMapIterator	dtp/dtpRouter.h	/^typedef map<Address, PacketQueue*, ltAddress>::iterator QueueMapIterator;$/;"	t
 QueueMapIterator	netsim/FIFONode.h	/^typedef map<Address, PacketQueue*, ltAddress>::iterator QueueMapIterator;$/;"	t
+QueueMapPair	dtp/dtpRouter.h	/^typedef pair<Address, PacketQueue*> QueueMapPair;$/;"	t
 QueueMapPair	netsim/FIFONode.h	/^typedef pair<Address, PacketQueue*> QueueMapPair;$/;"	t
 REJECT	netsim/lex.yy.c	456;"	d	file:
 Reset	sha1/sha1.cpp	/^void SHA1::Reset()$/;"	f	class:SHA1
@@ -2484,6 +2489,7 @@ deallocate	docs/STL_doc/stl_alloc.h	/^  void deallocate(pointer __p, size_type _
 debug_alloc	docs/STL_doc/stl_alloc.h	/^class debug_alloc {$/;"	c
 delete_c_str	docs/STL_doc/stl_rope.h	/^        void delete_c_str () {$/;"	f	class:rope
 delete_retransmission_timmer	dtp/dtpHost.cpp	/^void dtpHost::delete_retransmission_timmer(int packet_no)$/;"	f	class:dtpHost
+deq	dtp/dtpRouter.cpp	/^PacketQueue::deq()$/;"	f	class:PacketQueue
 deq	netsim/FIFONode.cpp	/^PacketQueue::deq()$/;"	f	class:PacketQueue
 deque	docs/STL_doc/stl_deque.h	/^  deque(_InputIterator __first, _InputIterator __last,$/;"	f	class:deque
 deque	docs/STL_doc/stl_deque.h	/^  deque(const deque& __x) : _Base(__x.get_allocator(), __x.size()) $/;"	f	class:deque
@@ -2578,8 +2584,8 @@ dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket ( Address source_temp, Addres
 dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket( dtpPacket& pck )$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket()$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.h	/^class dtpPacket : public Packet {$/;"	c
-dtpRouter	dtp/dtpRouter.cpp	/^dtpRouter::dtpRouter(Address a,int q_size):FIFONode(a,q_size)$/;"	f	class:dtpRouter
-dtpRouter	dtp/dtpRouter.h	/^class dtpRouter : public FIFONode {$/;"	c
+dtpRouter	dtp/dtpRouter.cpp	/^dtpRouter::dtpRouter(Address a,$/;"	f	class:dtpRouter
+dtpRouter	dtp/dtpRouter.h	/^class dtpRouter : public Node {$/;"	c
 dump	docs/STL_doc/stl_rope.h	/^        void dump() {$/;"	f	class:rope
 elems_in_bucket	docs/STL_doc/stl_hash_map.h	/^  size_type elems_in_bucket(size_type __n) const$/;"	f	class:hash_map
 elems_in_bucket	docs/STL_doc/stl_hash_map.h	/^  size_type elems_in_bucket(size_type __n) const$/;"	f	class:hash_multimap
@@ -2635,6 +2641,7 @@ end	docs/STL_doc/stl_tree.h	/^  const_iterator end() const { return _M_header; }
 end	docs/STL_doc/stl_tree.h	/^  iterator end() { return _M_header; }$/;"	f	class:_Rb_tree
 end	docs/STL_doc/stl_vector.h	/^  const_iterator end() const { return _M_finish; }$/;"	f	class:vector
 end	docs/STL_doc/stl_vector.h	/^  iterator end() { return _M_finish; }$/;"	f	class:vector
+enq	dtp/dtpRouter.cpp	/^PacketQueue::enq(Packet* p)$/;"	f	class:PacketQueue
 enq	netsim/FIFONode.cpp	/^PacketQueue::enq(Packet* p)$/;"	f	class:PacketQueue
 eof	docs/STL_doc/char_traits.h	/^  static int_type eof() {$/;"	f	class:__char_traits_base
 eq	docs/STL_doc/char_traits.h	/^  static bool eq(const _CharT& __c1, const _CharT& __c2) $/;"	f	class:__char_traits_base
@@ -2838,6 +2845,7 @@ greater	docs/STL_doc/stl_function.h	/^struct greater : public binary_function<_T
 greater_equal	docs/STL_doc/stl_function.h	/^struct greater_equal : public binary_function<_Tp,_Tp,bool>$/;"	s
 handle_timer	cbr_app/CbrSender.cpp	/^CbrSender::handle_timer(void* cookie)$/;"	f	class:CbrSender
 handle_timer	dtp/dtpHost.cpp	/^void dtpHost::handle_timer(void* cookie)$/;"	f	class:dtpHost
+handle_timer	dtp/dtpRouter.cpp	/^dtpRouter::handle_timer(void* cookie)$/;"	f	class:dtpRouter
 handle_timer	netsim/FIFONode.cpp	/^FIFONode::handle_timer(void* cookie)$/;"	f	class:FIFONode
 handle_timer	netsim/Node.cpp	/^Node::handle_timer(void* cookie)$/;"	f	class:Node
 has_trivial_assignment_operator	docs/STL_doc/type_traits.h	/^   typedef __false_type    has_trivial_assignment_operator;$/;"	t	struct:__type_traits
@@ -3286,6 +3294,7 @@ max_bucket_count	docs/STL_doc/stl_hash_set.h	/^  size_type max_bucket_count() co
 max_bucket_count	docs/STL_doc/stl_hashtable.h	/^  size_type max_bucket_count() const$/;"	f	class:hashtable
 max_element	docs/STL_doc/stl_algo.h	/^_ForwardIter max_element(_ForwardIter __first, _ForwardIter __last) {$/;"	f
 max_element	docs/STL_doc/stl_algo.h	/^_ForwardIter max_element(_ForwardIter __first, _ForwardIter __last,$/;"	f
+max_queue_size	dtp/dtpRouter.h	/^    int		max_queue_size;			\/\/ Number of packets in queue$/;"	m	class:dtpRouter
 max_queue_size	netsim/FIFONode.h	/^    int		max_queue_size;			\/\/ Number of packets in queue$/;"	m	class:FIFONode
 max_size	docs/STL_doc/defalloc.h	/^    size_type max_size() const { $/;"	f	class:allocator
 max_size	docs/STL_doc/stl_bvector.h	/^  size_type max_size() const { return size_type(-1); }$/;"	f	class:__BVECTOR
@@ -3304,6 +3313,7 @@ max_size	docs/STL_doc/stl_set.h	/^  size_type max_size() const { return _M_t.max
 max_size	docs/STL_doc/stl_slist.h	/^  size_type max_size() const { return size_type(-1); }$/;"	f	class:slist
 max_size	docs/STL_doc/stl_tree.h	/^  size_type max_size() const { return size_type(-1); }$/;"	f	class:_Rb_tree
 max_size	docs/STL_doc/stl_vector.h	/^  size_type max_size() const$/;"	f	class:vector
+max_size	dtp/dtpRouter.h	/^    int			max_size;	\/\/ Max queue size$/;"	m	class:PacketQueue
 max_size	netsim/FIFONode.h	/^    int			max_size;	\/\/ Max queue size$/;"	m	class:PacketQueue
 mem_fun1_ref_t	docs/STL_doc/stl_function.h	/^  explicit mem_fun1_ref_t(void (_Tp::*__pf)(_Arg)) : _M_f(__pf) {}$/;"	f	class:mem_fun1_ref_t
 mem_fun1_ref_t	docs/STL_doc/stl_function.h	/^class mem_fun1_ref_t : public binary_function<_Tp,_Arg,_Ret> {$/;"	c
@@ -3359,6 +3369,7 @@ mutable_rbegin	docs/STL_doc/stl_rope.h	/^        reverse_iterator mutable_rbegin
 mutable_reference_at	docs/STL_doc/stl_rope.h	/^        reference mutable_reference_at(size_type __pos) {$/;"	f	class:rope
 mutable_rend	docs/STL_doc/stl_rope.h	/^        reverse_iterator mutable_rend() {$/;"	f	class:rope
 negate	docs/STL_doc/stl_function.h	/^struct negate : public unary_function<_Tp,_Tp> $/;"	s
+neighbor	dtp/dtpRouter.h	/^    Address		neighbor;	\/\/ Neighbor for queue$/;"	m	class:PacketQueue
 neighbor	netsim/FIFONode.h	/^    Address		neighbor;	\/\/ Neighbor for queue$/;"	m	class:PacketQueue
 neighbor	netsim/Topology.h	/^    Address		neighbor;	\/\/ Address of neighbor$/;"	m	class:LinkData
 new_connection	dtp/cookie_class.h	/^     bool new_connection;$/;"	m	class:cookie_class
@@ -3368,6 +3379,7 @@ next_permutation	docs/STL_doc/stl_algo.h	/^bool next_permutation(_BidirectionalI
 next_timer	netsim/Timer.cpp	/^Timer::next_timer()$/;"	f	class:Timer
 nexthop	netsim/PacketScheduler.h	/^    Address	nexthop;$/;"	m	class:PacketData
 nexthop	netsim/Topology.cpp	/^Topology::nexthop(Address s, 	\/\/ Node at which packet currently is$/;"	f	class:Topology
+node	dtp/dtpRouter.h	/^    Address		node;		\/\/ Node at which queue resides$/;"	m	class:PacketQueue
 node	netsim/FIFONode.h	/^    Address		node;		\/\/ Node at which queue resides$/;"	m	class:PacketQueue
 node	netsim/PacketScheduler.h	/^    Node* 	node;$/;"	m	class:PacketData
 node	netsim/Timer.h	/^    Node* 	node;$/;"	m	class:TimerData
@@ -3853,6 +3865,7 @@ output_iterator_tag	docs/STL_doc/stl_iterator_base.h	/^struct output_iterator_ta
 packet	netsim/PacketScheduler.h	/^    Packet*	packet;$/;"	m	class:PacketData
 packet_expected	dtp/dtpHost.h	/^    unsigned int packet_expected;$/;"	m	class:dtpHost
 packet_map	netsim/PacketScheduler.h	/^    PacketMap	packet_map;	\/\/ sorted map of packet events$/;"	m	class:PacketScheduler
+packet_queue	dtp/dtpRouter.h	/^    queue<Packet*>	packet_queue;	\/\/ Queue of packets$/;"	m	class:PacketQueue
 packet_queue	netsim/FIFONode.h	/^    queue<Packet*>	packet_queue;	\/\/ Queue of packets$/;"	m	class:PacketQueue
 packets_rec	dtp/dtpHost.h	/^    unsigned int packets_rec;$/;"	m	class:dtpHost
 packets_to_send	cbr_app/CbrSender.h	/^    int		packets_to_send;	\/\/ number of packets$/;"	m	class:CbrSender
@@ -3865,6 +3878,8 @@ partial_sort	docs/STL_doc/stl_algo.h	/^inline void partial_sort(_RandomAccessIte
 partial_sort_copy	docs/STL_doc/stl_algo.h	/^partial_sort_copy(_InputIter __first, _InputIter __last,$/;"	f
 partial_sum	docs/STL_doc/stl_numeric.h	/^partial_sum(_InputIterator __first, _InputIterator __last,$/;"	f
 partition	docs/STL_doc/stl_algo.h	/^inline _ForwardIter partition(_ForwardIter __first,$/;"	f
+pending_send	dtp/dtpRouter.h	/^    int		pending_send;			\/\/ Boolean$/;"	m	class:dtpRouter
+pending_send	dtp/dtpRouter.h	/^    int 		pending_send;	\/\/ Set if packet is in transit$/;"	m	class:PacketQueue
 pending_send	netsim/FIFONode.h	/^    int		pending_send;			\/\/ Boolean$/;"	m	class:FIFONode
 pending_send	netsim/FIFONode.h	/^    int 		pending_send;	\/\/ Set if packet is in transit$/;"	m	class:PacketQueue
 plat	netsim/Topology.h	/^    Time		plat;		\/\/ Propagation latency$/;"	m	class:LinkData
@@ -4001,6 +4016,8 @@ put	docs/STL_doc/stl_rope.h	/^        sequence_buffer& put(value_type __x)$/;"	f
 queue	docs/STL_doc/stl_queue.h	/^  explicit queue(const _Sequence& __c) : c(__c) {}$/;"	f	class:queue
 queue	docs/STL_doc/stl_queue.h	/^  queue() : c() {}$/;"	f	class:queue
 queue	docs/STL_doc/stl_queue.h	/^class queue {$/;"	c
+queue_for_rtt	dtp/dtpHost.h	/^    queue<Time> queue_for_rtt;$/;"	m	class:dtpHost
+queue_map	dtp/dtpRouter.h	/^    QueueMap	queue_map;			\/\/ Map of queues per nexthop$/;"	m	class:dtpRouter
 queue_map	netsim/FIFONode.h	/^    QueueMap	queue_map;			\/\/ Map of queues per nexthop$/;"	m	class:FIFONode
 quotedstr	netsim/parser.cpp	/^     quotedstr = 260$/;"	e	enum:yytokentype	file:
 quotedstr	netsim/parser.cpp	77;"	d	file:
@@ -4043,6 +4060,7 @@ rebind	docs/STL_doc/stl_alloc.h	/^  template <class _Tp1> struct rebind {$/;"	s	
 rebind	docs/STL_doc/stl_alloc.h	/^  template <class _Tp1> struct rebind {$/;"	s	struct:__allocator
 receive	cbr_app/CbrReceiver.cpp	/^CbrReceiver::receive(Packet* pkt)$/;"	f	class:CbrReceiver
 receive	dtp/dtpHost.cpp	/^dtpHost::receive(Packet* pkt)$/;"	f	class:dtpHost
+receive	dtp/dtpRouter.cpp	/^dtpRouter::receive(Packet* pkt)$/;"	f	class:dtpRouter
 receive	netsim/FIFONode.cpp	/^FIFONode::receive(Packet* pkt)$/;"	f	class:FIFONode
 receive	netsim/Node.cpp	/^Node::receive(Packet* packet)$/;"	f	class:Node
 reference	docs/STL_doc/concept_checks.h	/^  typedef typename __STD::iterator_traits<_Iter>::reference reference;$/;"	t	struct:__reference_type_definition_requirement_violation
@@ -4230,6 +4248,7 @@ rope	docs/STL_doc/stl_rope.h	/^class rope : public _Rope_base<_CharT,_Alloc> {$/
 rotate	docs/STL_doc/ropeimpl.h	/^inline void rotate(_Rope_iterator<char,__STL_DEFAULT_ALLOCATOR(char)> __first,$/;"	f
 rotate	docs/STL_doc/stl_algo.h	/^inline _ForwardIter rotate(_ForwardIter __first, _ForwardIter __middle,$/;"	f
 rotate_copy	docs/STL_doc/stl_algo.h	/^_OutputIter rotate_copy(_ForwardIter __first, _ForwardIter __middle,$/;"	f
+rtt_estimation	dtp/dtpHost.h	/^    Time rtt_estimation;$/;"	m	class:dtpHost
 rtt_in_host	dtp/dtpHost.h	/^    int rtt_in_host; \/\/ The RTT recorded in the host...$/;"	m	class:dtpHost
 run	netsim/Scheduler.cpp	/^Scheduler::run()$/;"	f	class:Scheduler
 scheduler	netsim/Scheduler.cpp	/^Scheduler* scheduler;$/;"	v
@@ -4241,11 +4260,14 @@ second_argument_type	docs/STL_doc/stl_function.h	/^  typedef _Arg2 second_argume
 second_type	docs/STL_doc/stl_pair.h	/^  typedef _T2 second_type;$/;"	t	struct:pair
 select1st	docs/STL_doc/stl_function.h	/^template <class _Pair> struct select1st : public _Select1st<_Pair> {};$/;"	s
 select2nd	docs/STL_doc/stl_function.h	/^template <class _Pair> struct select2nd : public _Select2nd<_Pair> {};$/;"	s
+send	dtp/dtpRouter.cpp	/^dtpRouter::send(Packet* packet)$/;"	f	class:dtpRouter
 send	netsim/FIFONode.cpp	/^FIFONode::send(Packet* packet)$/;"	f	class:FIFONode
 send	netsim/Node.cpp	/^Node::send(Packet* packet,$/;"	f	class:Node
+send_done	dtp/dtpRouter.cpp	/^dtpRouter::send_done(Address nhop)$/;"	f	class:dtpRouter
 send_done	netsim/FIFONode.cpp	/^FIFONode::send_done(Address nhop)$/;"	f	class:FIFONode
 send_done	netsim/Node.cpp	/^Node::send_done(Address nhop)$/;"	f	class:Node
 send_immediately	dtp/dtpHost.cpp	/^void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool last_pac=false)$/;"	f	class:dtpHost
+send_it	dtp/dtpRouter.cpp	/^dtpRouter::send_it(Address nhop)$/;"	f	class:dtpRouter
 send_it	netsim/FIFONode.cpp	/^FIFONode::send_it(Address nhop)$/;"	f	class:FIFONode
 send_packet	netsim/PacketScheduler.cpp	/^PacketScheduler::send_packet(Packet* packet,$/;"	f	class:PacketScheduler
 sender	dtp/cookie_class.h	/^    bool sender;    $/;"	m	class:cookie_class
@@ -4572,8 +4594,8 @@ vector	docs/STL_doc/stl_vector.h	/^  vector(size_type __n, const _Tp& __value,$/
 vector	docs/STL_doc/stl_vector.h	/^class vector : protected _Vector_base<_Tp, _Alloc> $/;"	c
 virtual_clock	netsim/Scheduler.h	/^    Time 		virtual_clock;$/;"	m	class:Scheduler
 write	docs/STL_doc/stl_rope.h	/^        sequence_buffer& write(value_type* __s, size_t __len)$/;"	f	class:sequence_buffer
-write_host	dtp/dtpHost.cpp	/^int write_host=2;$/;"	v
-write_host2	dtp/dtpHost.cpp	/^int write_host2=4;$/;"	v
+write_host	dtp/dtpHost.cpp	/^int write_host=6;$/;"	v
+write_host2	dtp/dtpHost.cpp	/^int write_host2=7;$/;"	v
 writing	dtp/dtpHost.cpp	/^void writing(char *buffer)$/;"	f
 writing2	dtp/dtpHost.cpp	/^void writing2(char *buffer)$/;"	f
 wrope	docs/STL_doc/stl_rope.h	/^typedef rope<wchar_t> wrope;$/;"	t
@@ -4726,6 +4748,7 @@ yywrap	netsim/lex.yy.c	/^int yywrap ()$/;"	f
 ~Node	netsim/Node.cpp	/^Node::~Node()$/;"	f	class:Node
 ~Packet	netsim/Packet.h	/^    virtual ~Packet(void) {};$/;"	f	class:Packet
 ~PacketData	netsim/PacketScheduler.cpp	/^PacketData::~PacketData()$/;"	f	class:PacketData
+~PacketQueue	dtp/dtpRouter.cpp	/^PacketQueue::~PacketQueue()$/;"	f	class:PacketQueue
 ~PacketQueue	netsim/FIFONode.cpp	/^PacketQueue::~PacketQueue()$/;"	f	class:PacketQueue
 ~PacketScheduler	netsim/PacketScheduler.cpp	/^PacketScheduler::~PacketScheduler()$/;"	f	class:PacketScheduler
 ~SHA1	sha1/sha1.cpp	/^SHA1::~SHA1()$/;"	f	class:SHA1
