@@ -15,9 +15,12 @@
 #include <fstream>
 #include <cstring>
 #include "cookie_class.h"
+#include <math.h>
 
 
-int initial_rtt=150000;
+float alpha=0.9;
+
+int initial_rtt=50000;
 
 int write_host=7;
 int write_host2=9;
@@ -53,6 +56,7 @@ dtpHost::receive(Packet* pkt)
     if(dpkt->syn==true && dpkt->ack==false && dpkt->fin==false)
     {
       //Received the SYN packet @ the receiver side
+      delete_timer_cookie((dpkt->id)-temp_delete_pack_no);
       dpkt->print_receiver();
       destination=dpkt->source;
       set_normal_cookie();
@@ -144,8 +148,11 @@ dtpHost::receive(Packet* pkt)
               order_packet_map.insert(entry_temp);
             }
         }
-        else
-          TRACE(TRL3,"\n\nREceived a REPEATED PACKET HERE\n\n");
+        else if(dpkt->id<packet_expected)
+        {  TRACE(TRL3,"\n\nREceived a REPEATED PACKET HERE\n\n");
+            dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
+            temp_sender->delete_retransmission_timmer(dpkt->id);
+        }
         
     }
 
@@ -157,13 +164,29 @@ dtpHost::receive(Packet* pkt)
 
         if(!queue_for_rtt.empty())
         {
-          rtt_in_host=(scheduler->time())- (queue_for_rtt.front());
-          rtt_estimation=queue_for_rtt.front();
-          queue_for_rtt.pop();
+            if(not_first_time_rtt==true)
+            {
+              
+              Time temp_rtt_in_host=(scheduler->time())- (queue_for_rtt.front());
+              rtt_in_host=ceil((alpha*rtt_in_host))+ceil(((1-alpha)*temp_rtt_in_host));
+
+              rtt_estimation=queue_for_rtt.front();
+              queue_for_rtt.pop();
+            }
+            else if(not_first_time_rtt==false)
+            {
+                rtt_in_host=(scheduler->time())- (queue_for_rtt.front());
+                rtt_estimation=queue_for_rtt.front();
+                queue_for_rtt.pop();
+                not_first_time_rtt=true;
+            } 
         }
         else
         {
-           rtt_in_host=(scheduler->time()- rtt_estimation);
+            Time temp_rtt_in_host=(scheduler->time())- (rtt_estimation);
+            rtt_in_host=ceil((alpha*rtt_in_host))+ceil(((1-alpha)*temp_rtt_in_host));
+
+            //rtt_in_host=(scheduler->time() - rtt_estimation);
         }
         
 
@@ -174,8 +197,11 @@ dtpHost::receive(Packet* pkt)
         int temp_delete_pack_no=((dpkt->id)-lastest_ack_rec)-1;
         while(temp_delete_pack_no >0)
         {
-          delete_retransmission_timmer( (dpkt->id)-temp_delete_pack_no);
-          temp_delete_pack_no--;
+            delete_retransmission_timmer( dpkt->id-temp_delete_pack_no);
+
+            delete_timer_cookie((dpkt->id)-temp_delete_pack_no);
+            
+            temp_delete_pack_no--;
         }
         
 
@@ -183,7 +209,7 @@ dtpHost::receive(Packet* pkt)
         /*******************************************************************/
                 
           /*dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
-          int x2=lastest_ack_rec+1;
+          int x2=lastest_ack_rec-1;
           int x3=dpkt->id;
           while(x2<x3)
           {
@@ -245,6 +271,7 @@ dtpHost::receive(Packet* pkt)
       {
           (temp_sender->re_packet_map).erase (iit);
           TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", dpkt->source, dpkt->destination, scheduler->time());
+          
       }
     }
     delete pkt;
@@ -333,7 +360,7 @@ void dtpHost::handle_timer(void* cookie)
               if(sender==true && done_transmission==false)
               {
                   done_transmission=false;
-                  bool first_time_rtt=true;
+                  //bool first_time_rtt=true;
 
                   int temp_cwnd=cwnd_host;
                   while( temp_cwnd > 0 && done_transmission==false )
@@ -366,11 +393,11 @@ void dtpHost::handle_timer(void* cookie)
 
 
                         ((dtpPacket*) pkt_normal)->print_sender();
-                        if(first_time_rtt)
-                        {
+                       // if(first_time_rtt)
+                        //{
                           queue_for_rtt.push(scheduler->time());
-                          first_time_rtt=false;
-                        }
+                          //first_time_rtt=false;
+                        //}
                         send(pkt_normal);
                         
                         temp_cwnd--;
@@ -450,6 +477,19 @@ void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)
 
 }
 
+
+void dtpHost::delete_timer_cookie(unsigned int pack_no)
+{
+            if(cookie_retranmission_timmer.find(pack_no)!=
+                          cookie_retranmission_timmer.end())
+            {
+              cancel_timer(((cookie_retranmission_timmer.find(pack_no))->second)->current_time ,
+                        (cookie_retranmission_timmer.find(pack_no))->second );
+              cookie_retranmission_timmer.erase (cookie_retranmission_timmer.find(pack_no) );
+            }     
+
+}
+
 void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)
 {
   ((dtpPacket*)pkt_p)->syn=syn_p;
@@ -493,7 +533,25 @@ void dtpHost::set_retransmission_map(const Packet *pkt_t)
 
 void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)
 {
+            
+
             cookie_class* temp_cookie = new cookie_class(number,cookie_class::retransmission);
+            
+            
+             if(cookie_retranmission_timmer.find(number)!=
+                          cookie_retranmission_timmer.end())
+            {
+              cookie_retranmission_timmer.erase
+               (cookie_retranmission_timmer.find(number));
+            }     
+
+
+
+
+            temp_cookie->current_time=scheduler->time()+rtt;
+            cookie_timmer_map_Pair ctmp_entry(number,temp_cookie);
+            cookie_retranmission_timmer.insert(ctmp_entry);
+
             set_timer(scheduler->time()+rtt,temp_cookie);
 }
 
@@ -512,8 +570,6 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
    }
    else
       re_packet_map.erase (iit);
-   
-      
 }
 
 void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,

@@ -2141,6 +2141,7 @@ allocator_type	docs/STL_doc/stl_tree.h	/^  typedef typename _Base::allocator_typ
 allocator_type	docs/STL_doc/stl_vector.h	/^          allocator_type;$/;"	t	class:_Vector_alloc_base
 allocator_type	docs/STL_doc/stl_vector.h	/^  typedef typename _Base::allocator_type allocator_type;$/;"	t	class:vector
 allocator_type	docs/STL_doc/stl_vector.h	/^  typedef typename _Base::allocator_type allocator_type;$/;"	t	struct:_Vector_base
+alpha	dtp/dtpHost.cpp	/^float alpha=0.9;$/;"	v
 append	docs/STL_doc/stl_rope.h	/^        rope& append() { return append(_CharT()); }  \/\/ XXX why?$/;"	f	class:rope
 append	docs/STL_doc/stl_rope.h	/^        rope& append(_CharT __c) {$/;"	f	class:rope
 append	docs/STL_doc/stl_rope.h	/^        rope& append(const _CharT* __c_string) {$/;"	f	class:rope
@@ -2440,7 +2441,11 @@ cookie_class	dtp/cookie_class.cpp	/^cookie_class::cookie_class()$/;"	f	class:coo
 cookie_class	dtp/cookie_class.cpp	/^cookie_class::cookie_class(all_cookie_states state_type)$/;"	f	class:cookie_class
 cookie_class	dtp/cookie_class.cpp	/^cookie_class::cookie_class(int x,all_cookie_states state_type)$/;"	f	class:cookie_class
 cookie_class	dtp/cookie_class.h	/^class cookie_class {$/;"	c
+cookie_retranmission_timmer	dtp/dtpHost.h	/^    cookie_timmer_map cookie_retranmission_timmer;$/;"	m	class:dtpHost
 cookie_state	dtp/cookie_class.h	/^     } cookie_state;$/;"	m	class:cookie_class	typeref:enum:cookie_class::all_cookie_states
+cookie_timmer_map	dtp/dtpHost.h	/^typedef map<unsigned int,  cookie_class*, ltid> cookie_timmer_map;$/;"	t
+cookie_timmer_map_Iterator	dtp/dtpHost.h	/^typedef map<unsigned int,  cookie_class*, ltid>::iterator cookie_timmer_map_Iterator;$/;"	t
+cookie_timmer_map_Pair	dtp/dtpHost.h	/^typedef pair<unsigned int, cookie_class*> cookie_timmer_map_Pair;$/;"	t
 copy	docs/STL_doc/char_traits.h	/^  static _CharT* copy(_CharT* __s1, const _CharT* __s2, size_t __n) {$/;"	f	class:__char_traits_base
 copy	docs/STL_doc/stl_algobase.h	/^  static _BidirectionalIter2 copy(_BidirectionalIter1 __first, $/;"	f	struct:__copy_backward_dispatch
 copy	docs/STL_doc/stl_algobase.h	/^  static _OutputIter copy(_InputIter __first, _InputIter __last,$/;"	f	struct:__copy_dispatch
@@ -2470,6 +2475,7 @@ crope	docs/STL_doc/stl_rope.h	/^typedef rope<char> crope;$/;"	t
 current	docs/STL_doc/stl_iterator.h	/^  _BidirectionalIterator current;$/;"	m	class:reverse_bidirectional_iterator
 current	docs/STL_doc/stl_iterator.h	/^  _Iterator current;$/;"	m	class:reverse_iterator
 current	docs/STL_doc/stl_iterator.h	/^  _RandomAccessIterator current;$/;"	m	class:reverse_iterator
+current_time	dtp/cookie_class.h	/^    int current_time;    $/;"	m	class:cookie_class
 cwnd_calculated	dtp/dtpPacket.h	/^    unsigned short cwnd_calculated;$/;"	m	class:dtpPacket
 cwnd_host	dtp/dtpHost.h	/^    int cwnd_host,temp_cwnd_host;  \/\/Congestion window in the host..$/;"	m	class:dtpHost
 data	cbr_app/CbrPacket.h	/^    unsigned char data[PAYLOAD_SIZE];$/;"	m	class:CbrPacket
@@ -2490,6 +2496,7 @@ deallocate	docs/STL_doc/stl_alloc.h	/^  void deallocate(pointer __p, size_type _
 debug_alloc	docs/STL_doc/stl_alloc.h	/^class debug_alloc {$/;"	c
 delete_c_str	docs/STL_doc/stl_rope.h	/^        void delete_c_str () {$/;"	f	class:rope
 delete_retransmission_timmer	dtp/dtpHost.cpp	/^void dtpHost::delete_retransmission_timmer(int packet_no)$/;"	f	class:dtpHost
+delete_timer_cookie	dtp/dtpHost.cpp	/^void dtpHost::delete_timer_cookie(unsigned int pack_no)$/;"	f	class:dtpHost
 deq	dtp/dtpRouter.cpp	/^PacketQueue_router::deq()$/;"	f	class:PacketQueue_router
 deq	netsim/FIFONode.cpp	/^PacketQueue::deq()$/;"	f	class:PacketQueue
 deque	docs/STL_doc/stl_deque.h	/^  deque(_InputIterator __first, _InputIterator __last,$/;"	f	class:deque
@@ -2952,7 +2959,7 @@ includes	docs/STL_doc/stl_algo.h	/^bool includes(_InputIter1 __first1, _InputIte
 index	docs/STL_doc/stl_rope.h	/^    size_t index() const { return _M_current_pos; }$/;"	f	class:_Rope_iterator_base
 init_page_size	docs/STL_doc/defalloc.h	/^    size_type init_page_size() { $/;"	f	class:allocator
 initial_cwnd	dtp/dtpHost.cpp	/^int initial_cwnd=1;$/;"	v
-initial_rtt	dtp/dtpHost.cpp	/^int initial_rtt=50000;$/;"	v
+initial_rtt	dtp/dtpHost.cpp	/^int initial_rtt=150000;$/;"	v
 inner_product	docs/STL_doc/stl_numeric.h	/^_Tp inner_product(_InputIterator1 __first1, _InputIterator1 __last1,$/;"	f
 inplace_merge	docs/STL_doc/stl_algo.h	/^inline void inplace_merge(_BidirectionalIter __first,$/;"	f
 input_iterator	docs/STL_doc/stl_iterator_base.h	/^template <class _Tp, class _Distance> struct input_iterator {$/;"	s
@@ -3374,7 +3381,7 @@ negate	docs/STL_doc/stl_function.h	/^struct negate : public unary_function<_Tp,_
 neighbor	dtp/dtpRouter.h	/^    Address		neighbor;	\/\/ Neighbor for queue$/;"	m	class:PacketQueue_router
 neighbor	netsim/FIFONode.h	/^    Address		neighbor;	\/\/ Neighbor for queue$/;"	m	class:PacketQueue
 neighbor	netsim/Topology.h	/^    Address		neighbor;	\/\/ Address of neighbor$/;"	m	class:LinkData
-new_connection	dtp/cookie_class.h	/^     bool new_connection;$/;"	m	class:cookie_class
+new_connection	dtp/cookie_class.h	/^    bool new_connection;$/;"	m	class:cookie_class
 next_packet	netsim/PacketScheduler.cpp	/^PacketScheduler::next_packet()$/;"	f	class:PacketScheduler
 next_permutation	docs/STL_doc/stl_algo.h	/^bool next_permutation(_BidirectionalIter __first, _BidirectionalIter __last) {$/;"	f
 next_permutation	docs/STL_doc/stl_algo.h	/^bool next_permutation(_BidirectionalIter __first, _BidirectionalIter __last,$/;"	f
@@ -3392,6 +3399,7 @@ not1	docs/STL_doc/stl_function.h	/^not1(const _Predicate& __pred)$/;"	f
 not2	docs/STL_doc/stl_function.h	/^not2(const _Predicate& __pred)$/;"	f
 not_eof	docs/STL_doc/char_traits.h	/^  static int_type not_eof(const int_type& __c) {$/;"	f	class:__char_traits_base
 not_equal_to	docs/STL_doc/stl_function.h	/^struct not_equal_to : public binary_function<_Tp,_Tp,bool> $/;"	s
+not_first_time_rtt	dtp/dtpHost.h	/^    bool not_first_time_rtt;$/;"	m	class:dtpHost
 npos	docs/STL_doc/stl_rope.h	/^        static const size_type npos;$/;"	m	class:rope
 npos	docs/STL_doc/stl_rope.h	/^const rope<_CharT, _Alloc>::size_type rope<_CharT, _Alloc>::npos =$/;"	m	class:rope
 nth_element	docs/STL_doc/stl_algo.h	/^inline void nth_element(_RandomAccessIter __first, _RandomAccessIter __nth,$/;"	f
@@ -4272,7 +4280,7 @@ send_immediately	dtp/dtpHost.cpp	/^void dtpHost::send_immediately(bool syn_temp,
 send_it	dtp/dtpRouter.cpp	/^dtpRouter::send_it(Address nhop)$/;"	f	class:dtpRouter
 send_it	netsim/FIFONode.cpp	/^FIFONode::send_it(Address nhop)$/;"	f	class:FIFONode
 send_packet	netsim/PacketScheduler.cpp	/^PacketScheduler::send_packet(Packet* packet,$/;"	f	class:PacketScheduler
-sender	dtp/cookie_class.h	/^    bool sender;    $/;"	m	class:cookie_class
+sender	dtp/cookie_class.h	/^    bool sender;$/;"	m	class:cookie_class
 sender	dtp/dtpHost.h	/^    bool sender;$/;"	m	class:dtpHost
 sending	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 sending_ack_listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
@@ -4598,7 +4606,7 @@ vector	docs/STL_doc/stl_vector.h	/^  vector(size_type __n, const _Tp& __value,$/
 vector	docs/STL_doc/stl_vector.h	/^class vector : protected _Vector_base<_Tp, _Alloc> $/;"	c
 virtual_clock	netsim/Scheduler.h	/^    Time 		virtual_clock;$/;"	m	class:Scheduler
 write	docs/STL_doc/stl_rope.h	/^        sequence_buffer& write(value_type* __s, size_t __len)$/;"	f	class:sequence_buffer
-write_host	dtp/dtpHost.cpp	/^int write_host=8;$/;"	v
+write_host	dtp/dtpHost.cpp	/^int write_host=7;$/;"	v
 write_host2	dtp/dtpHost.cpp	/^int write_host2=9;$/;"	v
 writing	dtp/dtpHost.cpp	/^void writing(char *buffer)$/;"	f
 writing2	dtp/dtpHost.cpp	/^void writing2(char *buffer)$/;"	f

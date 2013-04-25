@@ -1,11 +1,16 @@
 #include "new_library.h"
 //#include "../netsim/FIFONode.h"
 class FIFONode;
-
+class cookie_class;
 
 typedef map<unsigned int, Packet*, ltid> RetransmissionPacketMap;
 typedef map<unsigned int, Packet*, ltid>::iterator RetransmissionPacketMapIterator;
 typedef pair<unsigned int,Packet*> RetransmissionPacketMapPair;
+
+
+typedef map<unsigned int,  cookie_class*, ltid> cookie_timmer_map;
+typedef map<unsigned int,  cookie_class*, ltid>::iterator cookie_timmer_map_Iterator;
+typedef pair<unsigned int, cookie_class*> cookie_timmer_map_Pair;
 
 
 typedef map<unsigned int, Packet*, ltid> InorderPacketMap;
@@ -53,11 +58,17 @@ class dtpHost : public FIFONode {
     bool check_inorder_packets();
     void send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool);
     int  check_congestion(Packet* pkt_p);
+    void delete_timer_cookie(unsigned int pack_no);
 
 
     RetransmissionPacketMap  re_packet_map;
     InorderPacketMap order_packet_map;
     queue<Time> queue_for_rtt;
+    bool not_first_time_rtt;
+
+
+    cookie_timmer_map cookie_retranmission_timmer;
+
 
 };
 

@@ -1,1328 +1,1082 @@
+Initialized router with address 3
+ <0, dtpRouter::dtpRouter(Address, int)>
+Initialized router with address 4
+ <0, dtpRouter::dtpRouter(Address, int)>
 Initialized host with address 1
  <0, dtpHost::dtpHost(Address)>
 Initialized host with address 2
- <0, dtpHost::dtpHost(Address)>
-Initialized host with address 3
- <0, dtpHost::dtpHost(Address)>
-Initialized host with address 4
  <0, dtpHost::dtpHost(Address)>
 Initialized host with address 5
  <0, dtpHost::dtpHost(Address)>
 Initialized host with address 6
  <0, dtpHost::dtpHost(Address)>
-Initialized host with address 7
- <0, dtpHost::dtpHost(Address)>
-Initialized host with address 8
- <0, dtpHost::dtpHost(Address)>
-Initialized host with address 9
- <0, dtpHost::dtpHost(Address)>
-Initialized host with address 10
- <0, dtpHost::dtpHost(Address)>
-Initialized router with address 11
- <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 12
- <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 13
- <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 14
- <0, dtpRouter::dtpRouter(Address, int)>
-Initialized router with address 15
- <0, dtpRouter::dtpRouter(Address, int)>
-Sending the Packet with the HEADER:source: 1, destination: 6, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
- <10, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 2, destination: 7, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
- <10, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 3, destination: 9, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
- <10, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 4, destination: 8, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
- <10, void dtpPacket::print_sender()>
-Sending the Packet with the HEADER:source: 5, destination: 10, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
- <10, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
+ <50, void dtpPacket::print_sender()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 0, length: 40, SYN 1, ACK 0, FIN: 0
+ <52, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <340, virtual void dtpRouter::receive(Packet*)>
+ <380, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <340, virtual void dtpRouter::receive(Packet*)>
+ <382, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
-
-
- <340, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <340, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <340, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <670, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <670, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <670, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <670, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <670, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1000, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 7, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
- <1000, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 7, destination: 2, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
- <1000, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 3, destination: 9, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
- <1000, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 3, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
- <1000, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 4, destination: 8, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
- <1000, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 4, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
- <1000, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <1000, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 6, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
- <1330, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 6, destination: 1, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
- <1330, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <1330, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1330, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1330, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 5, destination: 10, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
- <1330, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 10, destination: 5, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
- <1330, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <1660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <1990, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 7, destination: 2, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
- <1990, void dtpPacket::print_receiver()>
-Established FDTP flow from 7 to 2 (1990)
- <1990, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 2, destination: 7, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <1990, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 3, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
- <1990, void dtpPacket::print_receiver()>
-Established FDTP flow from 9 to 3 (1990)
- <1990, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 3, destination: 9, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <1990, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 4, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
- <1990, void dtpPacket::print_receiver()>
-Established FDTP flow from 8 to 4 (1990)
- <1990, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 4, destination: 8, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <1990, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <1990, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <2320, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <2320, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 6, destination: 1, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
- <2650, void dtpPacket::print_receiver()>
-Established FDTP flow from 6 to 1 (2650)
- <2650, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 1, destination: 6, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <2650, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 10, destination: 5, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
- <2650, void dtpPacket::print_receiver()>
-Established FDTP flow from 10 to 5 (2650)
- <2650, virtual void dtpHost::receive(Packet*)>
-Sending the Packet with the HEADER:source: 5, destination: 10, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
- <2650, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <14000, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <14000, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <14000, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <14660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <14660, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <26010, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <26010, virtual void dtpRouter::receive(Packet*)>
-
+Assigning CWND 2
 
 
-Assigning CWND 1
-
-
- <26010, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <26670, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <26670, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 7, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <38020, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 7, destination: 2, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
- <38020, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 3, destination: 9, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <38020, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 3, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
- <38020, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 4, destination: 8, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <38020, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 4, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
- <38020, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <38350, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38350, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38350, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38680, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38680, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38680, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38680, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <38680, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 7, destination: 2, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
- <39010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 7, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <39010, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 3, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
- <39010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 3, destination: 9, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <39010, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 4, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
- <39010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 4, destination: 8, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <39010, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 1, destination: 6, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <50690, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 6, destination: 1, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
- <50690, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 5, destination: 10, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
- <50690, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 10, destination: 5, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
- <50690, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <51020, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <51020, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <51020, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
+ <710, virtual void dtpRouter::receive(Packet*)>
 
- <51020, virtual void dtpRouter::receive(Packet*)>
 
 
+Assigning CWND 2
 
-Assigning CWND 1
-
-
- <51020, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <51350, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <51350, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <51680, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <51680, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 6, destination: 1, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
- <52010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 6, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <52010, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 10, destination: 5, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
- <52010, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 5, destination: 10, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <52010, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <63030, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <63030, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
 
+ <1030, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
+ <1040, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
+ <1040, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 6, id: 0, length: 40,SYN 1, ACK 0, FIN: 0
+ <1360, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 0, length: 40, SYN 1, ACK 1, FIN: 0
+ <1360, void dtpPacket::print_sender()>
 
- <63030, virtual void dtpRouter::receive(Packet*)>
 
 
+Assigning CWND 2
 
-Assigning CWND 1
-
-
- <64020, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <64020, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 7, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <75040, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 7, destination: 2, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
- <75040, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 3, destination: 9, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <75040, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 3, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
- <75040, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 4, destination: 8, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <75040, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 4, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
- <75040, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <75370, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <75370, virtual void dtpRouter::receive(Packet*)>
 
+ <1370, virtual void dtpRouter::receive(Packet*)>
 
 
-Assigning CWND 1
-
-
- <75370, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <75700, virtual void dtpRouter::receive(Packet*)>
-
-
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <75700, virtual void dtpRouter::receive(Packet*)>
+ <1690, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <75700, virtual void dtpRouter::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 2, destination: 7, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 4, destination: 8, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_resender()>
+ <1700, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <76030, virtual void dtpRouter::receive(Packet*)>
+ <2020, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
+ <2030, void dtpPacket::print_receiver()>
+Established FDTP flow from 5 to 1 (2030)
+ <2030, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <2030, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 6, destination: 2, id: 0, length: 40,SYN 1, ACK 1, FIN: 0
+ <2350, void dtpPacket::print_receiver()>
+Established FDTP flow from 6 to 2 (2350)
+ <2350, virtual void dtpHost::receive(Packet*)>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 1, length: 1500, SYN 0, ACK 0, FIN: 0
+ <2350, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <76030, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 7, destination: 2, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 7, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 3, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 3, destination: 9, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 4, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 4, destination: 8, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <76030, void dtpPacket::print_sender()>
+ <14040, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <88040, virtual void dtpRouter::receive(Packet*)>
+ <14360, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <88040, virtual void dtpRouter::receive(Packet*)>
+ <26050, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <88040, virtual void dtpRouter::receive(Packet*)>
+ <38050, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <38060, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
+ <38060, void dtpPacket::print_sender()>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <88040, virtual void dtpRouter::receive(Packet*)>
+ <38390, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <88040, virtual void dtpRouter::receive(Packet*)>
+ <38720, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
+ <39050, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <39050, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 6, id: 1, length: 1500,SYN 0, ACK 0, FIN: 0
+ <50060, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 2, length: 40, SYN 0, ACK 0, FIN: 1
+ <50060, void dtpPacket::print_sender()>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <91408, virtual void dtpRouter::receive(Packet*)>
+ <50390, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <91408, virtual void dtpRouter::receive(Packet*)>
+ <50720, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 2, length: 40,SYN 0, ACK 0, FIN: 0
+ <51050, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <51050, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <91408, virtual void dtpRouter::receive(Packet*)>
+ <51060, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <100050, virtual void dtpRouter::receive(Packet*)>
+ <63060, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <100050, virtual void dtpRouter::receive(Packet*)>
+ <63070, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <100050, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 6, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <100050, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 6, destination: 1, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
- <100050, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 5, destination: 10, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
- <100050, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 10, destination: 5, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
- <100050, void dtpPacket::print_sender()>
+ <75070, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <75080, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
+ <75080, void dtpPacket::print_sender()>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <100380, virtual void dtpRouter::receive(Packet*)>
+ <75410, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <100380, virtual void dtpRouter::receive(Packet*)>
+ <75740, virtual void dtpRouter::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 1, destination: 5, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
+ <76070, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 5, destination: 1, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
+ <76070, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <76070, void dtpPacket::print_sender()>
+Received Packet with the HEADER: source: 2, destination: 6, id: 2, length: 1500,SYN 0, ACK 0, FIN: 0
+ <87080, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 3, length: 40, SYN 0, ACK 0, FIN: 1
+ <87080, void dtpPacket::print_sender()>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <100710, virtual void dtpRouter::receive(Packet*)>
+ <87410, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <100710, virtual void dtpRouter::receive(Packet*)>
+ <87740, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
+ <88070, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <88070, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <101040, virtual void dtpRouter::receive(Packet*)>
+ <88080, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <101040, virtual void dtpRouter::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 1, destination: 6, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <101370, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 2, length: 1500, SYN 0, ACK 0, FIN: 0
- <101370, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 6, destination: 1, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
- <101370, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 6, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <101370, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 10, destination: 5, id: 3, length: 40,SYN 0, ACK 0, FIN: 0
- <101370, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 5, destination: 10, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <101370, void dtpPacket::print_sender()>
+ <100080, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <103418, virtual void dtpRouter::receive(Packet*)>
+ <100080, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <103418, virtual void dtpRouter::receive(Packet*)>
+ <100090, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <103418, virtual void dtpRouter::receive(Packet*)>
+ <112090, virtual void dtpRouter::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <112060, virtual void dtpHost::receive(Packet*)>
+ <112100, virtual void dtpHost::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 1, destination: 5, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <113091, void dtpPacket::print_resender()>
+
+
+
+Assigning CWND 2
+
+
+ <124090, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <124100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
+ <124100, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <124430, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <124760, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
+ <125090, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <125090, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 1
+
+
+ <125101, virtual void dtpRouter::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 2, destination: 6, id: 3, length: 1500, SYN 0, ACK 0, FIN: 0
+ <135603, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 2, destination: 6, id: 3, length: 1500,SYN 0, ACK 0, FIN: 0
+ <136100, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
+ <136100, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <136430, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <136760, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
+ <137090, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <137090, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 1
+
+
+ <137101, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <137111, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <147613, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <149111, virtual void dtpRouter::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <112060, virtual void dtpHost::receive(Packet*)>
+ <149121, virtual void dtpHost::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <159613, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <161111, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <161121, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 5, length: 40, SYN 0, ACK 0, FIN: 1
+ <161121, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <161451, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <161781, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 5, length: 40,SYN 0, ACK 0, FIN: 0
+ <162111, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <162111, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <173111, virtual void dtpRouter::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <112060, virtual void dtpHost::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 2, destination: 7, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <113050, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 3, destination: 9, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <113050, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 4, destination: 8, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <113050, void dtpPacket::print_resender()>
+ <173121, virtual void dtpHost::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <113380, virtual void dtpRouter::receive(Packet*)>
+ <174121, virtual void dtpRouter::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 2, destination: 6, id: 4, length: 1500, SYN 0, ACK 0, FIN: 0
+ <184773, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 2, destination: 6, id: 4, length: 1500,SYN 0, ACK 0, FIN: 0
+ <185121, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 5, length: 40, SYN 0, ACK 0, FIN: 1
+ <185121, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <185451, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <113380, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 7, id: 3, length: 421,SYN 0, ACK 0, FIN: 0
- <115428, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 7, destination: 2, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
- <115428, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 3, destination: 9, id: 3, length: 421,SYN 0, ACK 0, FIN: 0
- <115428, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 3, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
- <115428, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 4, destination: 8, id: 3, length: 421,SYN 0, ACK 0, FIN: 0
- <115428, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 4, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
- <115428, void dtpPacket::print_sender()>
+ <185781, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 5, length: 40,SYN 0, ACK 0, FIN: 0
+ <186111, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 5, length: 1500, SYN 0, ACK 0, FIN: 0
+ <186111, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <186131, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <115758, virtual void dtpRouter::receive(Packet*)>
+ <196783, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <198141, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 6, length: 40, SYN 0, ACK 0, FIN: 1
+ <198141, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <198471, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <115758, virtual void dtpRouter::receive(Packet*)>
+ <198801, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 6, length: 40,SYN 0, ACK 0, FIN: 0
+ <199131, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <199131, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <115758, virtual void dtpRouter::receive(Packet*)>
+ <208783, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <208793, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <116088, virtual void dtpRouter::receive(Packet*)>
+ <211141, virtual void dtpRouter::receive(Packet*)>
 
 
 
-Assigning CWND 1
+Assigning CWND 2
 
 
- <116088, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116088, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 7, destination: 2, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
- <116418, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 2, destination: 7, id: 5, length: 40, SYN 1, ACK 0, FIN: 1
- <116418, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 9, destination: 3, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
- <116418, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 3, destination: 9, id: 5, length: 40, SYN 1, ACK 0, FIN: 1
- <116418, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 8, destination: 4, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
- <116418, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 4, destination: 8, id: 5, length: 40, SYN 1, ACK 0, FIN: 1
- <116418, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <116428, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116428, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116428, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116748, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116748, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116748, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116748, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <116748, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <119806, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <119806, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <119806, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <120126, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <120126, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <120126, virtual void dtpRouter::receive(Packet*)>
+ <220793, virtual void dtpRouter::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <123184, virtual void dtpHost::receive(Packet*)>
+ <220803, virtual void dtpHost::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <232793, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 5, length: 1500,SYN 0, ACK 0, FIN: 0
+ <232803, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 6, length: 40, SYN 0, ACK 0, FIN: 1
+ <232803, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <233133, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <233463, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 6, length: 40,SYN 0, ACK 0, FIN: 0
+ <233793, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <233793, void dtpPacket::print_sender()>
+Re-sending the Packet with the HEADER:source: 1, destination: 5, id: 6, length: 1500, SYN 0, ACK 0, FIN: 0
+ <237127, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 1, destination: 5, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <244803, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 7, length: 40, SYN 0, ACK 0, FIN: 1
+ <244803, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <245133, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <245463, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 7, length: 40,SYN 0, ACK 0, FIN: 0
+ <245793, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 7, length: 524, SYN 0, ACK 0, FIN: 0
+ <245793, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 1
+
+
+ <245803, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <249137, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <253329, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <257813, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <269813, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 6, length: 1500,SYN 0, ACK 0, FIN: 0
+ <269823, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 7, length: 40, SYN 0, ACK 0, FIN: 1
+ <269823, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <270153, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <270483, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 7, length: 40,SYN 0, ACK 0, FIN: 0
+ <270813, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 7, length: 1500, SYN 0, ACK 0, FIN: 0
+ <270813, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <274005, virtual void dtpRouter::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <123184, virtual void dtpHost::receive(Packet*)>
+ <281823, virtual void dtpHost::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <282823, virtual void dtpRouter::receive(Packet*)>
+Re-sending the Packet with the HEADER:source: 1, destination: 5, id: 7, length: 524, SYN 0, ACK 0, FIN: 0
+ <284657, void dtpPacket::print_resender()>
+Received Packet with the HEADER: source: 1, destination: 5, id: 7, length: 524,SYN 0, ACK 0, FIN: 0
+ <286015, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 8, length: 40, SYN 0, ACK 0, FIN: 1
+ <286015, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <286345, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <286675, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 8, length: 40,SYN 0, ACK 0, FIN: 0
+ <287005, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 1, destination: 5, id: 9, length: 40, SYN 1, ACK 0, FIN: 1
+ <287005, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 1
+
+
+ <288859, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 1
+
+
+ <289179, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <294833, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <299025, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <299345, virtual void dtpRouter::receive(Packet*)>
 
 
 REceived a REPEATED PACKET HERE
 
- <123184, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 2, destination: 7, id: 5, length: 40,SYN 1, ACK 0, FIN: 1
- <123504, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 7, destination: 2, id: 6, length: 40, SYN 1, ACK 1, FIN: 1
- <123504, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 3, destination: 9, id: 5, length: 40,SYN 1, ACK 0, FIN: 1
- <123504, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 9, destination: 3, id: 6, length: 40, SYN 1, ACK 1, FIN: 1
- <123504, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 4, destination: 8, id: 5, length: 40,SYN 1, ACK 0, FIN: 1
- <123504, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 8, destination: 4, id: 6, length: 40, SYN 1, ACK 1, FIN: 1
- <123504, void dtpPacket::print_sender()>
+ <303227, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 1, destination: 5, id: 9, length: 40,SYN 1, ACK 0, FIN: 1
+ <303547, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 5, destination: 1, id: 10, length: 40, SYN 1, ACK 1, FIN: 1
+ <303547, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <303877, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <123834, virtual void dtpRouter::receive(Packet*)>
+ <304207, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 5, destination: 1, id: 10, length: 40,SYN 1, ACK 1, FIN: 1
+ <304537, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 5 to 1 (304537)
+ <304537, virtual void dtpHost::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 7, length: 1500,SYN 0, ACK 0, FIN: 0
+ <306843, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 8, length: 40, SYN 0, ACK 0, FIN: 1
+ <306843, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <307173, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <123834, virtual void dtpRouter::receive(Packet*)>
+ <307503, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 8, length: 40,SYN 0, ACK 0, FIN: 0
+ <307833, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 8, length: 1500, SYN 0, ACK 0, FIN: 0
+ <307833, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <123834, virtual void dtpRouter::receive(Packet*)>
+ <319843, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <331853, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 8, length: 1500,SYN 0, ACK 0, FIN: 0
+ <343863, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 9, length: 40, SYN 0, ACK 0, FIN: 1
+ <343863, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <344193, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <124164, virtual void dtpRouter::receive(Packet*)>
+ <344523, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 9, length: 40,SYN 0, ACK 0, FIN: 0
+ <344853, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 9, length: 1500, SYN 0, ACK 0, FIN: 0
+ <344853, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <124164, virtual void dtpRouter::receive(Packet*)>
+ <356863, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <368873, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 9, length: 1500,SYN 0, ACK 0, FIN: 0
+ <380883, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 10, length: 40, SYN 0, ACK 0, FIN: 1
+ <380883, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <381213, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <124164, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 7, destination: 2, id: 6, length: 40,SYN 1, ACK 1, FIN: 1
- <124494, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 7 to 2 (124494)
- <124494, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 9, destination: 3, id: 6, length: 40,SYN 1, ACK 1, FIN: 1
- <124494, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 9 to 3 (124494)
- <124494, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 8, destination: 4, id: 6, length: 40,SYN 1, ACK 1, FIN: 1
- <124494, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 8 to 4 (124494)
- <124494, virtual void dtpHost::receive(Packet*)>
+ <381543, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 10, length: 40,SYN 0, ACK 0, FIN: 0
+ <381873, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 10, length: 1500, SYN 0, ACK 0, FIN: 0
+ <381873, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <125390, virtual void dtpRouter::receive(Packet*)>
+ <393883, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <405893, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 10, length: 1500,SYN 0, ACK 0, FIN: 0
+ <417903, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 11, length: 40, SYN 0, ACK 0, FIN: 1
+ <417903, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <418233, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <125390, virtual void dtpRouter::receive(Packet*)>
+ <418563, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 11, length: 40,SYN 0, ACK 0, FIN: 0
+ <418893, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 11, length: 1500, SYN 0, ACK 0, FIN: 0
+ <418893, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <128758, virtual void dtpRouter::receive(Packet*)>
+ <430903, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <442913, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 11, length: 1500,SYN 0, ACK 0, FIN: 0
+ <454923, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 12, length: 40, SYN 0, ACK 0, FIN: 1
+ <454923, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <455253, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <128758, virtual void dtpRouter::receive(Packet*)>
+ <455583, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 12, length: 40,SYN 0, ACK 0, FIN: 0
+ <455913, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 12, length: 1500, SYN 0, ACK 0, FIN: 0
+ <455913, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <137400, virtual void dtpRouter::receive(Packet*)>
+ <467923, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <479933, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 12, length: 1500,SYN 0, ACK 0, FIN: 0
+ <491943, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 13, length: 40, SYN 0, ACK 0, FIN: 1
+ <491943, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <492273, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <137400, virtual void dtpRouter::receive(Packet*)>
+ <492603, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 13, length: 40,SYN 0, ACK 0, FIN: 0
+ <492933, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 13, length: 1500, SYN 0, ACK 0, FIN: 0
+ <492933, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <140768, virtual void dtpRouter::receive(Packet*)>
+ <504943, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <516953, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 13, length: 1500,SYN 0, ACK 0, FIN: 0
+ <528963, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 14, length: 40, SYN 0, ACK 0, FIN: 1
+ <528963, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <529293, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <140768, virtual void dtpRouter::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <149410, virtual void dtpHost::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <149410, virtual void dtpHost::receive(Packet*)>
-Re-sending the Packet with the HEADER:source: 1, destination: 6, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <150730, void dtpPacket::print_resender()>
-Re-sending the Packet with the HEADER:source: 5, destination: 10, id: 3, length: 421, SYN 0, ACK 0, FIN: 0
- <150730, void dtpPacket::print_resender()>
-Received Packet with the HEADER: source: 1, destination: 6, id: 3, length: 421,SYN 0, ACK 0, FIN: 0
- <152778, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 6, destination: 1, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
- <152778, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 5, destination: 10, id: 3, length: 421,SYN 0, ACK 0, FIN: 0
- <152778, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 10, destination: 5, id: 4, length: 40, SYN 0, ACK 0, FIN: 1
- <152778, void dtpPacket::print_sender()>
+ <529623, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 14, length: 40,SYN 0, ACK 0, FIN: 0
+ <529953, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 14, length: 1500, SYN 0, ACK 0, FIN: 0
+ <529953, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <153108, virtual void dtpRouter::receive(Packet*)>
+ <541963, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <553973, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 14, length: 1500,SYN 0, ACK 0, FIN: 0
+ <565983, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 15, length: 40, SYN 0, ACK 0, FIN: 1
+ <565983, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <566313, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <153108, virtual void dtpRouter::receive(Packet*)>
+ <566643, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 15, length: 40,SYN 0, ACK 0, FIN: 0
+ <566973, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 15, length: 688, SYN 0, ACK 0, FIN: 0
+ <566973, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <153438, virtual void dtpRouter::receive(Packet*)>
+ <572487, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <578001, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 15, length: 688,SYN 0, ACK 0, FIN: 0
+ <583515, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 16, length: 40, SYN 0, ACK 0, FIN: 1
+ <583515, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <583845, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <153438, virtual void dtpRouter::receive(Packet*)>
+ <584175, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 16, length: 40,SYN 0, ACK 0, FIN: 0
+ <584505, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 2, destination: 6, id: 17, length: 40, SYN 1, ACK 0, FIN: 1
+ <584505, void dtpPacket::print_sender()>
 
 
 
 Assigning CWND 1
 
 
- <153768, virtual void dtpRouter::receive(Packet*)>
+ <584835, virtual void dtpRouter::receive(Packet*)>
+
+
+
+Assigning CWND 2
+
+
+ <585165, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 2, destination: 6, id: 17, length: 40,SYN 1, ACK 0, FIN: 1
+ <585495, void dtpPacket::print_receiver()>
+Sending the Packet with the HEADER:source: 6, destination: 2, id: 18, length: 40, SYN 1, ACK 1, FIN: 1
+ <585495, void dtpPacket::print_sender()>
+
+
+
+Assigning CWND 2
+
+
+ <585825, virtual void dtpRouter::receive(Packet*)>
 
 
 
 Assigning CWND 1
 
 
- <153768, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 6, destination: 1, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
- <154098, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 1, destination: 6, id: 5, length: 40, SYN 1, ACK 0, FIN: 1
- <154098, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 10, destination: 5, id: 4, length: 40,SYN 0, ACK 0, FIN: 0
- <154098, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 5, destination: 10, id: 5, length: 40, SYN 1, ACK 0, FIN: 1
- <154098, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <154108, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <154108, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <154428, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <154428, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <157486, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <157486, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <157806, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <157806, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <160864, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <160864, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <161184, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <161184, virtual void dtpRouter::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <164242, virtual void dtpHost::receive(Packet*)>
-
-
-REceived a REPEATED PACKET HERE
-
- <164242, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 1, destination: 6, id: 5, length: 40,SYN 1, ACK 0, FIN: 1
- <164562, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 6, destination: 1, id: 6, length: 40, SYN 1, ACK 1, FIN: 1
- <164562, void dtpPacket::print_sender()>
-Received Packet with the HEADER: source: 5, destination: 10, id: 5, length: 40,SYN 1, ACK 0, FIN: 1
- <164562, void dtpPacket::print_receiver()>
-Sending the Packet with the HEADER:source: 10, destination: 5, id: 6, length: 40, SYN 1, ACK 1, FIN: 1
- <164562, void dtpPacket::print_sender()>
-
-
-
-Assigning CWND 1
-
-
- <164892, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <164892, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <165222, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <165222, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <165552, virtual void dtpRouter::receive(Packet*)>
-
-
-
-Assigning CWND 1
-
-
- <165552, virtual void dtpRouter::receive(Packet*)>
-Received Packet with the HEADER: source: 6, destination: 1, id: 6, length: 40,SYN 1, ACK 1, FIN: 1
- <165882, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 6 to 1 (165882)
- <165882, virtual void dtpHost::receive(Packet*)>
-Received Packet with the HEADER: source: 10, destination: 5, id: 6, length: 40,SYN 1, ACK 1, FIN: 1
- <165882, void dtpPacket::print_receiver()>
-Tore down FDTP flow from 10 to 5 (165882)
- <165882, virtual void dtpHost::receive(Packet*)>
+ <586155, virtual void dtpRouter::receive(Packet*)>
+Received Packet with the HEADER: source: 6, destination: 2, id: 18, length: 40,SYN 1, ACK 1, FIN: 1
+ <586485, void dtpPacket::print_receiver()>
+Tore down FDTP flow from 6 to 2 (586485)
+ <586485, virtual void dtpHost::receive(Packet*)>
