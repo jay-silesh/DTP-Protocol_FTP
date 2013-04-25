@@ -17,7 +17,7 @@
 #include "cookie_class.h"
 
 
-int initial_rtt=50000;
+int initial_rtt=150000;
 
 int write_host=7;
 int write_host2=9;

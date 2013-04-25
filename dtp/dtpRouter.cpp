@@ -172,13 +172,25 @@ dtpRouter::receive(Packet* pkt)
 
     /****************************************************************************/
     // Calculating the Congestion in the router and setting in the packet....
-    	((queue)->source_holder).insert(address());
-    	int no_of_sources=((queue)->source_holder).size();
-    	int each_source=max_queue_size/no_of_sources;
-    	each_source=each_source-3;
-    	if(each_source<=0)
-    		each_source=1;
-    	((dtpPacket*)pkt)->cwnd_calculated=each_source;
+    	Address temp_node=pkt->source;
+        ((queue)->source_holder).insert(temp_node);
+
+    	if(((dtpPacket*)pkt)->last_packet==true)
+        {
+            set<Address>::iterator it2;
+            it2 = ((queue)->source_holder).find (temp_node);
+            ((queue)->source_holder).erase (it2);
+        }
+
+        int no_of_sources=((queue)->source_holder).size();
+        if(no_of_sources<3)
+            no_of_sources=3;
+    	int each_source=(max_queue_size-2)/no_of_sources;
+        if(each_source<1)
+            each_source=1;
+    	//each_source=each_source-3;
+    	TRACE(TRL3,"\n\n\nAssigning CWND %d\n\n\n",each_source);
+        ((dtpPacket*)pkt)->cwnd_calculated=each_source;
 	/****************************************************************************/
     
     // Check if there is space

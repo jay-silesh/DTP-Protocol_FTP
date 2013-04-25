@@ -34,8 +34,6 @@ Link(12,15,10,1)
 Link(11,14,10,1)
 
 FDTPFlow(1,6,10,"sample")
-#FDTPFlow(1,6,6000,"file")
-#FDTPFlow(6,1,10000,"file")
 FDTPFlow(2,7,10,"sample")
 FDTPFlow(3,9,10,"sample")
 FDTPFlow(4,8,10,"sample")
