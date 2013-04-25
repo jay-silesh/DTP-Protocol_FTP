@@ -52,6 +52,7 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 
 	/* Congestion Window,cummu ACK,etc */
 	this->last_packet=pck.last_packet;
+	this->cwnd_calculated=pck.cwnd_calculated;
 	
 
 	

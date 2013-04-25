@@ -1,6 +1,6 @@
 #include <cstdio>
 
-#define PAYLOAD_SIZE (MTU - sizeof(Packet))
+#define PAYLOAD_SIZE (MTU - sizeof(dtpPacket))
 
 //
 // CbrPacket is derived from Packet and adds a data field.
@@ -21,5 +21,6 @@ class dtpPacket : public Packet {
 
     /* Used for cummulative ,window,etc ...MAKE CHANGES IN DTPPACKET.h*/
     bool last_packet;
+    unsigned short cwnd_calculated;
 
 };

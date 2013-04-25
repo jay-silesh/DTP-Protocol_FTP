@@ -35,7 +35,7 @@ class dtpHost : public FIFONode {
     unsigned int normal_packet_received;  //At the receiver side , to know which NORMAL packets has been recieved
     unsigned int actual_packets_rec;
     unsigned int lastest_ack_rec;
-    int cwnd_host;  //Congestion window in the host..
+    int cwnd_host,temp_cwnd_host;  //Congestion window in the host..
     Time rtt_estimation;
 
     enum

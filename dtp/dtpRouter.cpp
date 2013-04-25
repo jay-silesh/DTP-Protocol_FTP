@@ -9,18 +9,9 @@
 #include "dtpRouter.h"
 #include "dtpPacket.h"
 #include "dtpHost.h"
+#include <set>
 
 
-/*
-#include "common.h"
-#include "Timer.h"
-#include "Packet.h"
-#include "PacketScheduler.h"
-#include "Scheduler.h"
-#include "Topology.h"
-#include "Node.h"
-#include "FIFONode.h"
-*/
 
 PacketQueue_router::PacketQueue_router(int sz,
                          Address s,
@@ -177,6 +168,18 @@ dtpRouter::receive(Packet* pkt)
     } else {
         queue = (*qiter).second;
     }
+
+
+    /****************************************************************************/
+    // Calculating the Congestion in the router and setting in the packet....
+    	((queue)->source_holder).insert(address());
+    	int no_of_sources=((queue)->source_holder).size();
+    	int each_source=max_queue_size/no_of_sources;
+    	each_source=each_source-3;
+    	if(each_source<=0)
+    		each_source=1;
+    	((dtpPacket*)pkt)->cwnd_calculated=each_source;
+	/****************************************************************************/
     
     // Check if there is space
     if (queue->enq(pkt)) {

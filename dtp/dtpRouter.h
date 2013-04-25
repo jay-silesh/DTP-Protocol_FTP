@@ -1,3 +1,4 @@
+#include <set>
 class Packet;
 class Node;
 
@@ -6,6 +7,8 @@ class Node;
 // packets. At each FIFONode, there is one such queue for every
 // nexthop. The queue size is configurable.
 //
+
+typedef set<Address> myset;
 
 class PacketQueue_router {
     friend class dtpRouter;
@@ -20,12 +23,14 @@ class PacketQueue_router {
     // Return first packet, else NULL
     Packet* deq();
 
-	public: 
+	myset source_holder;
     queue<Packet*>	packet_queue;	// Queue of packets
     int			max_size;	// Max queue size
     int 		pending_send;	// Set if packet is in transit
     Address		node;		// Node at which queue resides
     Address		neighbor;	// Neighbor for queue
+
+ //Hold the no of source which mght be sending to this queue
 };
 
 typedef map<Address, PacketQueue_router*, ltAddress> QueueMap_router;
@@ -36,9 +41,7 @@ typedef pair<Address, PacketQueue_router*> QueueMap_routerPair;
 // The FIFONode implements a FCFS router. Most routers in the Internet
 // employ this queuing discipline. For each neighbor, it maintains a
 // PacketQueue_router.
-//
-// The CbrSender class is derived from FIFONode. 
-//
+
 
 class dtpRouter : public Node {
     
@@ -64,7 +67,7 @@ class dtpRouter : public Node {
 
     // Send a packet to a nexthop
     void send_it(Address nhop);
-    public:
+    
     int		max_queue_size;			// Number of packets in queue
     QueueMap_router	queue_map;			// Map of queues per nexthop
     int		pending_send;			// Boolean
