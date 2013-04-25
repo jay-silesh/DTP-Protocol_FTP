@@ -22,8 +22,8 @@ float alpha=0.9;
 
 int initial_rtt=50000;
 
-int write_host=7;
-int write_host2=9;
+int write_host=2;
+int write_host2=4;
 
 int initial_cwnd=1;
 
@@ -56,7 +56,6 @@ dtpHost::receive(Packet* pkt)
     if(dpkt->syn==true && dpkt->ack==false && dpkt->fin==false)
     {
       //Received the SYN packet @ the receiver side
-      delete_timer_cookie((dpkt->id)-temp_delete_pack_no);
       dpkt->print_receiver();
       destination=dpkt->source;
       set_normal_cookie();
@@ -72,12 +71,15 @@ dtpHost::receive(Packet* pkt)
 
       dpkt->print_receiver();
       TRACE(TRL3, "Established FDTP flow from %d to %d (%d)\n", destination,address(),scheduler->time());
+      delete_timer_cookie(dpkt->id);
       delete_retransmission_timmer(dpkt->id);
 
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       temp_sender->state=dtpHost::sending;      
       RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(dpkt->id);
       temp_sender->delete_retransmission_timmer(dpkt->id); 
+      temp_sender-> delete_timer_cookie(dpkt->id);
+      
       state=dtpHost::sending;
       set_normal_cookie();
 
@@ -150,8 +152,10 @@ dtpHost::receive(Packet* pkt)
         }
         else if(dpkt->id<packet_expected)
         {  TRACE(TRL3,"\n\nREceived a REPEATED PACKET HERE\n\n");
+            
             dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
             temp_sender->delete_retransmission_timmer(dpkt->id);
+
         }
         
     }
@@ -220,6 +224,7 @@ dtpHost::receive(Packet* pkt)
           
           dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
           temp_sender->delete_retransmission_timmer(dpkt->id);
+          temp_sender->delete_timer_cookie(dpkt->id);
                 
         /***************************************************************/
           lastest_ack_rec=dpkt->id-1;
@@ -261,7 +266,7 @@ dtpHost::receive(Packet* pkt)
     {
       // DONE TRANSMISSION!!!
       dpkt->print_receiver();
-      
+       delete_timer_cookie(dpkt->id);      
       dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
       RetransmissionPacketMapIterator iit=(temp_sender->re_packet_map).find(dpkt->id);
       if (iit == (temp_sender->re_packet_map).end()) {
@@ -270,6 +275,7 @@ dtpHost::receive(Packet* pkt)
       else
       {
           (temp_sender->re_packet_map).erase (iit);
+          temp_sender-> delete_timer_cookie(dpkt->id);
           TRACE(TRL3, "Tore down FDTP flow from %d to %d (%d)\n", dpkt->source, dpkt->destination, scheduler->time());
           
       }
@@ -543,10 +549,8 @@ void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)
             {
               cookie_retranmission_timmer.erase
                (cookie_retranmission_timmer.find(number));
+                delete_timer_cookie(number);
             }     
-
-
-
 
             temp_cookie->current_time=scheduler->time()+rtt;
             cookie_timmer_map_Pair ctmp_entry(number,temp_cookie);
