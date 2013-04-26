@@ -155,6 +155,7 @@ dtpHost::receive(Packet* pkt)
             
             dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
             temp_sender->delete_retransmission_timmer(dpkt->id);
+            temp_sender->delete_timer_cookie(dpkt->id);
 
         }
         
@@ -233,7 +234,8 @@ dtpHost::receive(Packet* pkt)
 
          
         //delete_retransmission_timmer(dpkt->id-1);
-      
+        cwnd_host=check_congestion(dpkt);
+   
         if( dpkt->last_packet==false ) //done_transmission==false || 
         {
            check_congestion(dpkt);
@@ -368,8 +370,11 @@ void dtpHost::handle_timer(void* cookie)
                   done_transmission=false;
                   //bool first_time_rtt=true;
 
-                  int temp_cwnd=cwnd_host;
-                  while( temp_cwnd > 0 && done_transmission==false )
+             //     int temp_cwnd=cwnd_host;
+              //    while( temp_cwnd > 0 && done_transmission==false )
+                       int temp_cwnd=1;
+                  while( temp_cwnd <=cwnd_host && done_transmission==false )
+               
                   {
                         dtpPacket*  pkt_normal = new dtpPacket(address(),destination,sizeof(dtpPacket));
                         set_packet((dtpPacket*)pkt_normal,0,0,0,sent_so_far+1);
@@ -394,7 +399,7 @@ void dtpHost::handle_timer(void* cookie)
                            pkt_normal->length+=strlen(pkt_normal->data);
                         //  pkt_normal->length+=MTU-sizeof(Packet);
                         }
-                        set_retransmission_cookie(pkt_normal->id, rtt_in_host*cwnd_host );
+                        set_retransmission_cookie(pkt_normal->id, rtt_in_host*(cwnd_host+1) );
                         set_retransmission_map(pkt_normal);
 
 
@@ -406,7 +411,7 @@ void dtpHost::handle_timer(void* cookie)
                         //}
                         send(pkt_normal);
                         
-                        temp_cwnd--;
+                        temp_cwnd++;
 
                   }
 
@@ -456,7 +461,7 @@ void dtpHost::handle_timer(void* cookie)
             dtpPacket * pkt1 = new dtpPacket(*temp);
             
             delete_retransmission_timmer(temp->id);
-            set_retransmission_cookie(pkt1->id,rtt_in_host*cwnd_host);
+            set_retransmission_cookie(pkt1->id,rtt_in_host*2);
             set_retransmission_map(pkt1);
             ((dtpPacket*) pkt1)->print_resender();
             send(pkt1);
@@ -505,12 +510,12 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)
 
 }
 
-int dtpHost::check_congestion(Packet* pkt_p)
+unsigned short dtpHost::check_congestion(Packet* pkt_p)
 {
-    cwnd_host=((dtpPacket*)pkt_p)->cwnd_calculated;
+  //  cwnd_host=((dtpPacket*)pkt_p)->cwnd_calculated;
     //cwnd_host++;
     //cwnd_host*=2;
-    return 1;
+    return ((dtpPacket*)pkt_p)->cwnd_calculated;
 }
 
 
