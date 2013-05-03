@@ -54,4 +54,4 @@ app_config.o: /usr/include/alloca.h ../netsim/Config.h ../netsim/Node.h
 app_config.o: ../netsim/FIFONode.h ../netsim/Packet.h dtpHost.h new_library.h
 app_config.o: ../netsim/PacketScheduler.h dtpPacket.h ../netsim/Timer.h
 app_config.o: ../netsim/Scheduler.h dtpRouter.h
-cookie_class.o: cookie_class.h ../netsim/Timer.h
+cookie_class.o: cookie_class.h

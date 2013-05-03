@@ -193,9 +193,18 @@ dtpRouter::receive(Packet* pkt)
 
         if(each_source<1)
             each_source=1;
-    	//each_source=each_source-3;
-    	TRACE(TRL3,"\n\n\nAssigning CWND %d\n\n\n",each_source);
-        ((dtpPacket*)pkt)->cwnd_calculated=each_source;
+    	
+        TRACE(TRL3,"\n\n\nAssigning CWND %d\n\n\n",each_source);
+
+        if((((dtpPacket*)pkt)->cwnd_calculated)==0)
+            (((dtpPacket*)pkt)->cwnd_calculated)=each_source;
+        else
+        {
+            if( (((dtpPacket*)pkt)->cwnd_calculated) > each_source )
+                ((dtpPacket*)pkt)->cwnd_calculated=each_source;    
+        }
+
+        
 	/****************************************************************************/
     
     // Check if there is space

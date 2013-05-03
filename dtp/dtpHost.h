@@ -56,7 +56,7 @@ class dtpHost : public FIFONode {
     void set_retransmission_cookie(unsigned int , int);
     void set_normal_cookie();
     bool check_inorder_packets();
-    void send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,bool);
+    void send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,unsigned int id_temp,Time time_temp,short pack_cwnd,bool);
     unsigned short  check_congestion(Packet* pkt_p);
     void delete_timer_cookie(unsigned int pack_no);
 

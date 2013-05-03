@@ -22,8 +22,8 @@ float alpha=0.9;
 
 int initial_rtt=50000;
 
-int write_host=2;
-int write_host2=4;
+int write_host=8;
+int write_host2=9;
 
 int initial_cwnd=1;
 
@@ -123,6 +123,10 @@ dtpHost::receive(Packet* pkt)
                 }
 
                 int flag_last_packet=dpkt->last_packet;
+                
+                unsigned short pack_cwnd=dpkt->cwnd_calculated;
+               
+             
 
                 temp_cwnd_host=dpkt->cwnd_calculated;
                 if(flag_last_packet==false)
@@ -135,8 +139,9 @@ dtpHost::receive(Packet* pkt)
                   state=dtpHost::FIN;
                   done_transmission=true;
                 }
-                send_immediately(0,0,1,packet_expected,rtt_in_host,flag_last_packet);
-      
+                TRACE(TRL3,"\n\nSENDING THE CWND value as  %d\n\n",pack_cwnd);   
+                send_immediately(0,0,1,packet_expected,rtt_in_host,pack_cwnd,flag_last_packet);
+
       
         }
         else if(dpkt->id > packet_expected)
@@ -153,6 +158,7 @@ dtpHost::receive(Packet* pkt)
         else if(dpkt->id<packet_expected)
         {  TRACE(TRL3,"\n\nREceived a REPEATED PACKET HERE\n\n");
             
+
             dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
             temp_sender->delete_retransmission_timmer(dpkt->id);
             temp_sender->delete_timer_cookie(dpkt->id);
@@ -261,7 +267,7 @@ dtpHost::receive(Packet* pkt)
     
         dtpHost* temp_sender=(dtpHost*) scheduler->get_node(destination);
         temp_sender->delete_retransmission_timmer(dpkt->id);
-        send_immediately(1,1,1,dpkt->id+1,rtt_in_host,true);
+        send_immediately(1,1,1,dpkt->id+1,rtt_in_host,2,true);
     }
     
     else if(dpkt->syn==1 && dpkt->ack==1 && dpkt->fin==1)// && dpkt->last_packet==true)
@@ -372,6 +378,7 @@ void dtpHost::handle_timer(void* cookie)
 
              //     int temp_cwnd=cwnd_host;
               //    while( temp_cwnd > 0 && done_transmission==false )
+                  ASSERT(cwnd_host>0);
                        int temp_cwnd=1;
                   while( temp_cwnd <=cwnd_host && done_transmission==false )
                
@@ -399,7 +406,7 @@ void dtpHost::handle_timer(void* cookie)
                            pkt_normal->length+=strlen(pkt_normal->data);
                         //  pkt_normal->length+=MTU-sizeof(Packet);
                         }
-                        set_retransmission_cookie(pkt_normal->id, rtt_in_host*(cwnd_host+1) );
+                        set_retransmission_cookie(pkt_normal->id, rtt_in_host*(cwnd_host+2) );
                         set_retransmission_map(pkt_normal);
 
 
@@ -501,13 +508,15 @@ void dtpHost::delete_timer_cookie(unsigned int pack_no)
 
 }
 
+
+
 void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)
 {
   ((dtpPacket*)pkt_p)->syn=syn_p;
   ((dtpPacket*)pkt_p)->ack=ack_p;
   ((dtpPacket*)pkt_p)->fin=fin_p;
   ((dtpPacket*)pkt_p)->last_packet=false;
-
+  ((dtpPacket*)pkt_p)->cwnd_calculated=0;
 }
 
 unsigned short dtpHost::check_congestion(Packet* pkt_p)
@@ -527,6 +536,8 @@ void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned
   ((dtpPacket*)pkt_p)->fin=fin_p;
   ((dtpPacket*)pkt_p)->last_packet=false;
   ((dtpPacket*)pkt_p)->id=id_p;
+  ((dtpPacket*)pkt_p)->cwnd_calculated=0;
+  
 }
 
 
@@ -582,12 +593,14 @@ void dtpHost::delete_retransmission_timmer(int packet_no)
 }
 
 void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,
-  unsigned int id_temp,Time time_temp,bool last_pac=false)
+  unsigned int id_temp,Time time_temp,short pack_cwnd,bool last_pac=false)
 {
+        ASSERT(pack_cwnd>0);
         dtpPacket * pkt_temp=new dtpPacket(address(),destination,sizeof(dtpPacket));
         pkt_temp->data=NULL;
         set_packet((dtpPacket*)pkt_temp,syn_temp,ack_temp,fin_temp,id_temp);  //sent_so_far+2 = Since ACK shd always be one plus
         pkt_temp->last_packet=last_pac;
+        pkt_temp->cwnd_calculated=pack_cwnd;
 
         ((dtpPacket*) pkt_temp)->cwnd_calculated=temp_cwnd_host;
         set_retransmission_cookie(pkt_temp->id,time_temp);  //Sending the ACK immediately...
