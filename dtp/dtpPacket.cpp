@@ -39,15 +39,22 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 	this->fin=pck.fin;
 	this->source=pck.source;
 	this->destination=pck.destination;
-//	this->last_packet=pck.last_packet;
 	if(pck.data!=NULL)
 	{
-		char *buffer=(char *)malloc(1550);
+		char *buffer = new char [MTU];
+		//char *buffer=(char *)malloc(1550);
 	    strcpy(buffer,pck.data);
 		this->data=buffer;
 	}
 	else
 		this->data=NULL;
+
+
+	/* Congestion Window,cummu ACK,etc */
+	this->last_packet=pck.last_packet;
+	this->cwnd_calculated=pck.cwnd_calculated;
+	
+
 	
 }
 
@@ -55,5 +62,13 @@ dtpPacket::dtpPacket( dtpPacket& pck )
 dtpPacket::dtpPacket()
 {
 
+
 }
 
+
+dtpPacket::dtpPacket ( Address source_temp, Address destination_temp,unsigned int length_temp)
+{
+	  this->source = source_temp;
+      this->destination = destination_temp;
+      this->length = length_temp;
+}

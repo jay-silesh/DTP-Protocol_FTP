@@ -37,12 +37,12 @@ dtpHost.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 dtpHost.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
 dtpHost.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h dtpHost.h
 dtpHost.o: new_library.h /usr/include/string.h /usr/include/xlocale.h
-dtpHost.o: cookie_class.h
+dtpHost.o: cookie_class.h /usr/include/math.h
 dtpRouter.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
-dtpRouter.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
-dtpRouter.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
-dtpRouter.o: ../netsim/PacketScheduler.h ../netsim/Scheduler.h dtpHost.h
-dtpRouter.o: new_library.h dtpRouter.h
+dtpRouter.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/Packet.h
+dtpRouter.o: ../netsim/Timer.h ../netsim/PacketScheduler.h
+dtpRouter.o: ../netsim/Scheduler.h ../netsim/Topology.h ../netsim/FIFONode.h
+dtpRouter.o: dtpRouter.h dtpPacket.h dtpHost.h new_library.h
 dtpPacket.o: ../netsim/common.h /usr/include/stdlib.h /usr/include/features.h
 dtpPacket.o: /usr/include/alloca.h ../netsim/Node.h ../netsim/FIFONode.h
 dtpPacket.o: ../netsim/Packet.h dtpPacket.h ../netsim/Timer.h
