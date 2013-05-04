@@ -19,7 +19,7 @@ dtpPacket::print_sender()
   	//puts(data);
   //	  Packet::print_payload();
     //Packet::print_header();
-       Packet::print_payload((char *) &data[0], length - sizeof(dtpPacket), true);
+       print_payload2((char *) &data[0], length - sizeof(dtpPacket), true);
     //TRACE(TRL1, "SYN %d, ACK %d, FIN: %d,SRC: %d, DST: %d and PCKID %d\n",this->syn,this->ack,this->fin,this->source,this->destination,this->id);
 }
 
@@ -28,7 +28,7 @@ dtpPacket::print_resender()
 {
 	  // TRACE(TRL3, "Re-sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
 		TRACE(TRL3, "source: %d, destination: %d, length: %d, sn: %d (%d)\n", (int) source, (int) destination, length, id, scheduler->time());
-  	  	 Packet::print_payload((char *) &data[0], length - sizeof(dtpPacket), true);
+  	  	 print_payload2((char *) &data[0], length - sizeof(dtpPacket), true);
   	  	//Packet::print_payload();
 }
 
@@ -46,7 +46,7 @@ dtpPacket::print_receiver_app()
 {
 	  // TRACE(TRL3, "Received Packet with the HEADER: source: %d, destination: %d, id: %d, length: %d,SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
 		TRACE(TRL3, "source: %d, destination: %d, length: %d, sn: %d (%d)\n", (int) source, (int) destination, length, id, scheduler->time());
-  	  	Packet::print_payload((char *) &data[0], length - sizeof(dtpPacket), true);
+  	  	print_payload2((char *) &data[0], length - sizeof(dtpPacket), true);
   	  //	Packet::print_payload();
 }
 
@@ -92,3 +92,28 @@ dtpPacket::dtpPacket ( Address source_temp, Address destination_temp,unsigned in
       this->destination = destination_temp;
       this->length = length_temp;
 }
+
+
+void
+dtpPacket::print_payload2(char *p,
+                      unsigned int len,
+                      bool ascii)
+{
+    if (trace & TRL3) {
+        if (!ascii) {
+            fprintf(stderr, "\t");
+            for (int i = 1; i <= len; i++) {
+                fprintf(stderr, "%02x ", (unsigned char) *(p+i-1));
+                if (i % 8 == 0) {
+                    fprintf(stderr, "\n\t");
+                }
+            }
+        } else {
+            for (int i = 0; i < len; i++) {
+                fprintf(stderr, "%c", *(p+i));
+            }
+        }
+        fprintf(stderr, "\n");
+    }
+}
+

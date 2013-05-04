@@ -1,0 +1,62 @@
+
+
+#1050778
+#1050778
+#1039506
+#1050778
+#1020510
+#1429064
+#1036176
+
+
+
+Host(1)
+Host(2)
+
+Host(3)
+Host(4)
+
+Host(5)
+Host(6)
+
+Host(7)
+Host(8)
+
+Host(9)
+Host(10)
+
+Host(11)
+Host(12)
+
+Router(99,1)
+Router(100,1)
+Link(99, 100, 10, 1)
+
+
+Link(1,99, 10, 1)
+Link(100, 2, 10, 1)
+
+Link(3,99, 10, 1)
+Link(100, 4, 10, 1)
+
+Link(5,99, 10, 1)
+Link(100, 6, 10, 1)
+
+Link(7,99, 10, 1)
+Link(100, 8, 10, 1)
+
+Link(9,99, 10, 1)
+Link(100, 10, 10, 1)
+
+Link(11,99, 10, 1)
+Link(100, 12, 10, 1)
+
+
+
+
+FDTPFlow(1,2,0,"hello.txt")
+FDTPFlow(3,4,0,"hello2.txt")
+FDTPFlow(5,6,0,"hello.txt")
+FDTPFlow(7,8,0,"hello.txt")
+FDTPFlow(9,10,0,"hello.txt")
+FDTPFlow(11,12,0,"hello.txt")

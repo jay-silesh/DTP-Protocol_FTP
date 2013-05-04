@@ -1,0 +1,11 @@
+Host(1)
+Router(99,32000)
+Host(2)
+
+
+Link(1,99, 10, 1)
+Link(99, 2, 10, 1)
+
+
+FDTPFlow(1,2,0,"hello3.txt")
+FDTPFlow(2,1,190636,"hello4.txt")

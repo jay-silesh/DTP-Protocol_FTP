@@ -1,0 +1,45 @@
+#389008
+
+
+#1-99-100-2
+#3-99-100-4
+
+Host(1)
+Host(2)
+
+
+Host(3)
+Host(4)
+
+Host(5)
+Host(6)
+Host(7)
+Host(8)
+
+Router(99,20)
+Router(100,20)
+Router(900,20)
+Link(99, 100, 10, 1)
+
+
+Link(1,99, 10, 1)
+Link(2,99, 10, 1)
+Link(3,99, 10, 1)
+Link(4,99, 10, 1)
+
+Link(99, 100, 10, 1)
+Link(99, 900, 10, 1)
+
+
+
+
+Link(100, 5, 10, 1)
+Link(100, 6, 10, 1)
+Link(900, 7, 10, 1)
+Link(900, 8, 10, 1)
+
+FDTPFlow(1,5,0,"hello2.txt")
+FDTPFlow(2,6,0,"hello2.txt")
+FDTPFlow(3,7,0,"hello2.txt")
+FDTPFlow(4,8,0,"hello.txt")
+

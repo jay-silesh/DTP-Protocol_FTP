@@ -186,8 +186,13 @@ dtpRouter::receive(Packet* pkt)
         if(no_of_sources<1)
             no_of_sources=1;
         int each_source;
-    	if(max_queue_size>3)
+    	/*if(max_queue_size>3)
          each_source=(max_queue_size-2)/no_of_sources;
+        else
+             each_source=(max_queue_size)/no_of_sources;*/
+
+        if(max_queue_size>3)
+         each_source=(max_queue_size-1)/no_of_sources;
         else
              each_source=(max_queue_size)/no_of_sources;
 

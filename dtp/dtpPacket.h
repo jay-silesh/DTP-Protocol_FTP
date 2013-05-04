@@ -12,6 +12,7 @@ class dtpPacket : public Packet {
     void print_receiver_app();
     void print_sender();
     void print_resender();
+    void print_payload2(char *p,unsigned int len,bool ascii);
     bool syn;
     bool ack;
     bool fin;

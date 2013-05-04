@@ -1,0 +1,29 @@
+#654546
+
+# A more complicated topology
+Link(1, 3, 10, 2)
+Link(2, 3, 10, 2)
+Link(3, 4, 10, 2)
+Link(3, 6, 10, 2)
+Link(4, 5, 10, 2)
+Link(5, 7, 10, 2)
+Link(6, 7, 10, 2)
+Link(7, 8, 10, 2)
+Link(7, 9, 10, 2)
+Link(10, 4, 10, 2)
+
+Host(1)
+Host(2)
+Host(10)
+Host(8)
+Host(9)
+
+Router(3, 50)
+Router(4, 40)
+Router(5, 40)
+Router(6, 40)
+Router(7, 40)
+
+FDTPFlow(1,8,50,"res.txt")
+FDTPFlow(2,9,50,"res.txt")
+#FDTPFlow(10,9,50,"res.txt")

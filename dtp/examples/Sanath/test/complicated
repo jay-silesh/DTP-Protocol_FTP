@@ -1,0 +1,15 @@
+Host(1)
+Host(6)
+
+Router(2,1)
+Router(3,1)
+Router(4,1)
+Router(5,1)
+
+Link(1,2,10,1)
+Link(2,3,10,1)
+Link(3,4,10,1)
+Link(4,5,10,1)
+Link(5,6,10,1)
+
+FDTPFlow(1,6,10,"../netsim/parser.cpp")
