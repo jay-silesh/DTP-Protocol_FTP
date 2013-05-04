@@ -11,23 +11,43 @@
 void
 dtpPacket::print_sender()
 {
-	   TRACE(TRL3, "Sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+	 //  TRACE(TRL3, "Sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+//	  TRACE(TRL3, "Sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+  	  TRACE(TRL3, "source: %d, destination: %d, length: %d, sn: %d (%d)\n", (int) source, (int) destination, length, id, scheduler->time());
+  	  //	  TRACE(TRL3, "%s",data);
+  	//TRACE(TRL3,"buvbdui");
+  	//puts(data);
+  //	  Packet::print_payload();
     //Packet::print_header();
-   // Packet::print_payload((char *) &data[0], length - sizeof(Packet), false);
+       Packet::print_payload((char *) &data[0], length - sizeof(dtpPacket), true);
     //TRACE(TRL1, "SYN %d, ACK %d, FIN: %d,SRC: %d, DST: %d and PCKID %d\n",this->syn,this->ack,this->fin,this->source,this->destination,this->id);
 }
 
 void
 dtpPacket::print_resender()
 {
-	   TRACE(TRL3, "Re-sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+	  // TRACE(TRL3, "Re-sending the Packet with the HEADER:source: %d, destination: %d, id: %d, length: %d, SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+		TRACE(TRL3, "source: %d, destination: %d, length: %d, sn: %d (%d)\n", (int) source, (int) destination, length, id, scheduler->time());
+  	  	 Packet::print_payload((char *) &data[0], length - sizeof(dtpPacket), true);
+  	  	//Packet::print_payload();
 }
 
 
 void
 dtpPacket::print_receiver()
 {
-	   TRACE(TRL3, "Received Packet with the HEADER: source: %d, destination: %d, id: %d, length: %d,SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+	  // TRACE(TRL3, "Received Packet with the HEADER: source: %d, destination: %d, id: %d, length: %d,SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+		TRACE(TRL3, "source: %d, destination: %d, length: %d, sn: %d (%d)\n", (int) source, (int) destination, length, id, scheduler->time());
+  	  //	Packet::print_payload();
+}
+
+void
+dtpPacket::print_receiver_app()
+{
+	  // TRACE(TRL3, "Received Packet with the HEADER: source: %d, destination: %d, id: %d, length: %d,SYN %d, ACK %d, FIN: %d\n",(int) source, (int) destination, id, length,this->syn,this->ack,this->fin);
+		TRACE(TRL3, "source: %d, destination: %d, length: %d, sn: %d (%d)\n", (int) source, (int) destination, length, id, scheduler->time());
+  	  	Packet::print_payload((char *) &data[0], length - sizeof(dtpPacket), true);
+  	  //	Packet::print_payload();
 }
 
 dtpPacket::dtpPacket( dtpPacket& pck )

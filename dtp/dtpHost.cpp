@@ -108,7 +108,7 @@ dtpHost::receive(Packet* pkt)
         if(dpkt->id==packet_expected)
         {
               //Received a Inorder packet...                
-                dpkt->print_receiver();    
+                dpkt->print_receiver_app();    
                 normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
                 packet_expected++;
                 actual_packets_rec++;
@@ -139,7 +139,7 @@ dtpHost::receive(Packet* pkt)
                   state=dtpHost::FIN;
                   done_transmission=true;
                 }
-                TRACE(TRL3,"\n\nSENDING THE CWND value as  %d\n\n",pack_cwnd);   
+           //     TRACE(TRL3,"\n\nSENDING THE CWND value as  %d\n\n",pack_cwnd);   
                 send_immediately(0,0,1,packet_expected,rtt_in_host,pack_cwnd,flag_last_packet);
 
       
@@ -620,7 +620,7 @@ bool dtpHost::check_inorder_packets()
           {
                 dtpPacket *dpkt=(dtpPacket*)((*ott).second);
                     
-                dpkt->print_receiver();    
+                dpkt->print_receiver_app();    
                 normal_packet_received=dpkt->id;    //Setting this parameter so that I can send ACK(the pkt id) for NORMAL properly 
                 packet_expected++;
                 

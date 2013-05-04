@@ -9,6 +9,7 @@
 class dtpPacket : public Packet {
  public:
     void print_receiver();
+    void print_receiver_app();
     void print_sender();
     void print_resender();
     bool syn;

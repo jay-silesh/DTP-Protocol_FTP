@@ -4171,71 +4171,120 @@ cookie_class	dtp/cookie_class.cpp	/^cookie_class::cookie_class(int x,all_cookie_
 all_cookie_states	dtp/cookie_class.h	/^     enum all_cookie_states$/;"	g	class:cookie_class
 cookie_class	dtp/cookie_class.h	/^class cookie_class {$/;"	c
 cookie_state	dtp/cookie_class.h	/^     } cookie_state;$/;"	m	class:cookie_class	typeref:enum:cookie_class::all_cookie_states
+current_time	dtp/cookie_class.h	/^    int current_time;    $/;"	m	class:cookie_class
 destination	dtp/cookie_class.h	/^    unsigned short	destination;	\/\/ Target address$/;"	m	class:cookie_class
 done_transmission	dtp/cookie_class.h	/^    bool    done_transmission;$/;"	m	class:cookie_class
 file_holder	dtp/cookie_class.h	/^    char * file_holder;$/;"	m	class:cookie_class
 id	dtp/cookie_class.h	/^     int id;$/;"	m	class:cookie_class
-new_connection	dtp/cookie_class.h	/^     bool new_connection;$/;"	m	class:cookie_class
+new_connection	dtp/cookie_class.h	/^    bool new_connection;$/;"	m	class:cookie_class
 normal	dtp/cookie_class.h	/^     	normal,retransmission$/;"	e	enum:cookie_class::all_cookie_states
 retransmission	dtp/cookie_class.h	/^     	normal,retransmission$/;"	e	enum:cookie_class::all_cookie_states
-sender	dtp/cookie_class.h	/^    bool sender;    $/;"	m	class:cookie_class
+sender	dtp/cookie_class.h	/^    bool sender;$/;"	m	class:cookie_class
 sent_so_far	dtp/cookie_class.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:cookie_class
 FDTP	dtp/dtpHost.cpp	/^void dtpHost::FDTP(Address s,Address d,Time start_time,char *p)$/;"	f	class:dtpHost
+alpha	dtp/dtpHost.cpp	/^float alpha=0.9;$/;"	v
 blank	dtp/dtpHost.cpp	/^ blank()$/;"	f
-check_inorder_packets	dtp/dtpHost.cpp	/^void dtpHost::check_inorder_packets()$/;"	f	class:dtpHost
+check_congestion	dtp/dtpHost.cpp	/^unsigned short dtpHost::check_congestion(Packet* pkt_p)$/;"	f	class:dtpHost
+check_inorder_packets	dtp/dtpHost.cpp	/^bool dtpHost::check_inorder_packets()$/;"	f	class:dtpHost
 delete_retransmission_timmer	dtp/dtpHost.cpp	/^void dtpHost::delete_retransmission_timmer(int packet_no)$/;"	f	class:dtpHost
+delete_timer_cookie	dtp/dtpHost.cpp	/^void dtpHost::delete_timer_cookie(unsigned int pack_no)$/;"	f	class:dtpHost
 dtpHost	dtp/dtpHost.cpp	/^dtpHost::dtpHost(Address a) : FIFONode(a,16000)$/;"	f	class:dtpHost
-file_handling	dtp/dtpHost.cpp	/^char * file_handling(int packet_no,char *file_holder_host)$/;"	f
-handle_timer	dtp/dtpHost.cpp	/^dtpHost::handle_timer(void* cookie)$/;"	f	class:dtpHost
+file_handling	dtp/dtpHost.cpp	/^char* file_handling(int packet_no,char *file_holder_host)$/;"	f
+handle_timer	dtp/dtpHost.cpp	/^void dtpHost::handle_timer(void* cookie)$/;"	f	class:dtpHost
+initial_cwnd	dtp/dtpHost.cpp	/^int initial_cwnd=1;$/;"	v
+initial_rtt	dtp/dtpHost.cpp	/^int initial_rtt=50000;$/;"	v
 receive	dtp/dtpHost.cpp	/^dtpHost::receive(Packet* pkt)$/;"	f	class:dtpHost
+send_immediately	dtp/dtpHost.cpp	/^void dtpHost::send_immediately(bool syn_temp,bool ack_temp,bool fin_temp,$/;"	f	class:dtpHost
 set_normal_cookie	dtp/dtpHost.cpp	/^void dtpHost::set_normal_cookie()$/;"	f	class:dtpHost
 set_packet	dtp/dtpHost.cpp	/^void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p)$/;"	f	class:dtpHost
 set_packet	dtp/dtpHost.cpp	/^void dtpHost::set_packet(Packet* pkt_p,bool syn_p,bool ack_p,bool fin_p,unsigned int id_p)$/;"	f	class:dtpHost
 set_retransmission_cookie	dtp/dtpHost.cpp	/^void dtpHost::set_retransmission_cookie(unsigned int number,int rtt)$/;"	f	class:dtpHost
-set_retransmission_map	dtp/dtpHost.cpp	/^void dtpHost::set_retransmission_map(Packet *pkt_t)$/;"	f	class:dtpHost
-wcounter	dtp/dtpHost.cpp	/^int wcounter=0;$/;"	v
+set_retransmission_map	dtp/dtpHost.cpp	/^void dtpHost::set_retransmission_map(const Packet *pkt_t)$/;"	f	class:dtpHost
+write_host	dtp/dtpHost.cpp	/^int write_host=8;$/;"	v
+write_host2	dtp/dtpHost.cpp	/^int write_host2=9;$/;"	v
 writing	dtp/dtpHost.cpp	/^void writing(char *buffer)$/;"	f
 writing2	dtp/dtpHost.cpp	/^void writing2(char *buffer)$/;"	f
 ~dtpHost	dtp/dtpHost.cpp	/^dtpHost::~dtpHost()$/;"	f	class:dtpHost
-FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-FIN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-FIN_DONE	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+FIN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+FIN_DONE	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 InorderPacketMap	dtp/dtpHost.h	/^typedef map<unsigned int, Packet*, ltid> InorderPacketMap;$/;"	t
 InorderPacketMapIterator	dtp/dtpHost.h	/^typedef map<unsigned int, Packet*, ltid>::iterator InorderPacketMapIterator;$/;"	t
 InorderPacketMapPair	dtp/dtpHost.h	/^typedef pair<unsigned int,Packet*> InorderPacketMapPair;$/;"	t
 RetransmissionPacketMap	dtp/dtpHost.h	/^typedef map<unsigned int, Packet*, ltid> RetransmissionPacketMap;$/;"	t
 RetransmissionPacketMapIterator	dtp/dtpHost.h	/^typedef map<unsigned int, Packet*, ltid>::iterator RetransmissionPacketMapIterator;$/;"	t
 RetransmissionPacketMapPair	dtp/dtpHost.h	/^typedef pair<unsigned int,Packet*> RetransmissionPacketMapPair;$/;"	t
-START_SENDING_FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-SYN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
-SYN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+START_SENDING_FIN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+SYN	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+SYN_ACK	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+actual_packets_rec	dtp/dtpHost.h	/^    unsigned int actual_packets_rec;$/;"	m	class:dtpHost
+cookie_retranmission_timmer	dtp/dtpHost.h	/^    cookie_timmer_map cookie_retranmission_timmer;$/;"	m	class:dtpHost
+cookie_timmer_map	dtp/dtpHost.h	/^typedef map<unsigned int,  cookie_class*, ltid> cookie_timmer_map;$/;"	t
+cookie_timmer_map_Iterator	dtp/dtpHost.h	/^typedef map<unsigned int,  cookie_class*, ltid>::iterator cookie_timmer_map_Iterator;$/;"	t
+cookie_timmer_map_Pair	dtp/dtpHost.h	/^typedef pair<unsigned int, cookie_class*> cookie_timmer_map_Pair;$/;"	t
+cwnd_host	dtp/dtpHost.h	/^    int cwnd_host,temp_cwnd_host;  \/\/Congestion window in the host..$/;"	m	class:dtpHost
 destination	dtp/dtpHost.h	/^    Address	destination;	\/\/ Target address$/;"	m	class:dtpHost
 done_transmission	dtp/dtpHost.h	/^    bool    done_transmission;$/;"	m	class:dtpHost
 dtpHost	dtp/dtpHost.h	/^class dtpHost : public FIFONode {$/;"	c
 file_holder	dtp/dtpHost.h	/^    char * file_holder;$/;"	m	class:dtpHost
-listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+lastest_ack_rec	dtp/dtpHost.h	/^    unsigned int lastest_ack_rec;$/;"	m	class:dtpHost
+listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+normal_packet_received	dtp/dtpHost.h	/^    unsigned int normal_packet_received;  \/\/At the receiver side , to know which NORMAL packets has been recieved$/;"	m	class:dtpHost
+not_first_time_rtt	dtp/dtpHost.h	/^    bool not_first_time_rtt;$/;"	m	class:dtpHost
 order_packet_map	dtp/dtpHost.h	/^    InorderPacketMap order_packet_map;$/;"	m	class:dtpHost
 packet_expected	dtp/dtpHost.h	/^    unsigned int packet_expected;$/;"	m	class:dtpHost
 packets_rec	dtp/dtpHost.h	/^    unsigned int packets_rec;$/;"	m	class:dtpHost
+queue_for_rtt	dtp/dtpHost.h	/^    queue<Time> queue_for_rtt;$/;"	m	class:dtpHost
 re_packet_map	dtp/dtpHost.h	/^    RetransmissionPacketMap  re_packet_map;$/;"	m	class:dtpHost
+rtt_estimation	dtp/dtpHost.h	/^    Time rtt_estimation;$/;"	m	class:dtpHost
+rtt_in_host	dtp/dtpHost.h	/^    int rtt_in_host; \/\/ The RTT recorded in the host...$/;"	m	class:dtpHost
 sender	dtp/dtpHost.h	/^    bool sender;$/;"	m	class:dtpHost
-sending	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN $/;"	e	enum:dtpHost::__anon24
+sending	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
+sending_ack_listening	dtp/dtpHost.h	/^       SYN,SYN_ACK,FIN,FIN_ACK,listening,sending,FIN_DONE,START_SENDING_FIN,sending_ack_listening $/;"	e	enum:dtpHost::__anon24
 sent_so_far	dtp/dtpHost.h	/^    int		sent_so_far;		\/\/ number sent$/;"	m	class:dtpHost
 state	dtp/dtpHost.h	/^    } state;$/;"	m	class:dtpHost	typeref:enum:dtpHost::__anon24
+temp_cwnd_host	dtp/dtpHost.h	/^    int cwnd_host,temp_cwnd_host;  \/\/Congestion window in the host..$/;"	m	class:dtpHost
+dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket ( Address source_temp, Address destination_temp,unsigned int length_temp)$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket( dtpPacket& pck )$/;"	f	class:dtpPacket
 dtpPacket	dtp/dtpPacket.cpp	/^dtpPacket::dtpPacket()$/;"	f	class:dtpPacket
 print_receiver	dtp/dtpPacket.cpp	/^dtpPacket::print_receiver()$/;"	f	class:dtpPacket
+print_receiver_app	dtp/dtpPacket.cpp	/^dtpPacket::print_receiver_app()$/;"	f	class:dtpPacket
 print_resender	dtp/dtpPacket.cpp	/^dtpPacket::print_resender()$/;"	f	class:dtpPacket
 print_sender	dtp/dtpPacket.cpp	/^dtpPacket::print_sender()$/;"	f	class:dtpPacket
 PAYLOAD_SIZE	dtp/dtpPacket.h	3;"	d
 ack	dtp/dtpPacket.h	/^    bool ack;$/;"	m	class:dtpPacket
+cwnd_calculated	dtp/dtpPacket.h	/^    unsigned short cwnd_calculated;$/;"	m	class:dtpPacket
 data	dtp/dtpPacket.h	/^    char *data;$/;"	m	class:dtpPacket
 dtpPacket	dtp/dtpPacket.h	/^class dtpPacket : public Packet {$/;"	c
 fin	dtp/dtpPacket.h	/^    bool fin;$/;"	m	class:dtpPacket
+last_packet	dtp/dtpPacket.h	/^    bool last_packet;$/;"	m	class:dtpPacket
 syn	dtp/dtpPacket.h	/^    bool syn;$/;"	m	class:dtpPacket
-dtpRouter	dtp/dtpRouter.cpp	/^dtpRouter::dtpRouter(Address a,int q_size):FIFONode(a,q_size)$/;"	f	class:dtpRouter
+PacketQueue_router	dtp/dtpRouter.cpp	/^PacketQueue_router::PacketQueue_router(int sz,$/;"	f	class:PacketQueue_router
+deq	dtp/dtpRouter.cpp	/^PacketQueue_router::deq()$/;"	f	class:PacketQueue_router
+dtpRouter	dtp/dtpRouter.cpp	/^dtpRouter::dtpRouter(Address a,$/;"	f	class:dtpRouter
+enq	dtp/dtpRouter.cpp	/^PacketQueue_router::enq(Packet* p)$/;"	f	class:PacketQueue_router
+handle_timer	dtp/dtpRouter.cpp	/^dtpRouter::handle_timer(void* cookie)$/;"	f	class:dtpRouter
+receive	dtp/dtpRouter.cpp	/^dtpRouter::receive(Packet* pkt)$/;"	f	class:dtpRouter
+send	dtp/dtpRouter.cpp	/^dtpRouter::send(Packet* packet)$/;"	f	class:dtpRouter
+send_done	dtp/dtpRouter.cpp	/^dtpRouter::send_done(Address nhop)$/;"	f	class:dtpRouter
+send_it	dtp/dtpRouter.cpp	/^dtpRouter::send_it(Address nhop)$/;"	f	class:dtpRouter
+~PacketQueue_router	dtp/dtpRouter.cpp	/^PacketQueue_router::~PacketQueue_router()$/;"	f	class:PacketQueue_router
 ~dtpRouter	dtp/dtpRouter.cpp	/^dtpRouter::~dtpRouter()$/;"	f	class:dtpRouter
-dtpRouter	dtp/dtpRouter.h	/^class dtpRouter : public FIFONode {$/;"	c
+PacketQueue_router	dtp/dtpRouter.h	/^class PacketQueue_router {$/;"	c
+QueueMap_router	dtp/dtpRouter.h	/^typedef map<Address, PacketQueue_router*, ltAddress> QueueMap_router;$/;"	t
+QueueMap_routerIterator	dtp/dtpRouter.h	/^typedef map<Address, PacketQueue_router*, ltAddress>::iterator QueueMap_routerIterator;$/;"	t
+QueueMap_routerPair	dtp/dtpRouter.h	/^typedef pair<Address, PacketQueue_router*> QueueMap_routerPair;$/;"	t
+dtpRouter	dtp/dtpRouter.h	/^class dtpRouter : public Node {$/;"	c
+max_queue_size	dtp/dtpRouter.h	/^    int		max_queue_size;			\/\/ Number of packets in queue$/;"	m	class:dtpRouter
+max_size	dtp/dtpRouter.h	/^    int			max_size;	\/\/ Max queue size$/;"	m	class:PacketQueue_router
+myset	dtp/dtpRouter.h	/^typedef set<Address> myset;$/;"	t
+neighbor	dtp/dtpRouter.h	/^    Address		neighbor;	\/\/ Neighbor for queue$/;"	m	class:PacketQueue_router
+node	dtp/dtpRouter.h	/^    Address		node;		\/\/ Node at which queue resides$/;"	m	class:PacketQueue_router
+packet_queue	dtp/dtpRouter.h	/^    queue<Packet*>	packet_queue;	\/\/ Queue of packets$/;"	m	class:PacketQueue_router
+pending_send	dtp/dtpRouter.h	/^    int		pending_send;			\/\/ Boolean$/;"	m	class:dtpRouter
+pending_send	dtp/dtpRouter.h	/^    int 		pending_send;	\/\/ Set if packet is in transit$/;"	m	class:PacketQueue_router
+queue_map	dtp/dtpRouter.h	/^    QueueMap_router	queue_map;			\/\/ Map of queues per nexthop$/;"	m	class:dtpRouter
+source_holder	dtp/dtpRouter.h	/^	myset source_holder;$/;"	m	class:PacketQueue_router
 config_file	dtp/main.cpp	/^char* config_file = ".\/netsim_config";$/;"	v
 main	dtp/main.cpp	/^main(int argc,$/;"	f
 options	dtp/main.cpp	/^const char* options = "hf:t:";$/;"	v
